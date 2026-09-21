@@ -1,0 +1,10 @@
+enumerated shells t<=TMAX=12: sizes [24, 72, 144, 288, 576, 1152, 2304, 4608, 9216, 18432, 36864, 73728, 147456]  (0.2s)
+MA normal form unique for t<=6; max unitarity error 4.00e-15
+distinct rotation axes of words with t<=3: 219
+Q_eps = 32
+identity frame, eps=0.024532, Q=32: grid shells [4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 64, 160, 128] cum@11 = 232 ; tube shells [4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 64, 160, 128]
+allowance c=48: 89.16121733529602  c=96: 148.32243467059203  required c: 163.89115093842562
+t=10: 64 words; grid points hit (d: count) = {1: 4, 4: 8, 7: 4, 9: 4, 12: 8, 15: 4, 17: 4, 20: 8, 23: 4, 25: 4, 28: 8, 31: 4}
+       distances: min 0.02296 max 0.02453; distinct (rounded 1e-6): [np.float64(0.022965), np.float64(0.024531)]
+t=11: 160 words; grid points hit (d: count) = {0: 24, 3: 8, 5: 8, 8: 24, 11: 8, 13: 8, 16: 24, 19: 8, 21: 8, 24: 24, 27: 8, 29: 8}
+       distances: min 0.02296 max 0.02453; distinct (rounded 1e-6): [np.float64(0.022965), np.float64(0.024531)]

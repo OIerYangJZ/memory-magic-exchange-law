@@ -1,0 +1,10 @@
+# Enumeration, counting and the bound evaluations need only these two.
+numpy>=1.24
+mpmath>=1.3
+
+# Figures.
+matplotlib>=3.7
+
+# Only for run_mixed_achievable.py --backend pygridsynth (Ross-Selinger synthesis).
+# The Haskell `gridsynth` binary on PATH works too, via --backend cli.
+pygridsynth>=1.0

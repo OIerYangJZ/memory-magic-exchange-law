@@ -1,0 +1,66 @@
+TOTALS: frames = 272, accuracies = 5 (eps = ['2^-3', '2^-4', '2^-5', '2^-6', '2^-7']), cells (frame, eps) = 1360, tau range 0..14 -> (frame, eps, tau) triples = 20400
+
+Per-category maxima over the frame's five accuracies (c_req = (N_grid(<=tau) - 8 - 2 tau)/(2^tau eps^2)):
+category                             #frames  post-onset c: max  median    min  any-tau max  tube max
+identity                                   1               27.4    27.4   27.4         27.4     101.0
+Clifford pair                              1               27.4    27.4   27.4         27.4     101.0
+Haar                                       5               25.4    23.6   23.0         25.4      79.8
+axis t=1                                  39               53.5    31.8   27.4         53.5     147.5
+axis t=2                                  56               53.5    26.5   25.9         53.5     147.5
+axis t=3                                 124               53.5    29.9   25.4         53.5     147.5
+axis t=5                                  30               38.5    28.3   24.6         38.5     102.5
+axis t=4                                  10               30.1    28.2   24.6         30.1      91.8
+HT axis perturbed 0.003                    1               49.5    49.5   49.5         49.5     146.5
+HT axis perturbed 0.01                     1               47.5    47.5   47.5         47.5     138.5
+HT axis perturbed 0.03                     1               36.5    36.5   36.5         36.5      98.5
+HT axis, G2 = D^dag * (t=1 word)           1               46.0    46.0   46.0         46.0     147.5
+HT axis, G2 = D^dag * (t=2 word)           1               45.2    45.2   45.2         45.2     147.5
+HT axis, G2 = D^dag * (t=3 word)           1               36.0    36.0   36.0         36.0     125.0
+
+Global maximum of post-onset c: 53.5 at tau=11, eps=2^-5, frame 'axis t=1 [0.679 0.281 0.679]'
+Global maximum of any-tau c:    53.5
+Cells with post-onset c > 48: 17; their shell counts are all equal: False; shells = [1, 0, 0, 2, 0, 0, 2, 4, 8, 16, 32, 72]
+Cells with post-onset c > 40: 32:
+    53.5 eps=2^-5 tau=11  axis t=1 [0.679 0.281 0.679]
+    53.5 eps=2^-5 tau=11  axis t=1 [0.679 0.679 0.281]
+    53.5 eps=2^-5 tau=11  axis t=1 [ 0.679 -0.281  0.679]
+    53.5 eps=2^-5 tau=11  axis t=1 [ 0.679  0.679 -0.281]
+    53.5 eps=2^-5 tau=11  axis t=1 [ 0.679  0.281 -0.679]
+    53.5 eps=2^-5 tau=11  axis t=1 [ 0.679 -0.679 -0.281]
+    53.5 eps=2^-5 tau=11  axis t=1 [ 0.679 -0.679  0.281]
+    53.5 eps=2^-5 tau=11  axis t=1 [ 0.679 -0.281 -0.679]
+    53.5 eps=2^-5 tau=11  axis t=1 [ 0.281  0.679 -0.679]
+    53.5 eps=2^-5 tau=11  axis t=1 [-0.281  0.679 -0.679]
+    53.5 eps=2^-5 tau=11  axis t=1 [0.281 0.679 0.679]
+    53.5 eps=2^-5 tau=11  axis t=1 [-0.281  0.679  0.679]
+    53.5 eps=2^-5 tau=11  axis t=2 [-0.679  0.281  0.679]
+    53.5 eps=2^-5 tau=11  axis t=2 [-0.679  0.679 -0.281]
+    53.5 eps=2^-5 tau=11  axis t=3 [ 0.281 -0.679  0.679]
+    53.5 eps=2^-5 tau=11  axis t=3 [-0.679 -0.281  0.679]
+    49.5 eps=2^-5 tau=11  HT axis perturbed 0.003
+    47.5 eps=2^-5 tau=11  HT axis perturbed 0.01
+    46.0 eps=2^-5 tau=11  HT axis, G2 = D^dag * (t=1 word)
+    45.2 eps=2^-5 tau=12  HT axis, G2 = D^dag * (t=2 word)
+    43.5 eps=2^-5 tau=11  axis t=3 [0.281 0.96  0.   ]
+    43.5 eps=2^-5 tau=11  axis t=3 [-0.281 -0.     0.96 ]
+    43.5 eps=2^-5 tau=11  axis t=3 [ 0.96  -0.281  0.   ]
+    43.5 eps=2^-5 tau=11  axis t=3 [-0.     0.281  0.96 ]
+    43.5 eps=2^-5 tau=11  axis t=3 [-0.281  0.96   0.   ]
+    43.5 eps=2^-5 tau=11  axis t=3 [0.96  0.281 0.   ]
+    43.5 eps=2^-5 tau=11  axis t=3 [0.281 0.    0.96 ]
+    43.5 eps=2^-5 tau=11  axis t=3 [ 0.    -0.281  0.96 ]
+    43.5 eps=2^-5 tau=11  axis t=3 [ 0.96   0.    -0.281]
+    43.5 eps=2^-5 tau=11  axis t=3 [-0.     0.96  -0.281]
+    43.5 eps=2^-5 tau=11  axis t=3 [-0.     0.96   0.281]
+    43.5 eps=2^-5 tau=11  axis t=3 [0.96  0.    0.281]
+
+Linear-term check: cells with N > 8 + 2 tau while 2^tau eps^2 < 1/8: 0 of 1360
+
+Per-accuracy maximum of post-onset c:
+   eps=2^-3 :  29.5 at tau=10  (axis t=5 [-0.548 -0.548  0.632])
+   eps=2^-4 :  24.8 at tau=11  (identity)
+   eps=2^-5 :  53.5 at tau=11  (axis t=1 [0.679 0.281 0.679])
+   eps=2^-6 :  29.0 at tau=13  (axis t=1 [0.    0.383 0.924])
+   eps=2^-7 :  11.0 at tau=14  (axis t=3 [0.471 0.471 0.746])
+
+Axis frames with post-onset c > 48 / > 40 / > 30: 16 / 28 / 98 of 259
