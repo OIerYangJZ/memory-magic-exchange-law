@@ -13,15 +13,9 @@ cd "$DIR/build"
 for i in 1 2 3; do pdflatex -interaction=nonstopmode -halt-on-error main.tex > /dev/null; done
 if grep -E "^!|undefined|Rerun to get|multiply defined" main.log; then echo "LaTeX problems, see $DIR/build/main.log"; exit 1; fi
 cp main.pdf "$DIR/main_reference.pdf"
-# ancillary files (arXiv serves anc/ with the paper): code, data and exact certificates
-A="$DIR/src/anc"; mkdir -p "$A/scripts" "$A/data" "$A/research"
-cp "$ROOT/arxiv/anc_README.md" "$A/README.md"; cp "$ROOT/requirements.txt" "$A/"
-cp "$ROOT"/scripts/*.py "$A/scripts/"
-for f in "$ROOT"/data/*; do case "$f" in *.bak-*) ;; *) cp "$f" "$A/data/";; esac; done
-for d in cert dioph verify4; do mkdir -p "$A/research/$d"; cp "$ROOT/research/$d"/*.py "$ROOT/research/$d"/*.txt "$ROOT/research/$d"/*.md "$A/research/$d/" 2>/dev/null || true; done
-if find "$A" -name "*.tex" | grep -q .; then echo "TeX files in anc/"; exit 1; fi
-cd "$DIR/src" && COPYFILE_DISABLE=1 tar --uid 0 --gid 0 --uname arxiv --gname arxiv -czf "$DIR/memory-magic-exchange-law-$TAG.tar.gz" main.tex fig1_tube_counts.png fig2_frontier_twopanel.png anc
+cd "$DIR/src" && COPYFILE_DISABLE=1 tar --uid 0 --gid 0 --uname arxiv --gname arxiv -czf "$DIR/memory-magic-exchange-law-$TAG.tar.gz" main.tex fig1_tube_counts.png fig2_frontier_twopanel.png
 cd "$DIR" && rm -rf build
+if [ "$(tar -tzf "$DIR/memory-magic-exchange-law-$TAG.tar.gz" | sort | tr '\n' ' ')" != "fig1_tube_counts.png fig2_frontier_twopanel.png main.tex " ]; then echo "unexpected files in the tarball"; exit 1; fi
 if grep -q "Funding and acknowledgments to be supplied" "$DIR/src/main.tex"; then
   echo "WARNING: the acknowledgments placeholder is still in main.tex"
 fi
@@ -40,7 +34,7 @@ cat > "$DIR/SUBMISSION.md" <<EOT
 Source: repository commit \`$COMMIT\`$( [ "$DIRTY" != "0" ] && echo " **plus uncommitted changes to the paper sources**" ), built with \`sh arxiv/make_arxiv.sh $TAG\`.
 
 ## Upload
-- \`memory-magic-exchange-law-$TAG.tar.gz\`: \`main.tex\` and the 2 PNG figures at the root (the bibliography is inline, no .bbl needed), plus the ancillary directory \`anc/\` (scripts, data, exact certificates; see \`anc/README.md\`).
+- \`memory-magic-exchange-law-$TAG.tar.gz\`: only the paper, \`main.tex\` and its 2 PNG figures (the bibliography is inline, no .bbl needed). Code and data are not uploaded; they are in the GitHub repository cited in the paper.
 - No 00README: arXiv detects pdfLaTeX and the single top-level file itself and advises against a hand-written one.
 - Compiler: pdfLaTeX. Top-level file: \`main.tex\`.
 - \`main_reference.pdf\` is the local build ($PAGES pages). arXiv's preview should match it; do **not** upload it.
@@ -57,7 +51,7 @@ Jinze Yang, Yangyang Li, Xiu-Hao Deng
 $ABS
 
 **Comments**
-$PAGES pages, 2 figures. Code, data and exact rational certificates are included as ancillary files and at https://github.com/OIerYangJZ/memory-magic-exchange-law
+$PAGES pages, 2 figures. Code, data and exact rational certificates: https://github.com/OIerYangJZ/memory-magic-exchange-law
 
 **Primary category:** quant-ph
 **Cross-list (optional):** math.NT
@@ -66,7 +60,6 @@ $PAGES pages, 2 figures. Code, data and exact rational certificates are included
 
 ## Checks
 - [ ] arXiv preview: $PAGES pages, both figures, affiliations and e-mail footnotes on page 1.
-- [ ] The file list shows \`anc/\` (arXiv lists ancillary files separately on the abstract page).
 - [ ] Source commit pushed to \`main\` (the paper's data link points there).
 
 ## After the arXiv ID is assigned
