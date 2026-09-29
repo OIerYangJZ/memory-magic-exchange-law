@@ -19,3 +19,6 @@ out/
 # QIP build output
 qip/*.pdf
 qip/
+
+# arXiv packages (rebuild with arxiv/make_arxiv.sh)
+arxiv/v*/
