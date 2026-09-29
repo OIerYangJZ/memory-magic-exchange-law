@@ -162,9 +162,9 @@ Theorem~\ref{thm:main1} is the bit-level theorem of~\cite{Paper1} with Lemma~\re
 
 \paragraph{Arithmetic structure.} Single-qubit Clifford+$T$ modulo phase is the full $\{(\sqrt2)\}$-arithmetic group $\Gamma$ of the maximal order
 \begin{equation}
-\mathcal O=\mathcal O_K\oplus\mathcal O_K\tfrac{1+i}{\sqrt2}\oplus\mathcal O_K\tfrac{1+j}{\sqrt2}\oplus\mathcal O_K\tfrac{1+i+j+k}{2},\quad\mathcal O_K=\Z[\sqrt2],\label{eq:order}
+\mathcal O=\mathcal O_K\oplus\mathcal O_K\tfrac{1+i}{\sqrt2}\oplus\mathcal O_K\tfrac{1+j}{\sqrt2}\oplus\mathcal O_K\tfrac{1+i+j+k}{2}\label{eq:order}
 \end{equation}
-of the definite quaternion algebra $D=(-1,-1)_{\Q(\sqrt2)}$ \cite{KMM13,PS18}. $D$ splits at the prime $P=(\sqrt2)$; the completion $K_P=\Q_2(\sqrt2)$ has residue field $\F_2$, and $\Gamma$ acts on the $3$-regular Bruhat--Tits tree $X_P$ with vertex stabilizer $U=\mathcal O^\times/\mathcal O_K^\times\cong S_4$, the single-qubit Clifford group modulo phase, of order $24$~\cite[\S4.1.3]{PS18}. \emph{$T$-count equals tree distance:} the sphere of radius $t$ has $3\cdot2^{t-1}$ vertices, and $24\cdot3\cdot2^{t-1}=36\cdot2^t$ is exactly Lemma~\ref{lem:MA}. Let $\Lambda_k\subset\Gamma$ be the ball of $T$-count $\le k$, $N_k=|\Lambda_k|=72\cdot2^k-48$, and for a left-$U$-invariant $h\in L^2(\PU)$ let $T_jh(g):=\sum_{\gamma U:\,d(\gamma v_0,v_0)=j}h(\gamma^{-1}g)$ be the Hecke operator of level $j$.
+of the definite quaternion algebra $D=(-1,-1)_{\Q(\sqrt2)}$, where $\mathcal O_K=\Z[\sqrt2]$~\cite{KMM13,PS18}. $D$ splits at the prime $P=(\sqrt2)$; the completion $K_P=\Q_2(\sqrt2)$ has residue field $\F_2$, and $\Gamma$ acts on the $3$-regular Bruhat--Tits tree $X_P$ with vertex stabilizer $U=\mathcal O^\times/\mathcal O_K^\times\cong S_4$, the single-qubit Clifford group modulo phase, of order $24$~\cite[\S4.1.3]{PS18}. \emph{$T$-count equals tree distance:} the sphere of radius $t$ has $3\cdot2^{t-1}$ vertices, and $24\cdot3\cdot2^{t-1}=36\cdot2^t$ is exactly Lemma~\ref{lem:MA}. Let $\Lambda_k\subset\Gamma$ be the ball of $T$-count $\le k$, $N_k=|\Lambda_k|=72\cdot2^k-48$, and for a left-$U$-invariant $h\in L^2(\PU)$ let $T_jh(g):=\sum_{\gamma U:\,d(\gamma v_0,v_0)=j}h(\gamma^{-1}g)$ be the Hecke operator of level $j$.
 
 \paragraph{Input (R).} On $L^2_0(U\backslash\PU)$ one has $\|T_j\|\le(j+1)2^{j/2}$~\cite[Eq.~(3.10)]{PS18}. This is the Ramanujan bound~\cite{LPS} for the Clifford+$T$ lattice, an $S$-arithmetic subgroup of the definite quaternion algebra over $\Q(\sqrt2)$ split at the prime above $2$. Its proof in~\cite{PS18} rests on the Ramanujan property of the automorphic representations that occur in $L^2(\Gamma\backslash G)$; for the forms that arise here that property is a theorem, by Deligne's bound in the elliptic modular case~\cite{Deligne} with the local--global compatibility of~\cite{HarrisTaylor}, transferred by Jacquet--Langlands to the quaternionic side~\cite{Blasius}. We use only the resulting bound, and refer to~\cite[Sec.~3]{PS18} for the dictionary between the spherical harmonics of Appendix~\ref{app:tube} and the weights of the corresponding Hilbert modular forms. The non-backtracking version~\cite[Eqs.~(5.2)--(5.3)]{PS18} gives the same bound directly for the Matsumoto--Amano syllables $HT$ and $SHT$.
 
@@ -719,26 +719,26 @@ No.~2025B0303000007), and the Shenzhen Science and Technology Program
 
 Generative AI tools were used to assist with manuscript drafting and
 revision, code and repository maintenance, literature discovery, and
-consistency checks. The authors directed its use through task-specific
+consistency checks. The authors directed their use through task-specific
 prompts and independently reviewed the generated text, citations, code, and
 numerical claims against the cited literature, source files, executable tests,
-and the symbolic or dense certificates reported in this work. AI output was
+and the exact rational certificates reported in this work. AI output was
 not treated as a scientific source or as independent proof verification. The
 authors take full responsibility for the manuscript, proofs, code, data,
 figures, citations, and conclusions.
 \end{acknowledgments}
 
 \section*{Author contributions}
-J.Y. developed the theory and proofs, implemented the compiler instrumentation
-and experimental pipeline, and performed the majority of the measurements and
-analyses. Y.L. supervised the research, reviewed and revised the manuscript,
+J.Y. developed the theory and proofs, implemented the enumeration, synthesis and certificate code, and performed
+the numerical computations and analyses. Y.L. supervised the research, reviewed and revised the manuscript,
 and provided project administration and funding support. X.-H.D.
 independently validated the theoretical derivations, numerical results, and
 computational artifacts. All authors wrote the manuscript together,
 discussed the results, and approved the final version.
 
 \section*{Data availability}
-The exhaustive enumeration of Clifford+$T$ words to $T$-count $22$, the coset counts of Table~\ref{tab:counts} and Fig.~\ref{fig:tube}, the exact-optimal and \texttt{gridsynth} data of Fig.~\ref{fig:frontier}, and every script that produces a number or figure of this paper are available at \url{https://github.com/OIerYangJZ/memory-magic-exchange-law}. The scripts are in \texttt{scripts/}, among them \texttt{enum2.py} and \texttt{enum\_arith.py} (the enumeration and coset counts), \texttt{gridsynth\_run.py}, \texttt{fig1\_fig.py} and \texttt{make\_fig2.py} (the figures), \texttt{thm\_numbers.py} (Table~\ref{tab:numbers}), \texttt{mixing\_bounds.py} (the constants of Sec.~\ref{sec:mixing}) and \texttt{scan2.py}, \texttt{scan2\_report.py} and \texttt{astra1.py} (the frame scans of Sec.~\ref{sec:num}). The exact rational certificates of Appendices~\ref{app:elem} and~\ref{app:dioph} are \texttt{research/cert/certificate.py}, \texttt{research/cert/certificate\_223.py} and \texttt{research/dioph/cert\_dioph.py}. The repository README lists, for every table, figure and theorem, the script and data file that produce it.
+{\raggedright
+The exhaustive enumeration of Clifford+$T$ words to $T$-count $22$, the coset counts of Table~\ref{tab:counts} and Fig.~\ref{fig:tube}, the exact-optimal and \texttt{gridsynth} data of Fig.~\ref{fig:frontier}, and every script that produces a number or figure of this paper are available at \url{https://github.com/OIerYangJZ/memory-magic-exchange-law}. The scripts are in \texttt{scripts/}, among them \texttt{enum2.py} and \texttt{enum\_arith.py} (the enumeration and coset counts), \texttt{gridsynth\_run.py}, \texttt{fig1\_fig.py} and \texttt{make\_fig2.py} (the figures), \texttt{thm\_numbers.py} (Table~\ref{tab:numbers}), \texttt{mixing\_bounds.py} (the constants of Sec.~\ref{sec:mixing}) and \texttt{scan2.py}, \texttt{scan2\_report.py} and \texttt{astra1.py} (the frame scans of Sec.~\ref{sec:num}). The exact rational certificates of Appendices~\ref{app:elem} and~\ref{app:dioph} are \texttt{research/cert/certificate.py}, \texttt{research/cert/certificate\_223.py} and \texttt{research/dioph/cert\_dioph.py}. The repository README lists, for every table, figure and theorem, the script and data file that produce it.\par}
 
 \appendix
 
@@ -1172,7 +1172,7 @@ The minimum $G$ is attained at $X=0$, $\vartheta=\tfrac{E_*-4}2$.
 \item \emph{Points per section.} Such a section contains at most $R'^{o(1)}$ times the smaller of two quantities.
 \begin{itemize}\setlength\itemsep{0pt}
 \item \emph{Tube bound} (Lemmas~\ref{lem:F2},~\ref{lem:F3}(b) and~\ref{lem:F4}(i)): $R'^{(1+(S_T+2U_T-y_{j-1})/3)_+}$, where $U_T=\min(1-a_0,1-g_i)$ and $S_T=\min\big(\tfrac12(1+\ell_\varepsilon),1-g_i\big)$, lowered to $\min(S_T,\ell_\varepsilon+\tfrac12(1-D_l))$ for crossing sections.
-\item \emph{Box bound}: the number $R'^{(S_T-(1-b))_++2(U_T-(1-a))_+}$ of boxes meeting $Y\cap(\text{tube})$, times $R'^{\mathrm{cost}}$, with the cost~\eqref{eq:cost} at height $y_{j-1}$, with $U_0=\min(1-a,1-g_i)$ and with $S_0=\min\big(1-b,\tfrac12(1+\ell_\rho),1-g_i\big)$, lowered to $\min(S_0,\ell_\rho+\tfrac12(1-D_l))$ for crossing sections (Lemma~\ref{lem:F4}(ii)).
+\item \emph{Box bound}: the number of boxes meeting $Y\cap(\text{tube})$, which is at most $R'^{(S_T-(1-b))_++2(U_T-(1-a))_+}$, times $R'^{\mathrm{cost}}$, with the cost~\eqref{eq:cost} at height $y_{j-1}$, with $U_0=\min(1-a,1-g_i)$ and with $S_0=\min\big(1-b,\tfrac12(1+\ell_\rho),1-g_i\big)$, lowered to $\min(S_0,\ell_\rho+\tfrac12(1-D_l))$ for crossing sections (Lemma~\ref{lem:F4}(ii)).
 \end{itemize}
 \end{itemize}
 The layer is bounded if the normals, the offsets and the points per section together have exponent $\le E_*$ for the tangent class and for each crossing class.
@@ -1185,7 +1185,7 @@ All the quantities involved are monotone in $g$, $y$ and $\Delta$ on each interv
 \end{itemize}
 There are finitely many cases, and Lemma~\ref{lem:F5} is applied to finitely many pairs $(g_i,y_j)$. If its first alternative occurs in any of them, $\#X_t\le R'^{E_*+o(1)}$ directly.
 
-\paragraph{Certificate.} An exact rational computation (\texttt{research/dioph/cert\_dioph.py}, run as \texttt{cert\_dioph.py 28/17 28/17 157/100 11183/6800 400 100 12}; the output is the same with $8$ crossing classes) checks every case: $b=\tfrac{157}{100}\le E_*$, the large sections, and for each $i$ either $b+\mathrm{cost}_i(0)\le E_*$ or a threshold $y^*\le\tfrac{23}{25}$ together with all its low layers. Cells are rational witnesses. The largest exponent the certificate checks is $\tfrac{67097}{40800}=1.64453<E_*=1.64456$, near $g\approx1.5$; it stops at the first admissible threshold. A float re-implementation, pointwise in $g$ and continuous in the layers and crossing depths (\texttt{research/verify4/indep\_model.py}), gives $1.6347$. The margin that matters is $a_0-E_*=\tfrac1{400}$. Hence $\#X_t\le R'^{E_*+o(1)}$. Every factor hidden in the $o(1)$ is an absolute constant, of which there are finitely many, or the bound $2^{O(t/\log t)}$ of Lemma~\ref{lem:E5}, and bounded $t$ are absorbed as in Appendix~\ref{app:elem}. This proves~\eqref{eq:dioph} with $\eta(t)=O(t/\log t)$.
+\paragraph{Certificate.} {\raggedright An exact rational computation (\texttt{research/dioph/cert\_dioph.py}, run as \texttt{cert\_dioph.py 28/17 28/17 157/100 11183/6800 400 100 12}; the output is the same with $8$ crossing classes) checks every case: $b=\tfrac{157}{100}\le E_*$, the large sections, and for each $i$ either $b+\mathrm{cost}_i(0)\le E_*$ or a threshold $y^*\le\tfrac{23}{25}$ together with all its low layers. Cells are rational witnesses. The largest exponent the certificate checks is $\tfrac{67097}{40800}=1.64453<E_*=1.64456$, near $g\approx1.5$; it stops at the first admissible threshold. A float re-implementation, pointwise in $g$ and continuous in the layers and crossing depths (\texttt{research/verify4/indep\_model.py}), gives $1.6347$. The margin that matters is $a_0-E_*=\tfrac1{400}$. Hence $\#X_t\le R'^{E_*+o(1)}$. Every factor hidden in the $o(1)$ is an absolute constant, of which there are finitely many, or the bound $2^{O(t/\log t)}$ of Lemma~\ref{lem:E5}, and bounded $t$ are absorbed as in Appendix~\ref{app:elem}. This proves~\eqref{eq:dioph} with $\eta(t)=O(t/\log t)$.\par}
 
 \section{Proof of Theorem~\ref{thm:clifford}}\label{app:clifford}
 
@@ -1330,7 +1330,7 @@ Theorem~\ref{thm:mixing} is asymptotic in the same sense as Theorems~\ref{thm:ma
 \bibitem{Deligne} P. Deligne, La conjecture de Weil I, Publ. Math. IHES \textbf{43}, 273 (1974).
 \bibitem{HarrisTaylor} M. Harris and R. Taylor, The Geometry and Cohomology of Some Simple Shimura Varieties, Annals of Mathematics Studies \textbf{151} (Princeton University Press, 2001).
 \bibitem{Blasius} D. Blasius, Hilbert modular forms and the Ramanujan conjecture, in Noncommutative Geometry and Number Theory, edited by C. Consani and M. Marcolli, Aspects of Mathematics \textbf{E37} (Vieweg, Wiesbaden, 2006), pp.~35--56.
-\bibitem{RennerWolf} R. Renner and S. Wolf, Simple and tight bounds for information reconciliation and privacy amplification, ASIACRYPT 2005, LNCS 3788, 199.
+\bibitem{RennerWolf} R. Renner and S. Wolf, Simple and tight bounds for information reconciliation and privacy amplification, in \emph{Advances in Cryptology -- ASIACRYPT 2005}, Lecture Notes in Computer Science Vol.~3788 (Springer, Berlin, 2005), pp.~199--216.
 \bibitem{TomamichelHayashi} M. Tomamichel and M. Hayashi, A hierarchy of information quantities for finite block length analysis of quantum tasks, IEEE Trans. Inf. Theory \textbf{59}, 7693 (2013).
 \bibitem{BRS} A. Bocharov, M. Roetteler, and K. M. Svore, Efficient synthesis of universal repeat-until-success quantum circuits, Phys. Rev. Lett. \textbf{114}, 080502 (2015).
 \bibitem{KLMPP} V. Kliuchnikov, K. Lauter, R. Minkov, A. Paetznick, and C. Petit, Shorter quantum circuits via single-qubit gate approximation, Quantum \textbf{7}, 1208 (2023).
