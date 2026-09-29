@@ -1,0 +1,69 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newcommand{\Tpre}{T_{\mathrm{pre}}}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newtheorem*{thmA}{Theorem 1 (rate beyond the spectral barrier)}
+\newtheorem*{thmB}{Theorem 2 (rate three for rotation-segmented processes)}
+\newtheorem*{corC}{Corollary 3 (typical $z$-rotations need $3\log_2(1/\varepsilon)$)}
+\newtheorem*{propD}{Proposition 4 (no law under batching)}
+\newtheorem*{thmE}{Theorem 5 (conditional rate three and quantization)}
+\pagestyle{plain}
+
+\title{\vspace{-1.5em}Committed magic in streaming Clifford+$T$ compilation:\\ an exchange law beyond the square-root barrier}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\vspace{-3.5em}
+
+\paragraph{Problem.} A phase that reaches a fault-tolerant processor in additive pieces (Trotter steps, randomized compiling, layered ansätze, streamed phase polynomials) can be remembered until the last piece arrives or executed on arrival. The first option costs classical bits carried across a round boundary; the second costs magic states committed before the phase is known. We ask for the exchange rate $\alpha$ between the two: how many committed $T$ gates each bit of forgone memory costs. Formally, a one-pass process reads an $r$-round stream of shares $a^{(1)},\dots,a^{(r)}\in\Z_Q^m$ whose sum is the aggregate $x$. It emits a write-once Clifford+$T$ circuit implementing $\bigotimes_jR_z(2\pi x_j/Q)$ to accuracy $\varepsilon$, and it carries a snapshot of $S$ bits across each cut, with $K=Q-1=\Theta(1/\varepsilon)$. The \emph{committed magic} $\Tpre$ is the number of $T$ gates emitted before the last share. Prior work~[1] showed that $S+\Tpre$ must be $\Omega(m\log(1/\varepsilon))$ and estimated the magic side empirically. Here we determine the rate in the ancilla-free coordinatewise model realized by per-rotation synthesis pipelines, and show that it is specific to that model. Throughout $L:=\log_2(1/\varepsilon)$.
+
+\paragraph{Results.} A counting argument gives $\alpha\ge1$: a $T$ gate carries one bit (Matsumoto--Amano). The committed word is, however, confined to an $\varepsilon$-tube around a rotation coset $G_1R_z(\theta)G_2$. Here $G_1,G_2$ are created by the process's own prefix and suffix and may be arbitrary. The tube has codimension $2$ in $\mathrm{SU}(2)$, so volume predicts $\approx2^\tau\varepsilon^2$ words of $T$-count $\tau$ in it, i.e.\ rate $1+2=3$. The Ramanujan bound for the Clifford+$T$ lattice (Lubotzky--Phillips--Sarnak, Parzanchevski--Sarnak) controls the tube only up to the square root of the main term. That gives an explicit rate $2$, and $2$ is the natural limit of the spectral method.
+\begin{thmA}
+For every coset $C=G_1R_zG_2$ and every $t\le\frac{20}9L$, the number of Clifford+$T$ words of $T$-count $\le t$ within $\varepsilon$ of $C$ is at most $2^{0.4513\,t+o(t)}$, against $2^{t/2}$ from the spectral method. Consequently every process satisfies, for every round $t<r$,
+\[
+\E\,T_t\ \ge\ \tfrac{11}5\,\big[(1-2\delta)\,m\log_2K-S-O(mL/\log L)\big],
+\]
+so $\alpha\ge\frac{11}5$ unconditionally, uniformly over frames, and without automorphic input. An optimised box shape gives an exact certificate for $\alpha\ge2.23$. Splitting sphere sections by the height of their hyperplane raises this to $\alpha\ge\frac{17}7$, again with an exact certificate (lemmas and certificate in the repository).
+\end{thmA}
+\begin{thmB}
+If every committed segment is within $\varepsilon$ of a Clifford-framed $z$-rotation, then $\E\,T_t\ge3\big[(1-2\delta)m\log_2K-S-O(mL/\log L)\big]$. Per-rotation pipelines and the passthrough family are of this form. The passthrough family attains rate $3$ under the standard Ross--Selinger typical-cost hypothesis, so in this model $\alpha=3$.
+\end{thmB}
+\begin{corC}
+All but a $2^{-\Omega(L/\log L)}$-fraction of angles $\theta$ require $T$-count $\ge3L-O(L/\log L)$ for an ancilla-free $\varepsilon$-approximation of $R_z(\theta)$. This is the typical-case bound that is usually quoted as information-theoretic but, for $z$-rotations, had only heuristic support.
+\end{corC}
+\begin{propD}
+With clean ancillas and a catalytic phase-gradient register, table lookups batched across $\asymp\log L$ coordinates commit each share for $(4+o(1))L/\log_2L$ $T$ gates, so $\alpha=O(1/\log L)$. This is an instance of known ancilla-assisted diagonal synthesis. At $\varepsilon=10^{-10}$ the gain is modest: $64$ $T$ per share against $105$ for ancilla-free passthrough. Ancillas that survive a cut are memory and must be charged.
+\end{propD}
+\begin{thmE}
+Under an equidistribution conjecture for arbitrary frames (exponent $2$ fixed by geometry, with a linear term that we show is forced), $\alpha=3$ in general. Commitment is then quantized: a committed word carries $O(\log L)$ bits unless it costs $\ge2L-O(1)$. The conjecture is supported by exhaustive enumeration to $T$-count $22$ ($3\times10^8$ words), whose exponents match to three decimals and whose constants match the Haar prediction to a few per cent.
+\end{thmE}
+The lower bounds hold conditionally on any fixed aggregate, including $x=0$. A computation that cancels completely still has to commit $\Theta(m\log(1/\varepsilon))$ magic before the cancellation is knowable. Side information enters through a conditional entropy: for randomized compiling with a $\lambda$-bit seed, $m\log_2K$ is replaced by $\lambda$. Probabilistic mixing halves every quantity linear in $L$ but leaves the rate unchanged.
+
+\paragraph{Techniques.} The streaming side is a Fano argument across a cut, combined with a cost-weighted Gibbs inequality. It reduces every statement to a \emph{profile}, the number of words of each $T$-count in the tube of the coset that the context determines. The new ingredient is Theorem~1, a count below the square-root barrier that is uniform in the frame.
+
+Lift each word to its numerator $w$ in the maximal order of the quaternion algebra $(-1,-1)_{\Q(\sqrt2)}$. Then $w$ is a lattice point on a $3$-sphere of radius $\asymp2^{t/4}$ in \emph{both} real embeddings of $\Q(\sqrt2)$. The tube is an $\varepsilon$-neighbourhood of a great circle in the first embedding and imposes nothing in the second. The argument has three levels:
+\begin{enumerate}\setlength\itemsep{0pt}
+\item We cut the tube into anisotropic boxes. The affine determinant of five points in a box is an element of $\frac1{16}\Z[\sqrt2]$ whose two conjugates have product $<2^{-8}$, so it vanishes and the points lie on a round $2$-sphere.
+\item The part of that sphere inside the box is covered by an anisotropic grid, and a second determinant puts the points of each cell on a circle. A sublevel-set lemma controls how a small sphere can meet the core tangentially, which is the worst case.
+\item On a circle the count reduces to elements of fixed norm in a CM extension of $\Q(\sqrt2)$, so the divisor bound leaves $2^{o(t)}$ points.
+\end{enumerate}
+The exponent comes from one explicit choice of box shape and an exact rational certificate over all sphere radii.
+
+For Clifford frames the off-diagonal entry of a word is an arithmetic coordinate, and fibring over it with the divisor bound gives the volume law up to $2^{O(t/\log t)}$. This yields Theorem~2 and Corollary~3. Proposition~4 combines unary-iteration lookups with phase-gradient addition, applied to blocks of $\asymp\log L$ coordinates.
+
+\paragraph{Why it matters, and what is open.} Resource estimates that book a full rotation synthesis for every share that is not held are right to leading order in the ancilla-free setting (Theorems~1, 2 and~5). They are wrong by a factor that grows with $L$ once clean ancillas, a phase-gradient catalyst and batching across coordinates are available (Proposition~4). The quantum of commitment (Theorem~5) says that memory should be shed in whole rotations, never in low bits. The main open problems are the following.
+\begin{itemize}\setlength\itemsep{0pt}
+\item Closing $\frac{17}7\le\alpha\le3$ for arbitrary frames. The loss in Theorem~1 is concentrated on small sphere sections met tangentially, and the box count alone caps the method at $\frac52$, or $\frac83$ with high-degree auxiliary surfaces.
+\item Matching lower bounds with ancillas.
+\item Angles produced on the quantum side, where no classical snapshot exists.
+\end{itemize}
+
+\vspace{-0.5em}
+\paragraph{References.} [1] prior work on representation-dependent recoverability in quantum compilation (arXiv:2609.29210). Full version, proofs, data, scripts and the exact certificate: arXiv (to appear), with code at an anonymized repository.
+\end{document}

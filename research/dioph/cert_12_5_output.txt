@@ -1,0 +1,4 @@
+a0=5/3 a=5/3 b=31/20 T=41/25 (=1.640000, a0=1.666667)  kappa=1/240  E1=373/240=1.554167
+all 804 g-intervals certified; worst exponent 41/25 = 1.640000 at (1.6675, 0.74)
+max eta* = 43/50, total layers checked = 26267
+CERTIFIED: #X_t <= R'^(T+o(1)) with T = 41/25 < a0 = 5/3;  rate alpha >= 4/a0 = 12/5 = 2.400000

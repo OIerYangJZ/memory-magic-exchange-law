@@ -6,9 +6,9 @@ produced by a script in `scripts/` from an input in `data/`, and this file says 
 The manuscript is `main.tex` (REVTeX 4.2, PRX Quantum style). Build it with
 `latexmk -pdf -outdir=out main.tex`; the PDF is written to `out/main.pdf`.
 
-**Status.** Unpublished. All results are proven except Theorem 5 and Corollary 6, which are
-conditional on Conjecture H, and Proposition 2, which is conditional on the synthesis
-hypothesis (25). The constant `c` of Conjecture H is deliberately left unspecified: the
+**Status.** Unpublished. All results are proven except Theorem 9 and Corollary 7, which are
+conditional on Conjecture H, and the achievable rates of Corollary 3 and Proposition 3, which
+are conditional on the synthesis hypotheses stated there (Eq. (31) for Proposition 3). The constant `c` of Conjecture H is deliberately left unspecified: the
 enumeration bounds it from below (`c >= 163.9`, see `astra1.py`) and a finite scan cannot
 bound it from above.
 
@@ -45,10 +45,14 @@ current directory and must be run from inside `data/`.
 | Sec. 9, axis cosets: second scan (272 frames x 5 accuracies, 1360 cells) | `scan2.py`, then `scan2_report.py` | `scan2.jsonl`, `scan2_summary.txt` |
 | Sec. 9, required-`c` profiles to `t = 17` | `ht_profile.py`, `profile2.py` | `ht_profile_output.txt`, `profile2_{a,b}.txt` |
 | Sec. 9, the identity-coset step (232 words, `c >= 163.9`) | `astra1.py` | `astra1_output.txt` |
-| Sec. 10.1, all constants (Thm. 8, Cor. 5/6, Prop. 3) | `mixing_bounds.py` | `mixing_bounds_output.txt` |
+| Sec. 10.1, all constants (Thm. 14, Cor. 6/7, Prop. 3) | `mixing_bounds.py` | `mixing_bounds_output.txt` |
 | Sec. 10.1, single-word `gridsynth` means at the mixing accuracies | `run_mixed_achievable.py` | `u_20000.txt`, `mixed_cache.json`, `mixed_achievable_results.json` |
 | Lemma 13 and its `tau_0 >= 1` hypothesis | `check_lem_cost.py` | — (stdout) |
 | Base enumeration (Matsumoto–Amano normal forms, resumable) | `enum2.py` | `enum_res2.pkl` |
+| Thm. 4/5 (elementary tube bound, rate 11/5): exact rational certificate | `research/cert/certificate.py 9/5` | `research/cert/certificate_output.txt` |
+| Rate 2.23 with optimised box shape (remark after Thm. 5) | `research/cert/certificate_223.py 179/100 179/100 737/500 400/223` | `research/cert/certificate_223_output.txt` |
+| Thm. 6/7 (height dichotomy, rate 17/7; proof in App. F, research notes D0–D7 in `research/dioph/DIOPH_NOTES.md`): exact rational certificate | `research/dioph/cert_dioph.py 28/17 28/17 157/100 11183/6800 400 100` (needs numpy; use `.venv/bin/python`) | `research/dioph/cert_17_7_output.txt` |
+| Rate 12/5, same method, larger margin (paragraph after Thm. 7; needs the relaxed level-1 bound D1 of the notes) | `research/dioph/cert_dioph.py 5/3 5/3 31/20 41/25 400 100` | `research/dioph/cert_12_5_output.txt` |
 
 `scan2_report.py` recomputes, from the stored `scan2.jsonl`, every count quoted in the
 axis-coset paragraph of Sec. 9 — the 272/1360/20400 totals, the 17 cells above `c = 48`,
@@ -101,7 +105,7 @@ tie-breaking.
 - `L := log2(1/eps)`, and the tuned modulus is `Q_eps = floor(pi / (2 arcsin 2 eps))`.
 - The frontier slope is `E_u tau / log2 K` with `u` uniform on all of `Z_Q`, the zero share
   costing nothing — not the mean over nonzero shares, which is larger by `Q/(Q-1)`.
-- Fig. 2(a) reports two error budgets. The certified `r = 2` point of Theorem 4 synthesizes
+- Fig. 2(a) reports two error budgets. The certified `r = 2` point of Theorem 8 synthesizes
   each committed share at `eps/2`; evaluating at `eps` instead is a single-rotation
   calibration and not a point of the family. The two sequences approach 3 from opposite
   sides (2.478, 2.721, 3.113 against 3.333, 3.334, 3.205).

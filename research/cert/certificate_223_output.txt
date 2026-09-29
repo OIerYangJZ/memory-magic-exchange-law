@@ -1,0 +1,2 @@
+a0=179/100 a=179/100 b=737/500: E1=1.47400 worst=0.31700 at 1.79 E=1.791000 target=1.793722 CERTIFIED=True
+../../.venv/bin/python certificate_223.py 179/100 179/100 737/500 400/223  35.41s user 0.12s system 99% cpu 35.554 total

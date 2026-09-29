@@ -12,3 +12,6 @@ __pycache__/
 *.synctex.gz
 main.pdf
 out/
+
+# QIP build output
+qip/*.pdf

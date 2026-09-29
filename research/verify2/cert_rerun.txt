@@ -1,0 +1,5 @@
+g=0 (r >= R'/2): 1e-06 cell -0.460001 -0.82
+E1 = 1.5  max level-2 cost = 0.305001  budget = 0.3
+a0 = 9/5  E(a0) <= 1805001/1000000 = 1.805001   kappa = E/4 = 0.45125025   5/11 = 0.45454545454545453
+CERTIFIED kappa < 5/11 (rate 11/5): True
+../.venv/bin/python cert/certificate.py 9/5  52.85s user 0.25s system 99% cpu 53.217 total
