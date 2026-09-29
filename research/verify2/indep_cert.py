@@ -4,7 +4,7 @@ Re-derives cells with the certificate's search, then re-verifies each with separ
   N (Lemma E4) evaluated at g_left with S0,U0 of the Assembly paragraph.
 Also: continuity/margin beyond g=2, the extra constraint 1-2a<=XS, and the heuristic ceilings 5/2, 8/3."""
 from fractions import Fraction as F
-import sys, importlib.util, io, contextlib
+import sys, os, importlib.util, io, contextlib
 
 A0 = F(9, 5); a, b = F(91, 50), F(73, 50)
 assert 2*a+3*b > 8 and a >= A0 and a >= b and A0 + a >= 2*b
@@ -21,7 +21,7 @@ def Ncost(g, XL, XS, zero=False):
     return max(F(0), S0-XL, U0-XS, S0+U0-XL-XS, 2*(U0-XS))
 
 # load certificate's best_cell without running its main loop
-src = open('/Users/yangjinsey/Desktop/memory-magic-exchange-law/research/cert/certificate.py').read()
+src = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pardir, 'cert', 'certificate.py')).read()
 head = src.split('TARGET =')[0]
 ns = {}
 sys.argv = ['x', '9/5']

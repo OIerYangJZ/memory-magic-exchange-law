@@ -1,7 +1,7 @@
 """Referee check of App. clifford: denominator exponent vs T-count, and the
 quaternion numerator 2w in Z[sqrt2,i] (exact, over Z[omega])."""
-import sys, collections, math
-sys.path.insert(0, '/Users/yangjinsey/Desktop/memory-magic-exchange-law/research')
+import sys, os, collections, math
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pardir))
 from zomega import all_words, mul, add, conj, omega_pow, SQ2, ONE, OMEGA, val
 
 tmax = int(sys.argv[1]) if len(sys.argv) > 1 else 12

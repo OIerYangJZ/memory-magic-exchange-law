@@ -1,7 +1,7 @@
 """Referee check of Thm clifford / Cor typical: words near the torus {R_z}, their
 off-diagonal numerators B=2c+2di, and fibre sizes; compare with tau+1+eps^2 2^tau."""
-import sys, math, collections
-sys.path.insert(0, '/Users/yangjinsey/Desktop/memory-magic-exchange-law/research')
+import sys, os, math, collections
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pardir))
 from zomega import all_words, mul, add, conj, omega_pow, SQ2, ONE, OMEGA, val
 
 tmax = int(sys.argv[1]) if len(sys.argv) > 1 else 13

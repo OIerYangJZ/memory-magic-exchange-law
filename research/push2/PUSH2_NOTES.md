@@ -1,4 +1,4 @@
-# push2: attempts to go beyond alpha ~2.23 (fork report, 2026-09-29)
+# push2: attempts to go beyond alpha ~2.23 (working notes, 2026-09-29)
 
 ## Best rigorous result: alpha >= 223/100 (exact certificate, same lemma set as App. app:elem)
 `fastcert.py 179/100 179/100 737/500 400/223` (exact Fractions; same hypotheses as

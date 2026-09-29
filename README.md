@@ -19,8 +19,9 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 ```
 
 `numpy` and `mpmath` carry everything except the figures (`matplotlib`) and the
-Ross–Selinger synthesis in `run_mixed_achievable.py`, which needs either `pygridsynth`
-(`--backend pygridsynth`) or the Haskell `gridsynth` binary on `PATH` (`--backend cli`).
+Ross–Selinger synthesis. `gridsynth_run.py` needs `pygridsynth`; `run_mixed_achievable.py`
+needs either `pygridsynth` (`--backend pygridsynth`) or the Haskell `gridsynth` binary on
+`PATH` (`--backend cli`).
 
 Run scripts from the repository root:
 
@@ -51,7 +52,7 @@ current directory and must be run from inside `data/`.
 | Base enumeration (Matsumoto–Amano normal forms, resumable) | `enum2.py` | `enum_res2.pkl` |
 | Thm. 4/5 (elementary tube bound, rate 11/5): exact rational certificate | `research/cert/certificate.py 9/5` | `research/cert/certificate_output.txt` |
 | Rate 2.23 with optimised box shape (remark after Thm. 5) | `research/cert/certificate_223.py 179/100 179/100 737/500 400/223` | `research/cert/certificate_223_output.txt` |
-| Thm. 6/7 (height dichotomy, rate 17/7; proof in App. F, research notes D0–D7 in `research/dioph/DIOPH_NOTES.md`): exact rational certificate | `research/dioph/cert_dioph.py 28/17 28/17 157/100 11183/6800 400 100` (needs numpy; use `.venv/bin/python`) | `research/dioph/cert_17_7_output.txt` |
+| Thm. 6/7 (height dichotomy, rate 17/7; proof in App. F, research notes D0–D7 in `research/dioph/DIOPH_NOTES.md`): exact rational certificate | `research/dioph/cert_dioph.py 28/17 28/17 157/100 11183/6800 400 100 12` (needs numpy; use `.venv/bin/python`) | `research/dioph/cert_17_7_output.txt` |
 | Rate 12/5, same method, larger margin (paragraph after Thm. 7; needs the relaxed level-1 bound D1 of the notes) | `research/dioph/cert_dioph.py 5/3 5/3 31/20 41/25 400 100` | `research/dioph/cert_12_5_output.txt` |
 
 `scan2_report.py` recomputes, from the stored `scan2.jsonl`, every count quoted in the
@@ -110,4 +111,4 @@ tie-breaking.
   calibration and not a point of the family. The two sequences approach 3 from opposite
   sides (2.478, 2.721, 3.113 against 3.333, 3.334, 3.205).
 
-`data/*.bak-t19` are the `t <= 19` enumeration era, kept for comparison.
+`data/enum_res2.pkl.bak-t19` is the `t <= 19` enumeration, kept for comparison.

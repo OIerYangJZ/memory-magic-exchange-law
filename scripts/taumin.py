@@ -1,5 +1,6 @@
-import numpy as np, time, pickle
-exec(open('enum2.py').read().split("tmin,tmax=")[0])   # reuse Cliffords, cores, count fn
+import numpy as np, time, pickle, os
+_HERE = os.path.dirname(os.path.abspath(__file__))
+exec(open(os.path.join(_HERE, 'enum2.py')).read().split("tmin,tmax=")[0])   # reuse Cliffords, cores, count fn
 epss=[2.0**-k for k in (4,5,6)]
 taumin={}; nwords={}
 for eps in epss:
@@ -19,7 +20,7 @@ for t in range(0,20):
             np.add.at(hit,d[ok],1)
         tm=taumin[eps]; new=(tm<0)&(hit>0); tm[new]=t; nwords[eps][t]=hit.copy()
     print(t,f"{time.time()-t0:.0f}s",flush=True)
-pickle.dump((taumin,nwords),open('taumin.pkl','wb'))
+pickle.dump((taumin,nwords),open(os.path.join(_HERE, os.pardir, 'data', 'taumin.pkl'),'wb'))
 for eps in epss:
     Q=len(taumin[eps]); L=-np.log2(eps); tm=taumin[eps]
     print(f"eps=2^-{int(L)} Q={Q}: covered {np.sum(tm>=0)}/{Q}; taumin by d:",list(tm))

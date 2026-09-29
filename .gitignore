@@ -4,6 +4,9 @@ __pycache__/
 .DS_Store
 
 # LaTeX build artifacts
+*.bbl
+*.blg
+*Notes.bib
 *.aux
 *.log
 *.fls
@@ -15,3 +18,4 @@ out/
 
 # QIP build output
 qip/*.pdf
+qip/

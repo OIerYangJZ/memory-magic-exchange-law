@@ -45,7 +45,7 @@ def analyse(g, eps):
 import json, os
 BUDGET = float(sys.argv[1]) if len(sys.argv) > 1 else 270
 done = set()
-if os.path.exists('scan2.jsonl'):
+if os.path.exists(_d('scan2.jsonl')):
     for line in open(_d('scan2.jsonl')): done.add(json.loads(line)[0])
 t0 = time.time(); res = []
 for name, (G1, G2) in allframes.items():
