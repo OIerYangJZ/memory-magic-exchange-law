@@ -54,7 +54,7 @@ $PAGES pages, 2 figures. Code, data and exact rational certificates: https://git
 **Primary category:** quant-ph
 **Cross-list (optional):** math.NT
 **MSC class (optional):** 81P68, 11P21, 11R52
-**License:** arXiv.org perpetual non-exclusive license
+**License:** CC BY 4.0 (the license of PRX Quantum and Quantum; Quantum requires it for the final arXiv version)
 
 ## Checks
 - [ ] arXiv preview: $PAGES pages, both figures, affiliations and e-mail footnotes on page 1.
