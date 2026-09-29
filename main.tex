@@ -1,14 +1,8 @@
-% To switch to APS style: \documentclass[aps,prxquantum,twocolumn,superscriptaddress,nofootinbib]{revtex4-2}
-% and replace \maketitle block / theorem environments accordingly.
-\documentclass[twocolumn,10pt]{article}
-\usepackage[margin=0.72in,top=0.8in,bottom=0.85in]{geometry}
+\documentclass[aps,prx,twocolumn,superscriptaddress,nofootinbib,longbibliography]{revtex4-2}
 \usepackage{amsmath,amssymb,amsthm,mathtools}
-\usepackage{graphicx,booktabs,array}
+\usepackage{graphicx,booktabs}
 \usepackage{xcolor}
 \usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
-\usepackage{caption}
-\captionsetup{font=small,labelfont=bf}
-\setlength{\columnsep}{18pt}
 
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}
@@ -35,18 +29,22 @@
 \newcommand{\supp}{\operatorname{supp}}
 \DeclareMathOperator{\spec}{spec}
 
-\title{\Large\bfseries A Memory--Magic Exchange Law\\ in Streaming Clifford+$T$ Compilation}
-\author{Jinze Yang$^{1}$, Yangyang Li$^{1}$, and Xiu-Hao Deng$^{2}$\\[2pt]
-\small $^{1}$Xidian University, Xi'an, China\\
-\small $^{2}$Shenzhen International Quantum Academy, Shenzhen, China}
-\date{\today}
-
 \begin{document}
-\maketitle
+
+\title{A Memory--Magic Exchange Law in Streaming \texorpdfstring{Clifford+$T$}{Clifford+T} Compilation}
+
+\author{Jinze Yang}
+\affiliation{Xidian University, Xi'an, China}
+\author{Yangyang Li}
+\affiliation{Xidian University, Xi'an, China}
+\author{Xiu-Hao Deng}
+\affiliation{Shenzhen International Quantum Academy, Shenzhen, China}
 
 \begin{abstract}
-A phase that reaches a fault-tolerant processor in several additive pieces can be remembered until the last piece arrives, or executed on arrival: the first option is paid for in classical bits carried across a round boundary, the second in magic states committed before the phase is known. We show that in the ancilla-free coordinatewise Clifford+$T$ model realized by per-rotation synthesis pipelines the two payments are convertible at an exchange rate $\alpha$---committed $T$ gates per bit of memory forgone---that does not depend on the problem size. Unconditionally $\alpha\ge2$: it rests on a new equidistribution estimate for Clifford+$T$ words near rotation cosets, whose only external input is the Ramanujan bound of Lubotzky--Phillips--Sarnak and Parzanchevski--Sarnak, and which shows that a committed word of $T$-count $\tau$ carries at most $\tau/2+O(\log\log(1/\varepsilon))$ bits about the share it commits. The bound is a statement about irreversible commitment rather than about the target: it holds unchanged when the aggregate phase turns out to be zero and the final unitary is the identity. An explicit fractional passthrough family attains $\alpha\to3$ whenever the mean single-rotation synthesis cost on the grid is $(3+o(1))\log_2(1/\varepsilon)$, as Ross--Selinger synthesis gives for typical angles and as we measure at $\varepsilon=10^{-10}$. The gap between $2$ and $3$ is the square-root remainder of the spectral estimate, and closing it is an arithmetic question: under an equidistribution conjecture whose exponent $\beta=2$ is the codimension of a rotation coset in $\SU$---with a linear additive term forced by the powers of infinite-order words, and which exhaustive enumeration to $T$-count $22$ supports on Haar-random and on arithmetic cosets with exponents to three decimals and constants matching the Haar prediction to a few per cent---the rate is exactly $\alpha=1+\beta=3$ and commitment is quantized: a committed word carries at most $O(\log\log(1/\varepsilon))$ bits about its coordinate unless it costs at least $2\log_2(1/\varepsilon)-O(1)$ gates, so memory should be shed in whole rotations rather than low bits. All constants are explicit; at $\varepsilon=10^{-10}$ the rigorous floor is $0.78$ committed $T$ gates per bit against $3.20$ achieved by passthrough at the certified share accuracy. Side information held downstream enters through a conditional entropy: when the earlier shares are an injective function of a $\lambda$-bit seed independent of the aggregate, as in randomized compiling, the information a compiler without the seed is missing is at most $\lambda$ rather than $m\log_2(1/\varepsilon)$, and for a two-round stream with uniform aggregate it is $\lambda$ up to $O(m/Q)$. Probabilistic mixing of synthesized words rescales the law by one half and does not remove it: under mixing all but the top $\tfrac12L+O(\log L)$ bits of every share are free, the bits that remain are charged in total at the same rate, the rigorous floor is $L$ committed $T$ gates per share, against $\tfrac32L$ achievable under a synthesis hypothesis and $\tfrac32L$ with fee $L$ under the same conjecture. Measurement adaptivity with a bounded number of ancillas lowers the rate but not the order, there for the sum of $T$ gates and measurements rather than for committed magic alone, and only a catalytic phase-gradient register makes the split of a phase between rounds cost-free.
+A phase that reaches a fault-tolerant processor in several additive pieces can be remembered until the last piece arrives, or executed on arrival: the first option is paid for in classical bits carried across a round boundary, the second in magic states committed before the phase is known. We show that in the ancilla-free coordinatewise Clifford+$T$ model realized by per-rotation synthesis pipelines the two payments are convertible at an exchange rate $\alpha$---committed $T$ gates per bit of memory forgone---that does not depend on the problem size. Unconditionally $\alpha\ge2$: it rests on a new equidistribution estimate for Clifford+$T$ words near rotation cosets, whose only external input is the Ramanujan bound of Lubotzky--Phillips--Sarnak and Parzanchevski--Sarnak, and which shows that a committed word of $T$-count $\tau$ carries at most $\tau/2+O(\log\log(1/\varepsilon))$ bits about the share it commits. The bound is a statement about irreversible commitment rather than about the target: it holds unchanged when the aggregate phase turns out to be zero and the final unitary is the identity. An explicit fractional passthrough family attains $\alpha\to3$ whenever the mean single-rotation synthesis cost on the grid is $(3+o(1))L$, $L:=\log_2(1/\varepsilon)$, as Ross--Selinger synthesis gives for typical angles and as we measure at $\varepsilon=10^{-10}$. The gap between $2$ and $3$ is the square-root remainder of the spectral estimate, and closing it is an arithmetic question: under an equidistribution conjecture whose exponent $\beta=2$ is the codimension of a rotation coset in $\SU$---with a linear additive term forced by the powers of infinite-order words, and which exhaustive enumeration to $T$-count $22$ supports on Haar-random and on arithmetic cosets with exponents to three decimals and constants matching the Haar prediction to a few per cent---the rate is exactly $\alpha=1+\beta=3$ and commitment is quantized: a committed word carries at most $O(\log L)$ bits about its coordinate unless it costs at least $2L-O(1)$ gates, so memory should be shed in whole rotations rather than low bits. All constants are explicit; at $\varepsilon=10^{-10}$ the rigorous floor is $0.78$ committed $T$ gates per bit against $3.20$ achieved by passthrough at the certified share accuracy. Side information held downstream enters through a conditional entropy: when the earlier shares are an injective function of a $\lambda$-bit seed independent of the aggregate, as in randomized compiling, the information a compiler without the seed is missing is at most $\lambda$ rather than $mL$, and for a two-round stream with uniform aggregate it is $\lambda$ up to $O(m/Q)$. Probabilistic mixing of synthesized words rescales the law by one half and does not remove it: under mixing all but the top $\tfrac12L+O(\log L)$ bits of every share are free, the bits that remain are charged in total at the same rate, the rigorous floor is $L$ committed $T$ gates per share, against $\tfrac32L$ achievable under a synthesis hypothesis and $\tfrac32L$ with fee $L$ under the same conjecture. Measurement adaptivity with a bounded number of ancillas lowers the rate but not the order, there for the sum of $T$ gates and measurements rather than for committed magic alone, and only a catalytic phase-gradient register makes the split of a phase between rounds cost-free.
 \end{abstract}
+
+\maketitle
 
 \section{Introduction}
 
@@ -318,7 +316,7 @@ i.e.\ exponents $(1,2)$ to three decimals. The constants are not fitted. The gri
 \centering\scriptsize
 \caption{Grid counts on Haar coset pair 0; exact Haar prediction $c_{\mathrm{grid}}2^{t-2L}$, $c_{\mathrm{grid}}=48\varepsilon Q_\varepsilon/\pi$, in parentheses.}
 \label{tab:counts}
-\setlength{\tabcolsep}{1.5pt}\begin{tabular}{@{}c ccccc@{}}
+\setlength{\tabcolsep}{1pt}\begin{tabular}{@{}c ccccc@{}}
 \toprule
 $t$ & $\varepsilon=2^{-4}$ & $2^{-5}$ & $2^{-6}$ & $2^{-7}$ & $2^{-8}$\\
 \midrule
@@ -374,7 +372,8 @@ $c_0+c_1\tau_{24}$ & $14$ & $18$ & $22$ & $26$ & $30$\\
 Thm.~\ref{thm:main1} (unconditional) & $21.75$ & $0.66$ & $1$\\
 Thm.~\ref{thm:rate2} (given (R)) & $25.72$ & $0.78$ & $2$\\
 Thm.~\ref{thm:main2} (under Conj.~\ref{conj:H}) & $51.3$--$52.9$ & $1.56$--$1.61$ & $\kappa=2.75$--$2.82$\\
-achievable (Thm.~\ref{thm:frontier}, \texttt{gridsynth} at $\varepsilon/2$) & $105.34$ & $3.20$ & $3.205$\\
+achievable (Thm.~\ref{thm:frontier}) & $105.34$ & $3.20$ & $3.205$\\
+\quad(\texttt{gridsynth} at $\varepsilon/2$) & & &\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -393,15 +392,15 @@ achievable (Thm.~\ref{thm:frontier}, \texttt{gridsynth} at $\varepsilon/2$) & $1
 \label{tab:models}
 \begin{tabular}{@{}p{3.6cm} p{5.2cm} p{4.6cm} p{3.4cm}@{}}
 \toprule
-Model & Rigorous lower bound & Achievable & Granularity\\
+\raggedright Model & \raggedright Rigorous lower bound & \raggedright Achievable & \raggedright Granularity\tabularnewline
 \midrule
-CW ancilla-free Clifford+$T$ & $1$ (Thm.~\ref{thm:main1}); $2$ (Thm.~\ref{thm:rate2}, given (R)); $1+\beta\to3$ under Conj.~\ref{conj:H}, any $c$ (Thm.~\ref{thm:main2}) & $\to3$ (Thm.~\ref{thm:frontier}, under the synthesis hypothesis of Cor.~\ref{cor:frontier}); $3.205$ by \texttt{gridsynth} at the certified share accuracy $\varepsilon/2$, $\varepsilon=10^{-10}$; exact $3.333$ ($L=5$) and $3.334$ ($L=6$) at $\varepsilon/2$, against calibrations $2.478$ and $2.721$ at $\varepsilon$ (Sec.~\ref{sec:num}) & one rotation (fee $2L-\log_2c-O(1)$) under Conj.~\ref{conj:H}, past the first $O(\log L)$ bits of a coordinate (Rem.~\ref{rem:firstbit}, Prop.~\ref{prop:cluster})\\
-CW $+$ probabilistic mixing (Def.~\ref{def:mixed}; \cite{Campbell17,Hastings17,KLMPP,Bothe}) & $0$ on the low bits; $1-\gamma$ per coarse bit \emph{in total}, beyond a $\log_236+O(\log L)$ allowance (Thm.~\ref{thm:mixing}(a)); $2(1-\gamma)$ given (R) (Thm.~\ref{thm:mixing}(b)); $1+\beta\to3$ under Conj.~\ref{conj:H}, any $c$ (Cor.~\ref{cor:mixq}); floor $L-O(\log L)$ per share, $\tfrac32L$ under Conj.~\ref{conj:H}. All vacuous at $\varepsilon=10^{-10}$ except Thm.~\ref{thm:mixing}(a) & $O(1)$ on the low $\tfrac12L-\tfrac12\log_2L$ bits; $\tfrac32L$ for a share that commits more, under the mixed-synthesis hypothesis~\eqref{eq:mixhyp}---four-word mixing \cite[Thm.~2]{Campbell17} at word accuracy $\sqrt{\varepsilon/(5r)}$, estimated $57.5$ at $\varepsilon=10^{-10}$, $r=2$ by RS scaling and not certified; $1.52\log_2(1/\delta)-0.01=50.5$ $T$ per share at $\delta=10^{-10}$ \cite{KLMPP,Bothe} & bits below $\tfrac12L-\tfrac12\log_2L-O(1)$ free (Cor.~\ref{cor:mixstop}(i), \cite{Bothe}); bits at $\tfrac12L-O(1)$ cheap for no program (Lem.~\ref{lem:nocheap}); the top $\log_2\gcd(Q,8)$ bits free at any position; fee $L-O(1)$ under Conj.~\ref{conj:H} (Cor.~\ref{cor:mixq})\\
-CW $+$ RUS/fallback on $n$ qubits (measurement-adaptive, unitary branches; Prop.~\ref{prop:adaptive}) & $(1-\gamma)/(2n+2)$ per high bit, in $T$ gates plus measurements; floor $L/(4n+4)$ per share & $\tau\approx1.15L$ \cite{BRS}; $0.53\log_2(1/\delta)+4.86=22.5$ at $\delta=10^{-10}$ with mixed fallback \cite{KLMPP,Bothe} & open: the token count of Prop.~\ref{prop:adaptive} does not see the fee\\
-Quasi-probabilistic mixtures \cite{Bothe} & not covered: a signed mixture is not a channel, and the resource is sample overhead & $\tilde O(\theta^2/(\lambda-1))$ at small angles \cite{Bothe} & open\\
-Phase gradient + adder, $Q=2^b$ & none for general prefixes & $\approx4$ \cite{Gidney}: commit the high $b-\ell$ bits of a share into the top gradient bits, remember the low $\ell$ bits, one $b$-bit addition in the suffix & one bit, no fee: the catalytic gradient state pays the fee once\\
-General $n$-qubit Clifford+$T$ & $(m\log_2K-S-\log_2|\mathcal C_n|-O(n))/(2n+1)$ from $\#\le|\mathcal C_n|(2\cdot4^n)^t$; degenerate for $n\sim m$ & --- & open\\
-$Q\mid8$ & vacuous: $\log_2K\le\log_27<\log_236$, so Theorem~\ref{thm:main1} asserts nothing & $\le1$ $T$ gate per share: every grid rotation is a power of $T$, exactly & one bit, no fee. This case is \emph{not} excluded by $\varepsilon<\sin(\pi/2Q)$, which at $Q=8$ permits every $\varepsilon\le1/8$; it is the $c_0$ of Conj.~\ref{conj:H} filling the whole grid\\
+\raggedright CW ancilla-free Clifford+$T$ & \raggedright $1$ (Thm.~\ref{thm:main1}); $2$ (Thm.~\ref{thm:rate2}, given (R)); $1+\beta\to3$ under Conj.~\ref{conj:H}, any $c$ (Thm.~\ref{thm:main2}) & \raggedright $\to3$ (Thm.~\ref{thm:frontier}, under the synthesis hypothesis of Cor.~\ref{cor:frontier}); $3.205$ by \texttt{gridsynth} at the certified share accuracy $\varepsilon/2$, $\varepsilon=10^{-10}$; exact $3.333$ ($L=5$) and $3.334$ ($L=6$) at $\varepsilon/2$, against calibrations $2.478$ and $2.721$ at $\varepsilon$ (Sec.~\ref{sec:num}) & \raggedright one rotation (fee $2L-\log_2c-O(1)$) under Conj.~\ref{conj:H}, past the first $O(\log L)$ bits of a coordinate (Rem.~\ref{rem:firstbit}, Prop.~\ref{prop:cluster})\tabularnewline
+\raggedright CW $+$ probabilistic mixing (Def.~\ref{def:mixed}; \cite{Campbell17,Hastings17,KLMPP,Bothe}) & \raggedright $0$ on the low bits; $1-\gamma$ per coarse bit \emph{in total}, beyond a $\log_236+O(\log L)$ allowance (Thm.~\ref{thm:mixing}(a)); $2(1-\gamma)$ given (R) (Thm.~\ref{thm:mixing}(b)); $1+\beta\to3$ under Conj.~\ref{conj:H}, any $c$ (Cor.~\ref{cor:mixq}); floor $L-O(\log L)$ per share, $\tfrac32L$ under Conj.~\ref{conj:H}. All vacuous at $\varepsilon=10^{-10}$ except Thm.~\ref{thm:mixing}(a) & \raggedright $O(1)$ on the low $\tfrac12L-\tfrac12\log_2L$ bits; $\tfrac32L$ for a share that commits more, under the mixed-synthesis hypothesis~\eqref{eq:mixhyp}---four-word mixing \cite[Thm.~2]{Campbell17} at word accuracy $\sqrt{\varepsilon/(5r)}$, estimated $57.5$ at $\varepsilon=10^{-10}$, $r=2$ by RS scaling and not certified; $1.52\log_2(1/\delta)-0.01=50.5$ $T$ per share at $\delta=10^{-10}$ \cite{KLMPP,Bothe} & \raggedright bits below $\tfrac12L-\tfrac12\log_2L-O(1)$ free (Cor.~\ref{cor:mixstop}(i), \cite{Bothe}); bits at $\tfrac12L-O(1)$ cheap for no program (Lem.~\ref{lem:nocheap}); the top $\log_2\gcd(Q,8)$ bits free at any position; fee $L-O(1)$ under Conj.~\ref{conj:H} (Cor.~\ref{cor:mixq})\tabularnewline
+\raggedright CW $+$ RUS/fallback on $n$ qubits (measurement-adaptive, unitary branches; Prop.~\ref{prop:adaptive}) & \raggedright $(1-\gamma)/(2n+2)$ per high bit, in $T$ gates plus measurements; floor $L/(4n+4)$ per share & \raggedright $\tau\approx1.15L$ \cite{BRS}; $0.53\log_2(1/\delta)+4.86=22.5$ at $\delta=10^{-10}$ with mixed fallback \cite{KLMPP,Bothe} & \raggedright open: the token count of Prop.~\ref{prop:adaptive} does not see the fee\tabularnewline
+\raggedright Quasi-probabilistic mixtures \cite{Bothe} & \raggedright not covered: a signed mixture is not a channel, and the resource is sample overhead & \raggedright $\tilde O(\theta^2/(\lambda-1))$ at small angles \cite{Bothe} & \raggedright open\tabularnewline
+\raggedright Phase gradient + adder, $Q=2^b$ & \raggedright none for general prefixes & \raggedright $\approx4$ \cite{Gidney}: commit the high $b-\ell$ bits of a share into the top gradient bits, remember the low $\ell$ bits, one $b$-bit addition in the suffix & \raggedright one bit, no fee: the catalytic gradient state pays the fee once\tabularnewline
+\raggedright General $n$-qubit Clifford+$T$ & \raggedright $(m\log_2K-S-\log_2|\mathcal C_n|-O(n))/(2n+1)$ from $\#\le|\mathcal C_n|(2\cdot4^n)^t$; degenerate for $n\sim m$ & \raggedright --- & \raggedright open\tabularnewline
+\raggedright $Q\mid8$ & \raggedright vacuous: $\log_2K\le\log_27<\log_236$, so Theorem~\ref{thm:main1} asserts nothing & \raggedright $\le1$ $T$ gate per share: every grid rotation is a power of $T$, exactly & \raggedright one bit, no fee. This case is \emph{not} excluded by $\varepsilon<\sin(\pi/2Q)$, which at $Q=8$ permits every $\varepsilon\le1/8$; it is the $c_0$ of Conj.~\ref{conj:H} filling the whole grid\tabularnewline
 \bottomrule
 \end{tabular}
 \end{table*}
@@ -452,9 +451,11 @@ and the right side is $<1-\eta^2$ whenever $\sin(|\psi|/2)>(1+\sqrt3)\eta$.
 \begin{theorem}[The law under mixing]\label{thm:mixing}
 Let the process be mixed-unitary (Definition~\ref{def:mixed}), correct with probability $\ge1-\delta$ over $\rho$ on every valid stream, and fix $\gamma\in(0,1)$; put $\eta:=\sqrt{\varepsilon/\gamma}$,
 \[
-w:=\Big\lfloor\tfrac Q\pi\arcsin\big((1+\sqrt3)\eta\big)\Big\rfloor,\quad
-\varepsilon':=36\sqrt2\,\eta,\quad
+\begin{gathered}
+w:=\Big\lfloor\tfrac Q\pi\arcsin\big((1+\sqrt3)\eta\big)\Big\rfloor,\qquad
+\varepsilon':=36\sqrt2\,\eta,\\
 w':=\Big\lfloor\tfrac{2Q}\pi\arcsin\varepsilon'\Big\rfloor,
+\end{gathered}
 \]
 $k_\gamma:=\log_2K-\log_2(2w+1)$ and $k'_\gamma:=\log_2K-\log_2(2w'+1)-1$, the \emph{coarse bits} of a coordinate. Then for every round $t<r$:
 
@@ -510,7 +511,10 @@ for $t<r$, correct to coordinatewise diamond error $2\varepsilon$, since diamond
 \end{equation}
 for the two words the construction actually calls at accuracy $\eta$, the expectation being over the uniform grid share. Under~\eqref{eq:mixhyp} the committed cost per share is
 \[
-\tau_{\mathrm{mix}}(2\varepsilon/r)\ \le\ 3\log_2\sqrt{5r/\varepsilon}+o(L)\ =\ \tfrac32L+\tfrac32\log_2(5r)+o(L),
+\begin{aligned}
+\tau_{\mathrm{mix}}(2\varepsilon/r)\ &\le\ 3\log_2\sqrt{5r/\varepsilon}+o(L)\\
+&=\ \tfrac32L+\tfrac32\log_2(5r)+o(L),
+\end{aligned}
 \]
 and the mixed family has slope $\alpha_{\mathrm{mix}}\to\tfrac32$.
 \end{proposition}
@@ -523,7 +527,10 @@ Two things this does not say. First, the construction is not a pair of words wit
 \begin{lemma}[Grid cover of a tube]\label{lem:cover}
 Let $0<\varepsilon\le1/16$, let $Q_1:=\max\{Q:\sin(\pi/2Q)\ge4\varepsilon\}$ be the tuned modulus at accuracy $2\varepsilon$, and for $i=0,\dots,8$ let $\mathcal G_i$ be the set of words within $\dproj$-distance $2\varepsilon$ of some rotation $G_1R_z\big(2\pi(d+i/9)/Q_1\big)G_2$, $d\in\Z_{Q_1}$. Then $T_\varepsilon(G_1R_zG_2)\subseteq\bigcup_{i=0}^8\mathcal G_i$, and consequently, under Conjecture~\ref{conj:H}, for every $\tau\ge0$
 \begin{equation}\label{eq:cover}
-\#\{W\in T_\varepsilon(G_1R_zG_2):t_{\min}(W)\le\tau\}\le9c_0+9c_1\tau+36c\,2^\tau\varepsilon^2.
+\begin{aligned}
+&\#\{W\in T_\varepsilon(G_1R_zG_2):t_{\min}(W)\le\tau\}\\
+&\qquad\le9c_0+9c_1\tau+36c\,2^\tau\varepsilon^2.
+\end{aligned}
 \end{equation}
 \end{lemma}
 Lemma~\ref{lem:cover} is what replaces a ``tube form'' of Conjecture~\ref{conj:H}: the grid form~\eqref{eq:H} is asserted for all frames and all moduli $Q\le Q_\varepsilon$, so shifting the frame by one ninth of a grid step nine times covers the tube at twice the radius. The cumulative Haar prediction for the tube coefficient is $72$, twice the shell constant $36$ of Sec.~\ref{sec:num}, against which the coefficient $36c$ of~\eqref{eq:cover}---$1728$ at the illustrative $c=48$---is loose by a factor $24$, i.e.\ by $4.6$ bits in the fee; it is rigorous given~\eqref{eq:H} and needs no further hypothesis.
@@ -564,13 +571,12 @@ Three consequences are worth stating plainly. First, the corner $S=0$ is where t
 
 Two unconditional statements bound the arithmetic question from the other side: Selinger's worst-case $T$-count $4L-9$ for a specific $z$-rotation~\cite[Thm.~30]{Selinger15}, and the covering exponents of Parzanchevski and Sarnak, who show that some single-qubit unitaries need $T$-count $4L$ while all are reachable at $6L$~\cite{PS18}. The committed-magic frontier is a statement about the typical rather than the worst case, and it sits between the rigorous and the conjectural covering exponents in the same way. Closing the gap between $1+\beta/2$ and $1+\beta$ is a problem about lattice points near a curve below the square-root barrier, and we leave it open.
 
-\section*{Acknowledgments}
+\begin{acknowledgments}
 [Funding and acknowledgments to be supplied by the authors before submission.]
-% If AI tools were used in preparing the manuscript, disclose this here in the
-% form required by the journal's current policy.
+\end{acknowledgments}
 
-\section*{Data and code availability}
-The exhaustive enumeration of Clifford+$T$ words to $T$-count $22$, the coset counts of Table~\ref{tab:counts} and Fig.~\ref{fig:tube}, the exact-optimal and \texttt{gridsynth} data of Fig.~\ref{fig:frontier}, and the scripts \texttt{enum\_arith.py}, \texttt{arith\_analysis.py}, \texttt{lowcost\_counts.py}, \texttt{thm\_numbers.py}, \texttt{make\_fig2.py}, \texttt{mixing\_bounds.py} (the constants of Sec.~\ref{sec:mixing}), \texttt{run\_mixed\_achievable.py} (the single-word \texttt{gridsynth} means at the mixing accuracies), \texttt{conj1\_scan.py}, \texttt{scan2.py}, \texttt{ht\_profile.py}, \texttt{scan2\_report.py} and \texttt{astra1.py} (the frame scans and the identity-coset step of Sec.~\ref{sec:num}) and \texttt{frontier\_eps\_half.py} (the $\varepsilon/2$ exact optima) that produce every number and every figure quoted in Secs.~\ref{sec:num} and~\ref{sec:models} are available at \url{https://github.com/XXXX/memory-magic}. % <-- insert the real URL before submission
+\section*{Data availability}
+The exhaustive enumeration of Clifford+$T$ words to $T$-count $22$, the coset counts of Table~\ref{tab:counts} and Fig.~\ref{fig:tube}, the exact-optimal and \texttt{gridsynth} data of Fig.~\ref{fig:frontier}, and the scripts \texttt{enum\_arith.py}, \texttt{arith\_analysis.py}, \texttt{lowcost\_counts.py}, \texttt{thm\_numbers.py}, \texttt{make\_fig2.py}, \texttt{mixing\_bounds.py} (the constants of Sec.~\ref{sec:mixing}), \texttt{run\_mixed\_achievable.py} (the single-word \texttt{gridsynth} means at the mixing accuracies), \texttt{conj1\_scan.py}, \texttt{scan2.py}, \texttt{ht\_profile.py}, \texttt{scan2\_report.py} and \texttt{astra1.py} (the frame scans and the identity-coset step of Sec.~\ref{sec:num}) and \texttt{frontier\_eps\_half.py} (the $\varepsilon/2$ exact optima) that produce every number and every figure quoted in Secs.~\ref{sec:num} and~\ref{sec:models} are available at \url{https://github.com/OIerYangJZ/memory-magic-exchange-law}.
 
 \appendix
 
@@ -665,7 +671,10 @@ with $x_0$ the centre of the cap. Then $F_+\ge0$ everywhere, $F_+\ge1$ on $\pi^{
 
 \emph{Isotypic decomposition.} By Peter--Weyl, $L^2(\SU)=\bigoplus_nV_n\otimes V_n^*$, and only even $n=2\ell$ occur on $\PU$; the decomposition is preserved by left and right translations, hence by $T_j$ and by left-$U$-averaging. Since $F_+$ is left-$H_1$-invariant, its $n$-th component is a rank-one matrix coefficient $F_n(g)=\langle v_0,\pi_n(g)w_n\rangle$ with $v_0$ the unique $H_1$-fixed unit vector, and it corresponds to the degree-$\ell$ spherical-harmonic component $f_\ell$ of $F_+$ viewed on $S^2$, with $\|F_n\|_2=\|f_\ell\|_{L^2(S^2)}$ and $n+1=2\ell+1$. Left translations act on the $v$ side only, so $T_j\bar F_n(g)=\langle v',\pi_n(g)w_n\rangle$ is again rank one, and rank-one coefficients satisfy $\|\phi\|_\infty\le\sqrt{n+1}\,\|\phi\|_2$. For $n\ge1$, using (R) and $\|\bar F_n\|_2\le\|F_n\|_2$,
 \begin{equation}
-|(T_j\bar F_n)(e)|\le\sqrt{n+1}\,\|T_j\bar F_n\|_2\le\sqrt{n+1}\,(j+1)2^{j/2}\,\|F_n\|_2 .
+\begin{aligned}
+|(T_j\bar F_n)(e)|&\le\sqrt{n+1}\,\|T_j\bar F_n\|_2\\
+&\le\sqrt{n+1}\,(j+1)2^{j/2}\,\|F_n\|_2 .
+\end{aligned}
 \end{equation}
 The $n=0$ term contributes $24\sum_{j\le k}(\#\text{vertices at distance }j)\,\mu(F_+)=N_k\,a_\varepsilon\le72\cdot4\sqrt2\cdot2^k\varepsilon^2$, which is the main term with $C_1=72\cdot4\sqrt2\le408$.
 
@@ -691,7 +700,7 @@ where $Z:=\sum_{\tau\le\tau_*}n(\tau)2^{-\tau/2}$.
 \end{lemma}
 \begin{proof}
 Let $E:=\mathbf1\{t(W)>\tau_*\}$, a function of $W$, and $q:=\Pr[E=1]$. Then $I(A;W)=I(A;W,E)\le H(E)+(1-q)I(A;W\mid E=0)+qI(A;W\mid E=1)$, and $I(A;W\mid E=1)\le H(A\mid E=1)\le\log_2K$ because $A$ takes at most $K$ values. On $E=0$ the variable $W$ is supported on $\{t\le\tau_*\}$, so the Gibbs inequality $H(W)\le\lambda\E[t]+\log_2\sum_w2^{-\lambda t(w)}$ with $\lambda=\tfrac12$ gives
-\[I(A;W\mid E=0)\le H(W\mid E=0)\le\tfrac12\E[t\mid E=0]+\log_2Z,\]
+\[\begin{aligned}I(A;W\mid E=0)&\le H(W\mid E=0)\\&\le\tfrac12\E[t\mid E=0]+\log_2Z,\end{aligned}\]
 because $\sum_{t(w)\le\tau_*}2^{-t(w)/2}\le\sum_{\tau\le\tau_*}n(\tau)2^{-\tau/2}=Z$. Finally $\E[t]\ge(1-q)\E[t\mid E=0]+q\tau_*$ and $\log_2K\le\tau_*/2$, so $(1-q)\tfrac12\E[t\mid E=0]+q\log_2K\le\tfrac12\E[t]$, while $H(E)\le1$.
 \end{proof}
 The choice $\tau_*=\lceil2\log_2K\rceil$ is the smallest admissible one and the best: $Z$ grows with $\tau_*$. With the profile of Corollary~\ref{cor:profile},
@@ -751,7 +760,7 @@ Multiply by $1-d_j$, average over contexts and sum over $j$: $(1-d_j)\E[t\mid E_
 \section{Proof of Theorem~\ref{thm:oneshot}}
 Let $\Omega$ be the success event; on $\Omega$, $u$ is a function of the message (snapshot and unitary tuple) together with $(v,y)$, and the message takes at most $2^{S_{\max}}N^{\le}_m(T_{\max})$ values; Lemma~\ref{lem:MA} gives the inequality. \qed
 
-\section{Proofs for Sec.~\ref{sec:mixing}}\label{app:mixing}
+\section{\texorpdfstring{Proofs for Sec.~\ref{sec:mixing}}{Proofs for the mixing section}}\label{app:mixing}
 
 \begin{proof}[Proof of Lemma~\ref{lem:fid}]
 Let $J(\mathcal E)=(\mathcal E\otimes I)(|\Phi\rangle\langle\Phi|)$ and $\Phi_V:=|\Phi_V\rangle\langle\Phi_V|=J(\mathcal U_V)$. Since $|\Phi\rangle\langle\Phi|$ is an admissible input in the definition of the diamond norm, $\|J(\mathcal E)-\Phi_V\|_1\le\|\mathcal E-\mathcal U_V\|_\diamond$. For a state $\rho$ and a pure state $\Phi$, $\|\rho-\Phi\|_1=2\max_{0\le P\le I}\tr P(\rho-\Phi)\ge2\tr(I-\Phi)(\rho-\Phi)=2(1-\langle\Phi|\rho|\Phi\rangle)$. Combining gives $1-F_e\le\tfrac12\|\mathcal E-\mathcal U_V\|_\diamond$. For $\mathcal E=\sum_ip_i\mathcal U_{X_i}$, $F_e=\sum_ip_i|\langle\Phi_V|(X_i\otimes I)|\Phi\rangle|^2=\sum_ip_i|\tr(V^\dagger X_i)/2|^2$.
@@ -792,8 +801,10 @@ Fix $t<r$ and, as in the proof of Theorem~\ref{thm:main1}, put $A:=a^{(t)}$, $Z:
 \begin{proof}[Proof of Lemma~\ref{lem:nocheap}]
 Choose $SU(2)$ representatives and write $U_j=q_{0j}I+i(q_{xj}X+q_{yj}Y+q_{zj}Z)$ with $\sum_\nu q_{\nu j}^2=1$; in the orthonormal basis $(I,iX,iY,iZ)$ of the normalized Choi vector these are its real coordinates. The diamond bound makes the normalized Choi states differ by at most $\delta$ in trace norm, so measuring the projector onto the orthogonal complement of the \emph{identity} channel's Choi vector, and separately the off-diagonal observable between $I$ and $iZ$, gives
 \[
-\sum_jp_j(1-q_{0j}^2)\le B_\delta:=\sin^2\theta_\delta+\tfrac\delta2,\qquad
+\begin{gathered}
+\sum_jp_j(1-q_{0j}^2)\le B_\delta:=\sin^2\theta_\delta+\tfrac\delta2,\\
 \sum_jp_jq_{0j}q_{zj}\ge\cos\theta_\delta\sin\theta_\delta-\tfrac\delta2 .
+\end{gathered}
 \]
 Fix $M$. There are finitely many projective Clifford+$T$ words of minimal $T$-count $\le M$, so $\mu_M:=\min(1-q_0^2)>0$ over the non-identity ones. By the first inequality the cheap non-identity words carry total probability at most $B_\delta/\mu_M$, so their contribution to the left side of the second has modulus at most $B_\delta/(2\mu_M)=O(\theta_\delta^2)$, while the identity contributes nothing because $q_z=0$ there. Writing $P_{>M}$ for the probability that $t_{\min}(U_j)>M$, Cauchy--Schwarz with the first inequality bounds the remaining contribution by $\sqrt{P_{>M}B_\delta}$. With $\theta_\delta=a\sqrt\delta$ one has $B_\delta=(a^2+\tfrac12)\delta+O(\delta^2)$ while the right side of the second inequality is $a\sqrt\delta-\tfrac\delta2+O(\delta^{3/2})$, of order $\sqrt\delta$; since the cheap part contributes only $O(\delta)$, the expensive part must supply it, giving $\sqrt{P_{>M}(a^2+\tfrac12)\delta}\ge a\sqrt\delta(1-o(1))$ and hence $\liminf P_{>M}\ge a^2/(a^2+\tfrac12)$. As $t(U)\ge t_{\min}(U)$, the expected recorded $T$-count is at least $(M+1)P_{>M}$, and $M$ was arbitrary.
 \end{proof}
@@ -810,7 +821,10 @@ Keep the notation of (a). Given $(s,z)$ the prefix program $\pi^<$ and the suffi
 
 \emph{A frame independent of the share.} Let $a_0=a_0(s,z)$ be the lexicographically first value in the conditional support of $A_j$ given $(s,z)$ on which coordinate $j$ is correct; if that event has conditional probability zero, set $X:=Y:=I$, in which case $d_j=1$ and the coordinate contributes nothing beyond the $\delta_j\log_2K$ term already carried by the splitting on $E_j$. The anchor $a_0$ is a function of $(s,z)$ alone, and Lemma~\ref{lem:cluster} applies at $a_0$ because correctness at $a_0$ is exactly the hypothesis $\sum_{i,k}p_iq_k(1-F_{ik})\le\eta^2$ for that value. (Taking $a_0=0$ instead would not do. On $Q=8$, where every grid rotation is a power of $T$, the process that stores the round-$t$ share and commits $T^{A_j+a^{(r)}_j}$ in the last round is exactly correct at every share; but under a conditioning in which $a^{(r)}_j=0$ and the true share is $1$, the suffix is $T$ and evaluating $1-F$ at the value $0$ rather than at the true share gives $\sin^2(\pi/8)=0.146$, far above $4\eta^2$, so the clustering sets of Lemma~\ref{lem:cluster} are empty and the lemma does not apply.) Apply Lemma~\ref{lem:cluster} at $a_0$, with $W^*_j(a_0)$ and $V_{a_0}$, and let $i_1,k_1$ be the lexicographically first elements of the resulting sets $P_{a_0},K_{a_0}$; put $X:=U^<_{i_1}$ and $Y:=U^>_{k_1}$, functions of $(s,z)$ alone. For the actual value $a$, Lemma~\ref{lem:cluster} gives $P_a,K_a$ and a pair $(i,k)\in P_a\times K_a$ with $\dproj(U^>_kW^*_jU^<_i,V_a)\le4\sqrt2\eta$. Since $p(P_a),p(P_{a_0})\ge3/4$, some $i_2$ lies in both, and clustering inside $P_a$ and inside $P_{a_0}$ gives $\dproj(U^<_i,X)\le16\sqrt2\eta$; likewise $\dproj(U^>_k,Y)\le16\sqrt2\eta$. Hence
 \[
-\dproj\big(YW^*_jX,V_a\big)\le4\sqrt2\eta+16\sqrt2\eta+16\sqrt2\eta=36\sqrt2\eta=\varepsilon',
+\begin{aligned}
+\dproj\big(YW^*_jX,V_a\big)&\le4\sqrt2\eta+16\sqrt2\eta+16\sqrt2\eta\\
+&=36\sqrt2\eta=\varepsilon',
+\end{aligned}
 \]
 so $W^*_j\in T_{\varepsilon'}(Y^\dagger V_aX^\dagger)$, the tube of radius $\varepsilon'$ around the coset $G_1R_zG_2$ with $G_1=Y^\dagger$ and $G_2=X^\dagger$, the grid shift being absorbed into $\theta$ as in Corollary~\ref{cor:profile}. By Theorem~\ref{thm:tube} with $\varepsilon'\le1/8$ the number of such words of cost $\le\tau$ is at most $n_{\varepsilon'}(\tau)$. Nearest-grid decoding of $YW^*_jX$ returns $a$ up to $w'$, a grid rotation within $2\varepsilon'$ of $V_a$ being at most $(2Q/\pi)\arcsin\varepsilon'$ steps away, so $\mathcal L_j$ is a window of half-width $w'$.
 
@@ -852,7 +866,7 @@ Theorem~\ref{thm:mixing} is asymptotic in the same sense as Theorems~\ref{thm:ma
 \bibitem{Litinski} D. Litinski, A game of surface codes, Quantum \textbf{3}, 128 (2019); Magic state distillation: not as costly as you think, Quantum \textbf{3}, 205 (2019).
 \bibitem{Caune} L. Caune \emph{et al.}, Demonstrating real-time and low-latency quantum error correction with superconducting qubits, Nat. Commun. \textbf{17}, 7383 (2026).
 \bibitem{Fowler} A. G. Fowler, M. Mariantoni, J. M. Martinis, and A. N. Cleland, Surface codes: towards practical large-scale quantum computation, Phys. Rev. A \textbf{86}, 032324 (2012).
-\bibitem{Paper1} J. Yang, Y. Li, and X.-H. Deng, Representation as a computational resource in quantum compilation: approximate recoverability tradeoffs and model-specific fault-tolerant consequences (2026), arXiv preprint.
+\bibitem{Paper1} J. Yang, Y. Li, and X.-H. Deng, Representation-dependent recoverability in quantum compilation, arXiv:2609.29210 (2026).
 \bibitem{RossSelinger} N. J. Ross and P. Selinger, Optimal ancilla-free Clifford+T approximation of z-rotations, Quantum Inf. Comput. \textbf{16}, 901 (2016).
 \bibitem{Selinger15} P. Selinger, Efficient Clifford+T approximation of single-qubit operators, Quantum Inf. Comput. \textbf{15}, 159 (2015), \S9 and Thm.~30.
 \bibitem{MA08} K. Matsumoto and K. Amano, Representation of quantum circuits with Clifford and $\pi/8$ gates, arXiv:0806.3834 (2008).
@@ -869,7 +883,7 @@ Theorem~\ref{thm:mixing} is asymptotic in the same sense as Theorems~\ref{thm:ma
 \bibitem{Gidney} C. Gidney, Halving the cost of quantum addition, Quantum \textbf{2}, 74 (2018).
 \bibitem{BCHK} M. Beverland, E. Campbell, M. Howard, and V. Kliuchnikov, Lower bounds on the non-Clifford resources for quantum computations, Quantum Sci. Technol. \textbf{5}, 035009 (2020).
 \bibitem{Bothe} M. Bothe, C. S\"underhauf, M. J. Witham, E. T. Campbell, and N. S. Blunt, More efficient Clifford+T synthesis for small-angle rotations and application to Trotterization, arXiv:2605.31544 (2026).
-\bibitem{GKW} D. Gosset, R. Kothari, and K. Wu, Quantum state preparation with optimal T-count, Quantum 10, 2168 (2026); arXiv:2411.04790.
+\bibitem{GKW} D. Gosset, R. Kothari, and K. Wu, Quantum state preparation with optimal T-count, Quantum \textbf{10}, 2168 (2026); arXiv:2411.04790.
 \bibitem{Campbell17} E. T. Campbell, Shorter gate sequences for quantum computing by mixing unitaries, Phys. Rev. A \textbf{95}, 042306 (2017); arXiv:1612.02689.
 \bibitem{Hastings17} M. B. Hastings, Turning gate synthesis errors into incoherent errors, Quantum Inf. Comput. \textbf{17}, 488 (2017); arXiv:1612.01011.
 \bibitem{Watrous} J. Watrous, The Theory of Quantum Information (Cambridge University Press, 2018), Theorem~3.55.

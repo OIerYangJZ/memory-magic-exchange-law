@@ -3,8 +3,8 @@
 Source, data and scripts for the manuscript. Every number, table and figure in the paper is
 produced by a script in `scripts/` from an input in `data/`, and this file says which.
 
-The manuscript is `main.tex`; `M2_v7.pdf` is the current build and `M2_main.pdf` /
-`M2_final.pdf` are earlier submitted snapshots.
+The manuscript is `main.tex` (REVTeX 4.2, PRX Quantum style). Build it with
+`latexmk -pdf -outdir=out main.tex`; the PDF is written to `out/main.pdf`.
 
 **Status.** Unpublished. All results are proven except Theorem 5 and Corollary 6, which are
 conditional on Conjecture H, and Proposition 2, which is conditional on the synthesis
