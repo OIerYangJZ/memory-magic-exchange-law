@@ -20,3 +20,50 @@ if grep -q "Funding and acknowledgments to be supplied" "$DIR/src/main.tex"; the
 fi
 echo "package: $DIR/memory-magic-exchange-law-$TAG.tar.gz"
 echo "pages:   $(pdfinfo "$DIR/main_reference.pdf" 2>/dev/null | awk '/^Pages/{print $2}')"
+
+# ---- submission sheet
+cd "$ROOT"
+PAGES=$(pdfinfo "$DIR/main_reference.pdf" 2>/dev/null | awk '/^Pages/{print $2}')
+ABS=$(cat "$ROOT/qip/arxiv_abstract.txt" 2>/dev/null || echo "(qip/arxiv_abstract.txt not found)")
+COMMIT=$(git rev-parse --short HEAD)
+DIRTY=$(git status --porcelain -- main.tex fig1_tube_counts.png fig2_frontier_twopanel.png | wc -l | tr -d ' ')
+cat > "$DIR/SUBMISSION.md" <<EOT
+# arXiv submission, $TAG
+
+Source: repository commit \`$COMMIT\`$( [ "$DIRTY" != "0" ] && echo " **plus uncommitted changes to the paper sources**" ), built with \`sh arxiv/make_arxiv.sh $TAG\`.
+
+## Upload
+- \`memory-magic-exchange-law-$TAG.tar.gz\` (main.tex + 2 PNG figures; the bibliography is inline, no .bbl needed).
+- Compiler: pdfLaTeX. Top-level file: \`main.tex\`.
+- \`main_reference.pdf\` is the local build ($PAGES pages). arXiv's preview should match it; do **not** upload it.
+
+## Metadata
+
+**Title**
+A Memory-Magic Exchange Law in Streaming Clifford+T Compilation
+
+**Authors**
+Jinze Yang, Yangyang Li, Xiu-Hao Deng
+
+**Abstract** ($(printf %s "$ABS" | wc -c | tr -d ' ') characters; limit 1920)
+$ABS
+
+**Comments**
+$PAGES pages, 2 figures. Code, data and exact rational certificates: https://github.com/OIerYangJZ/memory-magic-exchange-law
+
+**Primary category:** quant-ph
+**Cross-list (optional):** math.NT
+**MSC class (optional):** 81P68, 11P21, 11R52
+**License:** arXiv.org perpetual non-exclusive license
+
+## Checks
+- [ ] arXiv preview: $PAGES pages, both figures, affiliations and e-mail footnotes on page 1.
+- [ ] Source commit pushed to \`main\` (the paper's data link points there).
+
+## After the arXiv ID is assigned
+- [ ] \`git tag arxiv-$TAG $COMMIT && git push origin arxiv-$TAG\`
+- [ ] Add the arXiv ID to README.md; link it in the QIP 2027 talk submission (due Oct 5).
+
+tarball sha256: $(shasum -a 256 "$DIR/memory-magic-exchange-law-$TAG.tar.gz" | cut -d' ' -f1)
+EOT
+echo "sheet:   $DIR/SUBMISSION.md"

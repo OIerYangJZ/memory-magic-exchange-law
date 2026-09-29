@@ -692,8 +692,50 @@ Three consequences are worth stating plainly. First, the corner $S=0$ is where t
 Two unconditional statements bound the arithmetic question from the other side: Selinger's worst-case $T$-count $4L-9$ for a specific $z$-rotation~\cite[Thm.~30]{Selinger15}, and the covering exponents of Parzanchevski and Sarnak, who show that some single-qubit unitaries need $T$-count $4L$ while all are reachable at $6L$~\cite{PS18}. The committed-magic frontier is a statement about the typical rather than the worst case, and it sits between the rigorous and the conjectural covering exponents in the same way. Theorems~\ref{thm:elem} and~\ref{thm:dioph} show that the square-root barrier can be crossed for these lattice points near a great circle of $S^3$, at least for $T$-counts up to $\tfrac{17}7(L+2)$. Closing the gap between $\tfrac{17}7$ and $1+\beta$ for committed words with arbitrary frames is the remaining problem, and we leave it open.
 
 \begin{acknowledgments}
-[Funding and acknowledgments to be supplied by the authors before submission.]
+J.Y.'s deepest thanks go to two teachers who are also coauthors of this
+paper, Yangyang Li and Xiu-Hao Deng. Their help was immense; without them
+this paper would not exist.
+
+J.Y. thanks Ke Lin of Xidian University for opening the door to research
+and for the recommendation that led him to join Prof.~Li's group.
+
+J.Y. also thanks the teachers who were willing to offer guidance along the
+way, and the senior members of Prof.~Li's group, who have been generous
+with their help throughout this work.
+
+Thanks are due, finally, to everyone who supported this paper, too many to
+name individually here.
+
+Y.L. acknowledges support from the National Natural Science Foundation of
+China under Grant No.~62476209, the Key Research and Development Program of
+Shaanxi under Grant No.~2024CY2-GJHX-18, and the Fundamental Research Funds
+for the Central Universities under Grant No.~QTZX26097. X.-H.D.
+acknowledges support from the Science, Technology and Innovation Commission of Shenzhen
+Municipality (Grant Nos.~JCYJ20170412152620376 and KYTDPT20181011104202253),
+the Innovation Program for Quantum Science and Technology (Grant
+No.~2021ZD0301703), the Guangdong Major Project of Basic Research (Grant
+No.~2025B0303000007), and the Shenzhen Science and Technology Program
+(Grant No.~KQTD20200820113010023).
+
+Generative AI tools were used to assist with manuscript drafting and
+revision, code and repository maintenance, literature discovery, and
+consistency checks. The authors directed its use through task-specific
+prompts and independently reviewed the generated text, citations, code, and
+numerical claims against the cited literature, source files, executable tests,
+and the symbolic or dense certificates reported in this work. AI output was
+not treated as a scientific source or as independent proof verification. The
+authors take full responsibility for the manuscript, proofs, code, data,
+figures, citations, and conclusions.
 \end{acknowledgments}
+
+\section*{Author contributions}
+J.Y. developed the theory and proofs, implemented the compiler instrumentation
+and experimental pipeline, and performed the majority of the measurements and
+analyses. Y.L. supervised the research, reviewed and revised the manuscript,
+and provided project administration and funding support. X.-H.D.
+independently validated the theoretical derivations, numerical results, and
+computational artifacts. All authors wrote the manuscript together,
+discussed the results, and approved the final version.
 
 \section*{Data availability}
 The exhaustive enumeration of Clifford+$T$ words to $T$-count $22$, the coset counts of Table~\ref{tab:counts} and Fig.~\ref{fig:tube}, the exact-optimal and \texttt{gridsynth} data of Fig.~\ref{fig:frontier}, and every script that produces a number or figure of this paper are available at \url{https://github.com/OIerYangJZ/memory-magic-exchange-law}. The scripts are in \texttt{scripts/}, among them \texttt{enum2.py} and \texttt{enum\_arith.py} (the enumeration and coset counts), \texttt{gridsynth\_run.py}, \texttt{fig1\_fig.py} and \texttt{make\_fig2.py} (the figures), \texttt{thm\_numbers.py} (Table~\ref{tab:numbers}), \texttt{mixing\_bounds.py} (the constants of Sec.~\ref{sec:mixing}) and \texttt{scan2.py}, \texttt{scan2\_report.py} and \texttt{astra1.py} (the frame scans of Sec.~\ref{sec:num}). The exact rational certificates of Appendices~\ref{app:elem} and~\ref{app:dioph} are \texttt{research/cert/certificate.py}, \texttt{research/cert/certificate\_223.py} and \texttt{research/dioph/cert\_dioph.py}. The repository README lists, for every table, figure and theorem, the script and data file that produce it.
