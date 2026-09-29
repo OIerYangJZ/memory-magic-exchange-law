@@ -1,8 +1,12 @@
+\pdfoutput=1
 \documentclass[aps,prx,twocolumn,superscriptaddress,nofootinbib,longbibliography]{revtex4-2}
 \usepackage{amsmath,amssymb,amsthm,mathtools}
 \usepackage{graphicx,booktabs}
 \usepackage{xcolor}
 \usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+% The bibliography is a thebibliography environment in this file (and nofootinbib puts no notes
+% into it), so stop REVTeX from reading a main.bbl at its end.
+\makeatletter\let\auto@bib@innerbib\@empty\makeatother
 
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}

@@ -11,7 +11,7 @@ for f in main.tex fig1_tube_counts.png fig2_frontier_twopanel.png; do cp "$ROOT/
 cp "$DIR/src/"* "$DIR/build/"
 cd "$DIR/build"
 for i in 1 2 3; do pdflatex -interaction=nonstopmode -halt-on-error main.tex > /dev/null; done
-if grep -E "^!|undefined|Rerun to get|multiply defined" main.log; then echo "LaTeX problems, see $DIR/build/main.log"; exit 1; fi
+if grep -E "^!|undefined|Rerun to get|multiply defined|^No file" main.log; then echo "LaTeX problems, see $DIR/build/main.log"; exit 1; fi
 cp main.pdf "$DIR/main_reference.pdf"
 cd "$DIR/src" && COPYFILE_DISABLE=1 tar --uid 0 --gid 0 --uname arxiv --gname arxiv -czf "$DIR/memory-magic-exchange-law-$TAG.tar.gz" main.tex fig1_tube_counts.png fig2_frontier_twopanel.png
 cd "$DIR" && rm -rf build
