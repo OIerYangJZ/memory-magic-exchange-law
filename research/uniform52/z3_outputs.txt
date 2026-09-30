@@ -1,0 +1,21 @@
+mu0=1/10 c=1/2: unsat  (0.1s)
+VERIFIED: for all mu in (0, mu0], HIGH/LOW split closes at every class g with T = E1 + c*mu < a0
+
+mu0=1/300 c=10/33: unsat  (0.1s)
+VERIFIED: for all mu in (0, mu0], HIGH/LOW split closes at every class g with T = E1 + c*mu < a0
+
+mu0=1/300 c=303/1000: sat  (0.1s)
+{'mu': 1/300, 'g': 32959001/20700000, 'y': 148111639/124200000, 'X': 49015087/124200000, 'D': -45218003/20700000}
+
+mu0=1/300 c=38/125: unsat  (0.1s)
+VERIFIED: for all mu in (0, mu0], HIGH/LOW split closes at every class g with T = E1 + c*mu < a0
+
+mu0=1/300 c=0: sat  (0.1s)
+{'mu': 1/300, 'g': 119/75, 'y': 5707/4800, 'X': 0, 'D': -163/75}
+
+mu0=1/10 c=10/33: unsat  (0.1s)
+VERIFIED: for all mu in (0, mu0], HIGH/LOW split closes at every class g with T = E1 + c*mu < a0
+
+mu0=1/10 c=3/10: sat  (0.1s)
+{'mu': 1/10, 'g': 1367/1000, 'y': 122/125, 'X': 1261/2000, 'D': -867/500}
+

@@ -1,0 +1,17 @@
+ok baseline                                                     c=10/33: unsat (expected unsat)
+ok baseline                                                     c=303/1000: sat (expected sat)
+   sat model piece=tangent: tot-T=-1.597778 v4-T=-0.012121 N3-T=-0.007071 P3-T=+0.000000 N2-T=-0.007071 P2-T=-0.001010 HIGH-T=+0.000000
+   sat model piece=crossing: tot-T=-1.590707 v4-T=-0.005051 N3-T=+0.000000 P3-T=+0.000000 N2-T=+0.000000 P2-T=-0.001010 HIGH-T=+0.000000
+ok N3 + 1e-5                                                    c=10/33: sat (expected sat)
+ok P3 + 1e-5                                                    c=10/33: sat (expected sat)
+XX N2 + 1e-5                                                    c=10/33: sat (expected unsat)
+ok P2 + 1e-5                                                    c=10/33: unsat (expected unsat)
+ok HIGH + 1e-5                                                  c=10/33: sat (expected sat)
+ok pm + 1e-5                                                    c=10/33: sat (expected sat)
+XX N3 - 1e-3                                                    c=303/1000: sat (expected unsat)
+XX P3 - 1e-3                                                    c=303/1000: sat (expected unsat)
+ok HIGH - 1e-3                                                  c=303/1000: unsat (expected unsat)
+ok cell cost + 1e-5 (HIGH and per-sphere box bound)             c=10/33: sat (expected sat)
+ok P3 constant 2 -> 2.01                                        c=10/33: sat (expected sat)
+XX G3' with T - 1/10 (rank-2 route N larger; informational)     c=10/33: sat (expected unsat)
+ok Python max/min on a z3 term raises (cannot be silently evaluated): Symbolic expressions cannot be cast to concrete Boolean valu

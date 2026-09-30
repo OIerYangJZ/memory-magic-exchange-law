@@ -1,0 +1,2 @@
+P3: section area / (e_bar e_u) <= 4.193;  section diameter / e_bar <= 3.033
+P2: section length / e_bar <= 2.743

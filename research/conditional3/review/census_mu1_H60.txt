@@ -1,0 +1,27 @@
+tau=16 mu=1.0 rho=0.0079336 Hmax=60: 4 events (heuristic expectation 3.67)
+  tau=16 l=(4, -1) N(l)=14 S=2s=(26, 18) dist(xi_g, Y)=0.00730817 (rho=0.00793357, ratio 0.921) N(m)=49 sqrtN(m)=7 #Z=192 #Z_prim=96 #g=1152 |Y_g| all: max 16 mean 16.00; T-count tau: max 8 mean 8.00 | NOTES formula rho*2^(tau/2)/sqrt(H) = 0.543
+  tau=16 l=(5, 1) N(l)=23 S=2s=(57, 17) dist(xi_g, Y)=0.00788931 (rho=0.00793357, ratio 0.994) N(m)=66.06 sqrtN(m)=8.13 #Z=288 #Z_prim=288 #g=1152 |Y_g| all: max 12 mean 12.00; T-count tau: max 12 mean 12.00 | NOTES formula rho*2^(tau/2)/sqrt(H) = 0.423
+  tau=16 l=(7, -1) N(l)=47 S=2s=(53, 16) dist(xi_g, Y)=0.00769984 (rho=0.00793357, ratio 0.971) N(m)=163.1 sqrtN(m)=12.8 #Z=312 #Z_prim=312 #g=2304 |Y_g| all: max 7 mean 6.50; T-count tau: max 7 mean 6.50 | NOTES formula rho*2^(tau/2)/sqrt(H) = 0.296
+  tau=16 l=(8, -2) N(l)=56 S=2s=(36, 26) dist(xi_g, Y)=0.00730817 (rho=0.00793357, ratio 0.921) N(m)=196 sqrtN(m)=14 #Z=384 #Z_prim=192 #g=5760 |Y_g| all: max 16 mean 12.80; T-count tau: max 8 mean 8.00 | NOTES formula rho*2^(tau/2)/sqrt(H) = 0.271
+tau=17 mu=1.0 rho=0.0062969 Hmax=60: 4 events (heuristic expectation 3.27)
+  tau=17 l=(4, 0) N(l)=16 S=2s=(73, 32) dist(xi_g, Y)=0.00543432 (rho=0.00629686, ratio 0.863) N(m)=42.06 sqrtN(m)=6.49 #Z=168 #Z_prim=168 #g=1488 |Y_g| all: max 7 mean 5.42; T-count tau: max 7 mean 5.42 | NOTES formula rho*2^(tau/2)/sqrt(H) = 0.57
+  tau=17 l=(7, -3) N(l)=31 S=2s=(60, 27) dist(xi_g, Y)=0.00326468 (rho=0.00629686, ratio 0.518) N(m)=40.25 sqrtN(m)=6.34 #Z=192 #Z_prim=96 #g=1536 |Y_g| all: max 6 mean 6.00; T-count tau: max 3 mean 3.00 | NOTES formula rho*2^(tau/2)/sqrt(H) = 0.409
+  tau=17 l=(7, 0) N(l)=49 S=2s=(73, 59) dist(xi_g, Y)=0.00138859 (rho=0.00629686, ratio 0.221) N(m)=12.06 sqrtN(m)=3.47 #Z=120 #Z_prim=120 #g=3072 |Y_g| all: max 3 mean 1.88; T-count tau: max 3 mean 1.88 | NOTES formula rho*2^(tau/2)/sqrt(H) = 0.326
+  tau=17 l=(7, 2) N(l)=41 S=2s=(109, 54) dist(xi_g, Y)=0.00410671 (rho=0.00629686, ratio 0.652) N(m)=52.06 sqrtN(m)=7.22 #Z=216 #Z_prim=216 #g=2016 |Y_g| all: max 6 mean 5.14; T-count tau: max 6 mean 5.14 | NOTES formula rho*2^(tau/2)/sqrt(H) = 0.356
+tau=18 mu=1.0 rho=0.0049978 Hmax=60: 0 events (heuristic expectation 2.91)
+tau=19 mu=1.0 rho=0.0039668 Hmax=60: 2 events (heuristic expectation 2.59)
+  tau=19 l=(7, -3) N(l)=31 S=2s=(54, 60) dist(xi_g, Y)=0.00326468 (rho=0.00396677, ratio 0.823) N(m)=161 sqrtN(m)=12.7 #Z=384 #Z_prim=192 #g=1536 |Y_g| all: max 12 mean 12.00; T-count tau: max 6 mean 6.00 | NOTES formula rho*2^(tau/2)/sqrt(H) = 0.516
+  tau=19 l=(7, 0) N(l)=49 S=2s=(118, 73) dist(xi_g, Y)=0.00138859 (rho=0.00396677, ratio 0.350) N(m)=48.25 sqrtN(m)=6.95 #Z=240 #Z_prim=120 #g=3072 |Y_g| all: max 6 mean 3.75; T-count tau: max 6 mean 1.88 | NOTES formula rho*2^(tau/2)/sqrt(H) = 0.41
+tau=20 mu=1.0 rho=0.0031484 Hmax=60: 2 events (heuristic expectation 2.31)
+  tau=20 l=(5, 0) N(l)=25 S=2s=(13, 92) dist(xi_g, Y)=0.00313404 (rho=0.00314842, ratio 0.995) N(m)=85.06 sqrtN(m)=9.22 #Z=264 #Z_prim=264 #g=1248 |Y_g| all: max 12 mean 10.15; T-count tau: max 12 mean 10.15 | NOTES formula rho*2^(tau/2)/sqrt(H) = 0.645
+  tau=20 l=(7, -2) N(l)=41 S=2s=(159, -20) dist(xi_g, Y)=0.00306726 (rho=0.00314842, ratio 0.974) N(m)=52.06 sqrtN(m)=7.22 #Z=168 #Z_prim=168 #g=2016 |Y_g| all: max 8 mean 4.00; T-count tau: max 8 mean 4.00 | NOTES formula rho*2^(tau/2)/sqrt(H) = 0.504
+tau=21 mu=1.0 rho=0.0024989 Hmax=60: 1 events (heuristic expectation 2.06)
+  tau=21 l=(7, 0) N(l)=49 S=2s=(146, 118) dist(xi_g, Y)=0.00138859 (rho=0.0024989, ratio 0.556) N(m)=193 sqrtN(m)=13.9 #Z=480 #Z_prim=240 #g=3072 |Y_g| all: max 9 mean 7.50; T-count tau: max 6 mean 3.75 | NOTES formula rho*2^(tau/2)/sqrt(H) = 0.517
+tau=22 mu=1.0 rho=0.0019834 Hmax=60: 1 events (heuristic expectation 1.83)
+  tau=22 l=(8, 3) N(l)=46 S=2s=(89, 161) dist(xi_g, Y)=0.00134058 (rho=0.00198338, ratio 0.676) N(m)=130.1 sqrtN(m)=11.4 #Z=216 #Z_prim=216 #g=3456 |Y_g| all: max 4 mean 3.00; T-count tau: max 4 mean 3.00 | NOTES formula rho*2^(tau/2)/sqrt(H) = 0.599
+tau=23 mu=1.0 rho=0.0015742 Hmax=60: 2 events (heuristic expectation 1.63)
+  tau=23 l=(5, -1) N(l)=23 S=2s=(89, 161) dist(xi_g, Y)=0.00134058 (rho=0.00157421, ratio 0.852) N(m)=130.1 sqrtN(m)=11.4 #Z=216 #Z_prim=216 #g=1152 |Y_g| all: max 9 mean 9.00; T-count tau: max 9 mean 9.00 | NOTES formula rho*2^(tau/2)/sqrt(H) = 0.951
+  tau=23 l=(7, 0) N(l)=49 S=2s=(236, 146) dist(xi_g, Y)=0.00138859 (rho=0.00157421, ratio 0.882) N(m)=772 sqrtN(m)=27.8 #Z=960 #Z_prim=480 #g=3072 |Y_g| all: max 21 mean 15.00; T-count tau: max 18 mean 7.50 | NOTES formula rho*2^(tau/2)/sqrt(H) = 0.651
+tau=24 mu=1.0 rho=0.0012495 Hmax=60: 0 events (heuristic expectation 1.46)
+tau=25 mu=1.0 rho=0.00099169 Hmax=60: 0 events (heuristic expectation 1.30)
+tau=26 mu=1.0 rho=0.00078711 Hmax=60: 0 events (heuristic expectation 1.16)

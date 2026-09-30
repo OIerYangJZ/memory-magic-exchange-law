@@ -1,0 +1,5 @@
+alpha=2.498: sup_g value = 1.600240 at g=1.21, y*=0.808;  T - sup = +0.000941;  a0 - sup = +0.001041
+alpha=2.497: sup_g value = 1.600026 at g=1.21, y*=0.808;  T - sup = +0.001796;  a0 - sup = +0.001896
+alpha=2.496: sup_g value = 1.599718 at g=1.41, y*=1.010;  T - sup = +0.002746;  a0 - sup = +0.002846
+alpha=2.4995: sup_g value = 1.600560 at g=1.21, y*=0.808;  T - sup = -0.000340;  a0 - sup = -0.000240
+alpha=2.499: sup_g value = 1.600453 at g=1.21, y*=0.808;  T - sup = +0.000087;  a0 - sup = +0.000187

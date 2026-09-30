@@ -1,0 +1,130 @@
+% Draft (not in main.tex): the rate 249/100.  Uses the notation and lemmas of Appendices E and F.
+% Intended placement: statement after Theorem~\ref{thm:rate177} in Sec.~\ref{sec:tube}, proof as a new
+% appendix after Appendix~\ref{app:dioph}.
+
+%------------------------------------------------------------------- statement (Sec. 5)
+\begin{theorem}[Rational projections]\label{thm:proj}
+There is a function $\eta(t)=O(t/\log t)$ such that, for all $G_1,G_2\in\SU$, all $\varepsilon\in(0,1/8]$ and all
+$t\le\tfrac{249}{100}(L+2)$, with $C=G_1R_zG_2$,
+\[
+\#\{W:\ t_{\min}(W)\le t,\ W\in T_\varepsilon(C)\}\ \le\ 2^{\,\kappa_Pt+\eta(t)},\qquad
+\kappa_P:=\tfrac{319751}{796800}=0.40129<\tfrac{100}{249}.
+\]
+Consequently, for every process as in Sec.~\ref{sec:setting} and every round $t<r$,
+$\bar T_t\ge\tfrac{249}{100}\big[(1-2\delta)m\log_2K-2mh_2(\delta)-S-mA_P\big]$ with $A_P=O(L/\log L)$.
+\end{theorem}
+% The rate follows from the tube bound exactly as Theorem~\ref{thm:rate177} follows from
+% Theorem~\ref{thm:dioph}, with lambda = 100/249 and tau_* = ceil(2.49 log2 K) <= (249/100)(L+2).
+
+%------------------------------------------------------------------- appendix
+\section{Proof of Theorem~\ref{thm:proj}}\label{app:proj}
+
+We keep the notation of Appendices~\ref{app:elem} and~\ref{app:dioph} and put $a_0:=a:=\tfrac{400}{249}$,
+$b:=\tfrac{8-2a_0}3+\tfrac1{1000}$ (so $2a+3b>8$ and Lemma~\ref{lem:E1} applies with one hyperplane per box),
+$E_*:=a_0-\tfrac1{800}$ and $\delta:=\varepsilon R'$. Four ingredients are added to Appendix~\ref{app:dioph}.
+
+\begin{lemma}[Annular fibration]\label{lem:G1}
+Let $V\subset K^4$ be a $K$-plane of height $H_V$, and let $\theta_1\le\theta_2$ be the principal angles between
+$V_1=\sigma_1(V)\otimes\R$ and $\Pi$. Then
+\[
+\#X_t\le2^{O(t/\log t)}\,C\big(1+(\sin\theta_2/\varepsilon)^{1/2}+H_VR'^4\varepsilon(\sin\theta_2+\varepsilon)\big).
+\]
+\end{lemma}
+\begin{proof}
+Put $v(w):=P_{V^\perp}w$. Points with the same $v(w)$ lie on $(w+V)\cap S^3_{R'}$, a circle. At least three of them span $w+V$, because
+three distinct points of a circle are affinely independent, so by Lemma~\ref{lem:E5} it suffices to count the values $v(w)$. They lie in the $\mathcal O_K$-lattice
+$\Lambda:=P_{V^\perp}(\mathcal O)$ of rank $4$.
+
+\emph{Where $v(w)$ lies.} The map $P_{V_1^\perp}|_\Pi$ has singular values $\sin\theta_1\le\sin\theta_2$ with
+orthonormal left singular vectors $u_1,u_2$. Hence $\sigma_1v(w)=P_{V_1^\perp}\sigma_1w$ lies within
+$\delta_1:=3\delta$ of the ellipse $E=\{R'(\sin\theta_1\cos s\,u_1+\sin\theta_2\sin s\,u_2)\}$, the image of the
+core. Moreover $|\sigma_2v(w)|\le2R'$.
+
+\emph{Covering.} The $\delta_1$-neighbourhood of $E$ is covered by
+$N\le C(1+(R'\sin\theta_2/\delta_1)^{1/2})$ rectangles of width $4\delta_1$ and lengths $\ell_k$ with
+$\sum_k\ell_k\le C(R'\sin\theta_2+\delta_1)$. To see this, cut $E$ into arcs of length at most
+$\ell_0$ and turning at most $\Theta_0$, with $\ell_0\Theta_0=\delta_1$ and $\Theta_0<\pi/2$; each arc is within $\delta_1$
+of its chord, and every rectangle has length at least $4\delta_1$.
+
+\emph{One rectangle.} Let $D_k$ be the difference body of $\{\sigma_1x\in P_k,\ |\sigma_2x|\le2R'\}$, and
+$\lambda_1\le\dots\le\lambda_4$ the successive minima of $\Lambda$ with respect to it. Multiplication by
+$1+\sqrt2$ gives $\lambda_2\le2.42\lambda_1$ and $\lambda_4\le2.42\lambda_3$. For the second, the $\Q$-span of three
+independent vectors has odd dimension, so it is not stable under multiplication by $\sqrt2$.
+\begin{itemize}\setlength\itemsep{0pt}
+\item If $\lambda_3\le1$, Henk's bound and Minkowski's second theorem give
+$\#(\Lambda\cap D_k)\le C\,\mathrm{vol}(D_k)/\mathrm{covol}(\Lambda)\le CH_V\ell_k\delta_1R'^2$, because
+$\mathrm{covol}(\Lambda)=\mathrm{covol}(\mathcal O)/\mathrm{covol}(\mathcal O\cap V)\ge1/(8H_V)$.
+\item Otherwise the count is $\le C\max(1,\lambda_1^{-2})$. A nonzero $x\in\Lambda$ has $h(x)\ge1/(CH_V)$:
+some $\mathfrak n_i$ of a basis of $V^\perp\cap\mathcal O^*$ with $h(\mathfrak n_1)h(\mathfrak n_2)\le CH_V$
+has $\langle\mathfrak n_i,x\rangle\in\mathcal O_K\setminus0$. So $\lambda_1^{-2}\le CH_V\ell_kR'$, and
+$\ell_kR'\le\ell_k\delta_1R'^2$ since $\delta R'=\varepsilon R'^2\ge1$.
+\end{itemize}
+Summing over $k$ proves the claim.
+\end{proof}
+
+\begin{lemma}[Few normals in rank one]\label{lem:G2}
+In the proof of Lemma~\ref{lem:F5}, if at most one of the $\mu_j$ is $\le1$, then $\#\mathcal N\le C$. In the
+sector count (a) the bound $C\max(1,h,\beta_Vh^2/H_V)$ may be replaced by $C\max(1,\beta_Vh^2/H_V)$.
+\end{lemma}
+\begin{proof}
+In both cases all lattice vectors of the body lie in one $K$-line $Kv$. A primitive normal in $Kv$
+generates $Kv\cap\mathcal O^*$ over $\mathcal O_K$, so it is unique up to units.
+\end{proof}
+
+For a box $B$ whose points span the hyperplane $H_B=\{\langle n_B,x\rangle=m_B\}$, $n_B$ primitive, let
+$e_s,e_u$ be as in Lemma~\ref{lem:E2} and $\bar e:=\max(e_s,e_u)$. By the proof of
+Lemma~\ref{lem:F3}(b), $Y_B\cap B$ lies in at most two $4$-boxes with sides $Ce_u,\bar e,2e_u,2e_u$.
+
+\begin{lemma}[Projections]\label{lem:G3}
+\begin{itemize}\setlength\itemsep{0pt}
+\item[(a)] If $\mathfrak m\in\mathcal O_K^4$ is primitive and $\langle n_B,\mathfrak m\rangle=0$, then
+$\#(X_t\cap B)\le2^{O(t/\log t)}C\big(1+\bar ee_uR'^2\,h(\mathfrak m)/h(n_B)\big)$.
+\item[(b)] If $V$ is a $K$-plane of height $H_V$ with $n_B\in V$, then
+$\#(X_t\cap B)\le2^{O(t/\log t)}C\big(1+\bar eR'\,H_V/h(n_B)\big)$.
+\end{itemize}
+\end{lemma}
+\begin{proof}
+(a) Let $W=\mathfrak m^\perp$. For $w\in X_t\cap B$ put $u:=P_Ww$, which lies in the lattice
+$\Lambda_W:=P_W(\mathcal O)$. Since $n_B\in W$, $\langle n_B,u\rangle=m_B$, so $u$ lies on a $2$-dimensional affine
+$K$-plane $P_B\subset W$. From $w=u+t\mathfrak m$ and
+$\mathrm{nrd}(w)=\langle u,u\rangle+t^2\langle\mathfrak m,\mathfrak m\rangle$, each $u$ comes from at most two $w$.
+
+The points $\sigma_1u$ lie in a planar convex set of area $\le C\bar ee_u$, and $|\sigma_2u|\le2R'$. They lie in
+a translate of $L_B:=\Lambda_W\cap n_B^\perp$. Its covolume is
+$\mathrm{covol}(\Lambda_W)\,h(n_B)/2\sqrt2\asymp h(n_B)/h(\mathfrak m)$, because
+$\langle n_B,\cdot\rangle$ maps $\Lambda_W$ onto $\mathcal O_K$ by Lemma~\ref{lem:F1}.
+
+If the second $K$-minimum of $L_B$ with respect to the difference body is $\le1$, the count is at most $C$
+times volume over covolume. Otherwise the $u$ lie on an affine $K$-line $\ell$, so the $w$ lie on the circle
+$(\ell+K\mathfrak m)\cap S^3_{R'}$, and Lemma~\ref{lem:E5} applies as in Lemma~\ref{lem:G1}. The two
+$4$-boxes are treated separately.
+
+(b) Project along $V^\perp$ instead. Then $u=P_Vw$ lies on an affine $K$-line in $V$. The lattice on this
+line is $\mathcal O_K\kappa$ with $h(\kappa)\asymp h(n_B)/H_V$, and $\sigma_1u$ lies in an interval of length
+$C\bar e$. By (H3) there are at most $1+C\bar eR'H_V/h(n_B)$ values of $u$. Each fibre $(u+V^\perp)\cap S^3_{R'}$
+is a circle.
+\end{proof}
+
+\paragraph{Assembly.} Assemble as in Appendix~\ref{app:dioph}, with three changes.
+\begin{itemize}\setlength\itemsep{0pt}
+\item In Lemma~\ref{lem:F5}(c), Lemma~\ref{lem:G1} replaces (b). This replaces $G$ by
+$G_3:=\max(0,\gamma+a_0+E_*-4)$, and by Lemma~\ref{lem:G2} the terms $y$ disappear from $\mathrm{nor}(y)$.
+\item In the rank-three case, keep the factor $H_W:=h(\mathfrak m)$ that the argument of
+Lemma~\ref{lem:F5} provides: the three-fold wedge is a nonzero multiple of the primitive $3$-vector of
+$W=\mathfrak m^\perp$, so $(\mu_1\mu_2\mu_3)^2\psi h^3\ge cH_W$.
+\item A low layer $j$ of class interval $i$ is bounded by the maximum, over the number $d$ of $K$-minima
+$\le1$, of the following exponents. Here $\mathrm{pm}$ is the offsets-plus-points-per-section exponent of
+Appendix~\ref{app:dioph}, and $X$ ranges over $[0,\infty)$.
+\begin{itemize}\setlength\itemsep{0pt}
+\item $d\le1$: $\mathrm{pm}$.
+\item $d=2$: $\max_X\min\big((2y_j-\max(X,G_3'))_++\mathrm{pm},\ E_1+(\bar e+1+X-y_{j-1})_+\big)$, with
+$G_3'=E_*-4+a_0+\gamma$. The first entry uses the sector count, the second Lemma~\ref{lem:G3}(b) for every
+box of the layer, since then $n_B\in V$.
+\item $d=3$: $\max_X\min\big((3y_j-\gamma-X)_++\mathrm{pm},\ E_1+(\bar e+U_0+2+X-y_{j-1})_+\big)$, the
+second entry by Lemma~\ref{lem:G3}(a) with the normal $\mathfrak m$ of $W$.
+\item $d=4$: $(4y_j-2\gamma)_++\mathrm{pm}$.
+\end{itemize}
+\end{itemize}
+The certificate \texttt{research/annulus/cert\_proj.py}, run as
+\texttt{cert\_proj.py 400/249 400/249 1192747/747000 319751/199200 400 100 12}, checks every case exactly.
+The largest exponent is $1.60511<E_*=1.60518<a_0=1.60643$.

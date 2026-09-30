@@ -1,0 +1,106 @@
+% Draft (not in main.tex): every rate below 5/2, and why 5/2 is the limit of the method.
+% Builds on research/annulus/appG_draft.tex (Lemmas G1-G3 and the certificate for 249/100).
+
+%------------------------------------------------------------------- statement (Sec. 5)
+\begin{theorem}[Rate five halves]\label{thm:rate52}
+For every $\alpha<\tfrac52$ there is $L_0(\alpha)$ such that, for every process as in
+Sec.~\ref{sec:setting}, every round $t<r$ and every $L\ge L_0(\alpha)$,
+\[
+\bar T_t\ \ge\ \alpha\big[(1-2\delta)m\log_2K-2mh_2(\delta)-S-mA\big],\qquad A=O_\alpha(1).
+\]
+Behind it is the following tube bound. Let $a_0=\tfrac85+\mu$ with $0<\mu\le\tfrac1{10}$, and let
+$\varepsilon\le CR'^{-a_0}$. Then for every frame, $\#X_t\le R'^{\,8/5-4\mu/11+o(1)}$.
+\end{theorem}
+
+\begin{proposition}[Dense tubes would make $\tfrac52$ sharp]\label{prop:dense}
+Suppose that for $\varepsilon$ in a sequence tending to $0$ there are:
+\begin{itemize}\setlength\itemsep{0pt}
+\item a Clifford+$T$ word $G$;
+\item words $W_u$ of $T$-count at most $(\tfrac52+o(1))L$, for $u$ in a set $U\subset\Z_{Q_\varepsilon}$, with
+$\dproj(W_u,R_z(\Delta u)G)\le\varepsilon/2$;
+\item the set $U$ has maximal gap at most $Q_\varepsilon2^{-(1-o(1))L}$.
+\end{itemize}
+Then for $r=2$ there are deterministic zero-error CW processes with
+$S\le m\big(\log_2K-(1-o(1))L\big)$ and $\Tpre\le m(\tfrac52+o(1))L$. Hence Theorem~\ref{thm:rate52} cannot
+be improved along that sequence. This rules out \emph{dense} tubes only; see the remark below.
+\end{proposition}
+\begin{proof}
+For each coordinate, pick $u\in U$ with $\rho:=a^{(1)}-u\in[0,\gamma)$, where $\gamma$ is the maximal gap.
+In round~1, emit $W_u$ and keep only $\rho$ in the snapshot. In round~2, emit a word within $\varepsilon/2$ of
+$G^{-1}R_z(\Delta(\rho+a^{(2)}))$. The product is within $\varepsilon$ of $R_z(\Delta x)$ by unitary
+invariance of $\dproj$, and only $W_u$ counts towards $\Tpre$.
+\end{proof}
+
+\begin{remark}[What $\tfrac52$ is]
+The tube radius is $\delta=\varepsilon R'$, and $R'/\delta=R'^{a_0}$. So the target count $2^{t/\alpha}$ at
+$t=\alpha L$ is the number of $\delta$-cubes along the core, and a rate is a statement about
+$R'^{o(1)}$ words per $\delta$-cube. The five-point determinant of Lemma~\ref{lem:E1} forces the points of a
+$\delta$-cube onto a hyperplane exactly when $a_0>\tfrac85$.
+
+Beyond $\tfrac52$, most $\delta$-cubes must be shown to be empty at $T$-count $\tfrac52L$, where volume
+predicts $2^{L/2}$ words against $2^L$ cubes. Proposition~\ref{prop:dense} shows that some sparsity is necessary: tubes of
+maximal gap $Q2^{-(1-o(1))L}$ must be excluded. A randomised version of its process, with a shared random offset in the
+snapshot, replaces the maximal gap by a length-weighted mean log-gap. The exact condition lies between
+\emph{no dense tube} and \emph{sparse by a power}.
+
+Auxiliary surfaces of higher degree do not obviously help. A rational quadric through the points of a
+longer box can be a thin tube of radius at most $\delta$ around the core, and on such a surface the
+second level recovers exactly the count $R'^{(8-2a_0)/3}$ of the degree-one boxes.
+\end{remark}
+
+%------------------------------------------------------------------- appendix
+\section{Proof of Theorem~\ref{thm:rate52}}\label{app:rate52}
+
+\paragraph{Continuum reduction.} Throughout, $E_1<T<a_0$, $a=a_0$, $b=E_1$, and the side conditions
+$a\ge b$, $a_0+a\ge2b$, $2b\ge a$ hold; they all hold for $0<\mu\le\frac1{10}$. All exponents in the assembly of Appendices~\ref{app:dioph}
+and~\ref{app:proj} are piecewise linear in $(a_0,a,b,T,g,y,D,X)$ and in the cell exponents, with
+absolutely bounded slopes. Fix $\varpi=\varpi(R')\to0$ with $\varpi\log R'\to\infty$, and run the assembly
+as follows:
+\begin{itemize}\setlength\itemsep{0pt}
+\item take $a=a_0$ and $b=E_1+\varpi$, where $E_1:=(8-2a_0)/3$, so that Lemma~\ref{lem:E1} applies with one
+hyperplane per box;
+\item take class intervals, height layers and crossing classes of width $\varpi$;
+\item impose every strict exponent inequality of the lemmas with margin $\varpi$.
+\end{itemize}
+Each checked quantity then exceeds its pointwise (continuum) value at the left end $g_i$ by $O(\varpi)$.
+The places where the certificate uses $g_{i+1}$ are handled as follows. The sagitta term and the constraint
+$X_L<1-g$ are covered by a shift of $2\varpi$. Crossing classes below $\mathrm{lde}(g_i)$ are dominated by the
+tangent class. The no-crossing case is empty. The zero case $r>R'/2$ is checked separately: the whole-box
+cell has negative exponent there. A cell that is admissible
+at one point with equality is shifted by $O(\varpi)$ to become admissible on its whole interval. There are
+$O(\varpi^{-3})$ cases, which costs a factor $R'^{o(1)}$. So $\#X_t\le R'^{T+o(1)}$ as soon as the
+following continuum claim holds:
+\[
+\mathrm C(a_0,T):\quad\text{there is no }(g,y),\ 0<g\le\tfrac{201}{100},\ y>0,\ \text{with }
+\mathrm{HIGH}(g,y)>T\text{ and }\mathrm{LOW}(g,y)>T .
+\]
+Here $\mathrm{HIGH}$ and $\mathrm{LOW}$ are the pointwise versions of the two sides of the height split:
+offsets and points per section are taken at the same height, the crossing depth is continuous, and the
+cell costs are bounded by explicit candidate cells.
+
+Since $\mathrm{HIGH}$ is nonincreasing in the height and tends to $E_1$, the claim $\mathrm C(a_0,T)$ says
+exactly this: the least height $\eta^*$ with $\mathrm{HIGH}\le T$ has $\mathrm{LOW}\le T$ on every layer
+below it. In $\neg\mathrm C$, the adversary's choices (rank, $X$, $D$, class of section) are existential and the
+prover's minima are explicit terms. So $\neg\mathrm C$ is a quantifier-free formula of linear real
+arithmetic.
+
+\paragraph{Verification.} Put $a_0=\tfrac85+\mu$ and $T=E_1+\tfrac{10}{33}\mu$, with $\mu$ a variable.
+The solver z3 shows that $\neg\mathrm C$ is unsatisfiable for $0<\mu\le\tfrac1{10}$
+(\texttt{research/uniform52/verify\_z3.py 1/10 10/33}). Since $T=\tfrac85-\tfrac{4\mu}{11}<a_0$, the Gibbs lemma
+(Lemma~\ref{lem:gibbs}) with $\lambda=1/\alpha$, $\alpha=4/a_0$, gives the rate with $A=O_\alpha(1)$, because the gap $\lambda-T/4$ is fixed. For larger
+$a_0$, use monotonicity in $\varepsilon$. The same computation with $T=E_1+c\mu$ is unsatisfiable exactly
+for $c\ge\tfrac{10}{33}$. So near the limit the method gives the exponent $\tfrac85-\tfrac4{11}(a_0-\tfrac85)$
+and nothing better.
+
+The balance behind $\tfrac{10}{33}$ is explicit, and it comes from two mechanisms.
+The value $E_1+\tfrac{10}{33}\mu$ is attained exactly for $\tfrac45-\tfrac{7\mu}{11}\le g\le\tfrac85-\tfrac73\mu$.
+On the upper part of this range, $g\gtrsim\tfrac65$, the rank-three balance applies:
+\begin{itemize}\setlength\itemsep{0pt}
+\item every patch is the whole box;
+\item the whole-box cell gives $\mathrm{HIGH}-E_1=\max\big(0,(g-\tfrac25+\mu-\eta)/3\big)$;
+\item the deepest crossing class contributes offsets $R'^{\,y+2-2g}$ with one point per section;
+\item the rank-three routes cross at $E_1+\tfrac12(3y-3g+\tfrac65+\tfrac\mu3)$;
+\item the two sides meet at $\eta^*=g-\tfrac25+\tfrac\mu{11}$.
+\end{itemize}
+On the lower part the rank-two route binds, through the target $T$ inside the dichotomy constant $G_3'$.
+Balancing it against $\mathrm{HIGH}$ gives $c(1+\tfrac1{10})=\tfrac13$, which is the same constant $\tfrac{10}{33}$.

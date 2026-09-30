@@ -1,0 +1,2 @@
+cert_proj max-min vs brute force: rank-3 mismatches 0/3000, rank-2 mismatches 0/3000, cases where the certificate UNDER-estimates: 0
+rank-2 route N: direct max over theta exceeds (2y - max(X,G3'))_+ in 0/2000 cases

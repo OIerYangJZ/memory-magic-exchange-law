@@ -1,0 +1,2 @@
+zero case: exists (mu, w) with cost > 0 ? unsat (unsat = zero case closes at E1)
+HIGH(g, 0) > E1 for some g <= 2/5 - mu ? unsat (unsat = no split needed there)

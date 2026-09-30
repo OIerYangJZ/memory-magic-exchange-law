@@ -1,0 +1,1 @@
+615 (interval, layer) pairs: min over pairs of [cert LOW - model LOW] = -8.88e-16;  min of [cert HIGH - model HIGH] = -2.22e-16   (should be >= -1e-9)

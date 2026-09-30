@@ -1,0 +1,16 @@
+covol(O)^2 = 16  covol(O*)^2 = 1048576 -> covol(O*) = 1024.0
+O_K^4 in O: True  O* in O_K^4: True  2O in O*: True  O* in 2O: True
+
+== K-planes V: A1 step 5, P2 step 3 ==
+  covol(S)=8H_V (vs h(v1^v2)/index): exact on all trials
+  covol(O cap V) covol(P_Vperp O) = covol(O) = 4: exact;  height(V-perp) = height(V): exact
+  covol(P_Vperp O) * H_V in [1.0000, 4.0000]   (claimed ~1, bounds [1/2, 8])
+  covol(P_V O)     * H_V in [1.0000, 4.0000]
+  min_{x in P_Vperp O} h(x) * H_V in [0.5000, 860.8130]   (A1 claims >= 1/C)
+  covol(K_B) H_V / h(n_B) in [0.3536, 1.4142];  covol(K_B)^2 = covol(P_V O)^2 h(n_B)^2/8 exact;  f(P_V O)=O_K
+
+== K-lines m, W = m-perp: P3 step 4, Hodge star ==
+  covol(W cap O_K^4) = 16 sqrt2 h(m) exact (height of W = h(m));  h(v1^v2^v3)/h(m) = |N xi| >= 1: range of ratio^2 [Fraction(5184, 1), Fraction(187933430998306816, 1)]
+  covol(O cap Km) covol(Lambda_W) = 4 exact
+  covol(Lambda_W) * h(m) in [1.4142, 2.8284]   (claimed ~1)
+  covol(L_B) h(m)/h(n_B) in [0.5000, 1.0000];  covol(L_B)^2 = covol(Lambda_W)^2 h(n_B)^2/8 exact;  f(Lambda_W)=O_K

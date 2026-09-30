@@ -1,0 +1,4 @@
+al=2497/1000 db=1/10000 m=10000 den=800 ed=1000: AssertionError: FAILED on interval [629/800,63/80]  (run=1.60448) 
+al=499/200 db=1/4000 m=4000 den=800 ed=400: all 1608 g-intervals certified; worst exponent 3199469/1996000 = 1.602940 at (1.595, 1.18) CERTIFIED: #X_t <= R'^(T+o(1)), T = 3199501/1996000 < a0 = 800/499;  alpha >= 4/a0 = 499/200 = 2.495000 
+al=2495/1000 db=1/5000 m=5000 den=800 ed=500: all 1608 g-intervals certified; worst exponent 15997731/9980000 = 1.602979 at (1.60375, 1.174) CERTIFIED: #X_t <= R'^(T+o(1)), T = 3999501/2495000 < a0 = 800/499;  alpha >= 4/a0 = 499/200 = 2.495000 
+al=499/200 db=1/5000 m=3000 den=800 ed=500: all 1608 g-intervals certified; worst exponent 9597853/5988000 = 1.602848 at (0.4125, 0.002) CERTIFIED: #X_t <= R'^(T+o(1)), T = 2399501/1497000 < a0 = 800/499;  alpha >= 4/a0 = 499/200 = 2.495000 

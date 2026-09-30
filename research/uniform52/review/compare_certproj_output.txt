@@ -1,0 +1,1 @@
+3000 comparisons (LOW and HIGH): min(cert - model) = -8.88e-16 at (0.001, 0.08, 1.05, Fraction(163437, 200000)), max(cert - model) = 4.03e-10

@@ -1,0 +1,12 @@
+tau=21 cluster at I (clus21.txt): l = 1
+  #units of norm 1 in O: 48
+  S candidates: [(73, 32)]
+  tau=21 l=(1, 0) N(l)=1 S=2s=(73, 32) dist(xi_g, Y)=0.00543432 (rho=0.00629685, ratio 0.863) N(m)=42.06 sqrtN(m)=6.49 #Z=168 #Z_prim=168 #g=48 |Y_g| all: max 168 mean 168.00; T-count tau: max 168 mean 168.00 | NOTES formula rho*2^(tau/2)/sqrt(H) = 9.12
+tau=26 cluster (clus26.txt): g = ((3+2sqrt2)+i+j-k)/2, l = 5+3sqrt2
+  #g of norm l: 384
+  tau 25 S candidates: [(357, 256)]
+  tau=25 l=(5, 3) N(l)=7 S=2s=(357, 256) dist(xi_g, Y)=0.00224823 (rho=0.00198338, ratio 1.134) N(m)=1183 sqrtN(m)=34.4 #Z=1008 #Z_prim=1008 #g=384 |Y_g| all: max 126 mean 126.00; T-count tau: max 126 mean 126.00 | NOTES formula rho*2^(tau/2)/sqrt(H) = 4.34
+    at the g of the note: |Y_g| all 126, T-count 25: 126
+  tau 26 S candidates: [(259, 206)]
+  tau=26 l=(5, 3) N(l)=7 S=2s=(259, 206) dist(xi_g, Y)=0.00253693 (rho=0.00198338, ratio 1.279) N(m)=2896 sqrtN(m)=53.8 #Z=1752 #Z_prim=1752 #g=384 |Y_g| all: max 219 mean 219.00; T-count tau: max 219 mean 219.00 | NOTES formula rho*2^(tau/2)/sqrt(H) = 6.14
+    at the g of the note: |Y_g| all 219, T-count 26: 219

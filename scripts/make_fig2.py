@@ -1,7 +1,7 @@
 """make_fig2.py -- Fig. 2: the fractional-passthrough tradeoff family against the lower bounds.
 (a) exact optimal synthesis from data/taumin_eps_half.json (L = 5, 6, m = 64, r = 2),
-    at both error budgets: eps/2 (the certified r = 2 point of Thm. 8) and eps (a calibration);
-(b) Ross-Selinger (gridsynth) calibration at eps = 1e-10, m = 1e4, r = 2, against Theorems 1, 3, 9.
+    at both error budgets: eps/2 (the certified r = 2 point of Thm. 9) and eps (a calibration);
+(b) Ross-Selinger (gridsynth) calibration at eps = 1e-10, m = 1e4, r = 2, against Theorems 1, 3, 10.
 
 Called from the repository root, like the other scripts:  .venv/bin/python scripts/make_fig2.py
 Supersedes frontier_fig2.py (kept as .bak-rev1), which drew the pre-v6 panel (b)."""
@@ -15,7 +15,7 @@ import thm_numbers as tn
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12.5, 4.6))
 
 # ------------------------------------------------ (a)
-# Two error budgets.  The certified r = 2 point of Thm. 8 synthesizes each committed share
+# Two error budgets.  The certified r = 2 point of Thm. 9 synthesizes each committed share
 # to eps/2; evaluating tau_min at eps instead is a single-rotation calibration, not a point
 # of the family.  data/taumin_eps_half.json carries both (scripts/frontier_eps_half.py);
 # its taumin_eps column reproduces data/taumin_exact.json grid point by grid point.
@@ -61,7 +61,7 @@ B = m * bs
 ax2.plot(B, m * np.array([tn.thm1(b) for b in bs]), ':', color='tab:red', label='Thm. 1 (uncond., slope 1)')
 ax2.plot(B, m * np.array([tn.thm3(b) for b in bs]), '--', color='tab:red', label='Thm. 3 (given (R), slope 2)')
 ax2.plot(B, m * np.array([tn.thm9(b) for b in bs]), '-', color='tab:red',
-         label=r'Thm. 9 (Conj. H, slope $\kappa=%.2f$)' % tn.kappa)
+         label=r'Thm. 10 (Conj. H, slope $\kappa=%.2f$)' % tn.kappa)
 ax2.plot(B, 3 * B, '-', color='0.6', lw=1, label='slope 3 (leading order)')
 Etau = 105.34   # gridsynth mean at eps/2, the certified share accuracy for r = 2 (102.32 at eps)
 q = np.linspace(0, m, 200); S = q * np.log2(Q); Bp = m * k - S; ok = Bp >= 0

@@ -1,0 +1,3 @@
+(i)  max |singular values of P_V1perp|Pi - sin(principal angles)| = 9.89e-13
+(ii) max dist(P_V1perp x, E)/delta over tube points = 0.9967   (A1 uses delta1 = 3 delta)
+(iii) a2/delta1 range [0.17, 3184.2];  N/(1+sqrt(a2/delta1)) <= 9.213;  sum l'_k/(a2+delta1) <= 15.916;  max arc-to-chord deviation/delta1 = 0.1248 (must be <= 1)

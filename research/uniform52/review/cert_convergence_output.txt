@@ -1,0 +1,16 @@
+== mu=3/100 a0=163/100 b=E1+1/1000=1581/1000  T=E1+mu/2=1595/1000, den 400 eden 200
+all 804 g-intervals certified; worst exponent 319/200 = 1.595000 at (0.4125, 0)
+max eta* = 28/25, layers checked = 74130
+CERTIFIED: #X_t <= R'^(T+o(1)), T = 319/200 < a0 = 163/100;  alpha >= 4/a0 = 400/163 = 2.453988
+== same, T=E1+0.40mu=1592/1000, den 800 eden 400
+all 1608 g-intervals certified; worst exponent 9551/6000 = 1.591833 at (1.535, 1.125)
+max eta* = 451/400, layers checked = 300478
+CERTIFIED: #X_t <= R'^(T+o(1)), T = 199/125 < a0 = 163/100;  alpha >= 4/a0 = 400/163 = 2.453988
+== same, T=E1+0.29mu=15887/10000 (below 10/33: must FAIL for any grid), den 400 eden 200
+Traceback (most recent call last):
+  File "/home/lyy/mmx_claude/research/annulus/cert_proj.py", line 113, in <module>
+    main()
+  File "/home/lyy/mmx_claude/research/annulus/cert_proj.py", line 107, in main
+    assert ok, f"FAILED on interval [{gl},{gr}]  (run={float(run):.5f})"
+AssertionError: FAILED on interval [19/25,61/80]  (run=1.59000)
+a0=163/100 a=163/100 b=15801/10000 T=15887/10000 (=1.588700, a0=1.630000)  E1=15801/10000=1.580100

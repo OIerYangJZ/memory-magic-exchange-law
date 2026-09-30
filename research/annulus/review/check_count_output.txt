@@ -1,0 +1,7 @@
+== A1 step 4 ==
+  successive minima: lambda2<=2.4143 lambda1 and lambda4<=2.4143 lambda3 on all instances: True
+  #(Lambda cap D) / (1 + H_V l R + H_V l d R^2): max 228.460;  #/(1 + H_V l R + vol(D)/covol): max 1.045  over 74 instances
+== P3 step 5 ==
+  #(L_B cap D) / (1 + vol(D)/covol(L_B)): max 4.187 over 75 instances  (covol(L_B) ~ h(n_B)/h(m) checked exactly in check_covol.py)
+  instances with two K-independent vectors in D (mu2<=1): 30, #/(vol/covol) <= 2.252
+  instances with all of L_B cap D in one K-line (mu2>1): 45  (then the u's lie on an affine K-line -> circle, E5)

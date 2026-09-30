@@ -1,0 +1,4 @@
+a0=44/27 a=44/27 b=317/200 T=4391/2700 (=1.626296, a0=1.629630)  kappa=0  E1=317/200=1.585000
+all 804 g-intervals certified; worst exponent 52687/32400 = 1.626142 at (1.545, 1.03)
+max eta* = 26/25, total layers checked = 31782
+CERTIFIED: #X_t <= R'^(T+o(1)) with T = 4391/2700 < a0 = 44/27;  rate alpha >= 4/a0 = 27/11 = 2.454545

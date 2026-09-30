@@ -1,4 +1,4 @@
-"""thm_numbers.py -- the bounds of Theorems 1, 3 and 9 per coordinate and per pre-final round,
+"""thm_numbers.py -- the bounds of Theorems 1, 3 and 10 per coordinate and per pre-final round,
 as functions of the bits shed per coordinate b = log2 K - S/m, at eps = 1e-10, delta = 0, m = 1e4.
 Reproduces Table III (b = log2 K, both c = 48 and c = 256) and the curves of Fig. 2(b)."""
 import numpy as np
@@ -17,7 +17,7 @@ tau_star = int(np.ceil(2 * k))
 Z = sum((C1 * 2 ** t * EPS ** 2 + C2 * (t + 1) * 2 ** (t / 2)) * 2 ** (-t / 2) for t in range(tau_star + 1))
 A2 = 1 + np.log2(Z)
 
-# Theorem 9 constants under H(c0, c1, c) = (8, 2, c); Table III uses c = 48 and c = 256
+# Theorem 10 constants under H(c0, c1, c) = (8, 2, c); Table III uses c = 48 and c = 256
 c0, c1 = 8, 2
 beta = 2
 def set_c(c_):

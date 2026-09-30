@@ -22,3 +22,5 @@ qip/
 
 # arXiv packages (rebuild with arxiv/make_arxiv.sh)
 arxiv/v*/
+.claude/settings.local.json
+research/colab/HOST
