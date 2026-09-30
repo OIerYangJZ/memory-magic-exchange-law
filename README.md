@@ -6,7 +6,10 @@ produced by a script in `scripts/` from an input in `data/`, and this file says 
 The manuscript is `main.tex` (REVTeX 4.2, PRX Quantum style). Build it with
 `latexmk -pdf -outdir=out main.tex`; the PDF is written to `out/main.pdf`.
 
-**Status.** Unpublished. All results are proven except Theorem 10 and Corollary 7, which are
+**arXiv.** [arXiv:2609.37368](https://arxiv.org/abs/2609.37368). Version 1 (tag `arxiv-v1`) proves the
+unconditional rate 17/7; version 2, the present sources, proves every rate below 5/2.
+
+**Status.** Not yet peer reviewed. All results are proven except Theorem 10 and Corollary 7, which are
 conditional on Conjecture H, and the achievable rates of Corollary 3 and Proposition 4, which
 are conditional on the synthesis hypotheses stated there (Eq. (33) for Proposition 4). The constant `c` of Conjecture H is deliberately left unspecified: the
 enumeration bounds it from below (`c >= 163.9`, see `astra1.py`) and a finite scan cannot
