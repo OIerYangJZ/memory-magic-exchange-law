@@ -88,7 +88,38 @@ the rate.
 - The data strongly support square-root cancellation in S_ℓ (θ = 1/2), and hence conjecture SA. There is no sign of
   any power-size excess at k ≤ 16, at either scale.
 - The numerics prove nothing.
-- What is provable is the mean square over ℓ (pair correlation within a band). It is exactly the L² statement that is
-  blind at the critical scale.
-- The input actually needed is a pointwise bound with θ > 1/3. That is of subconvexity strength for short shifted
-  convolutions of CM Hilbert forms.
+- *Corrected in NOTES §12(b).* θ > 1/3 is needed only in mean square over 0 < |ℓ| ≤ 1/ε, not pointwise:
+  Σ_ℓ|S_ℓ|² ≤ B²·2^{−δk} already gives Q1. Equivalently, the in-band pair count needs a power-saving *asymptotic*.
+- Only the whole-sphere pair count is provable (it is a sum of squares, by Ramanujan). The in-band statistic is not
+  provable by present methods; it amounts to effective equidistribution of the fluctuation density at a shrinking
+  scale.
+
+## Test C: Hecke-ball tubes, rounds ≥ 3 (`orbit.c`, outputs `orbit_20_24.txt`, `orbit_28_30.txt`)
+
+For rounds t ≥ 2 the source is arithmetic: φ = V|0⟩, with V a Clifford+T word of T-count h (NOTES §7).
+
+Method:
+- Enumerate all 72·2^t − 48 words of Λ_t in Matsumoto–Amano form, (T|ε)(HT|SHT)^m C. The total is checked.
+- Apply them to φ, and bin the points W φ in (z, φ) cells of side s = 2^{−2t/5}, the critical scale. Use the bulk
+  |z| ≤ 0.9.
+- Compare with the Poisson maximum over the same number of cells (single cells, 2×2 and 4×4 sliding windows).
+
+| t | λ per cell | Poisson max (1/2×2/4×4) | h ≥ 8: max (1/2×2/4×4) | h ≥ 8: var/mean | h = 4: max1, var/mean | h = 0: max1 |
+|---|------------|-------------------------|------------------------|-----------------|-----------------------|-------------|
+| 20 | 91.7 | 141 / 461 / 1651 | 138–143 / 447–467 / 1632–1660 | 0.99–1.06 | 152–153, 1.34–1.36 | 224 |
+| 24 | 159.6 | 229 / 773 / 2818 | 224–235 / 763–777 / 2795–2827 | 1.00–1.03 | 252–257, 1.43–1.44 | 644 |
+| 28 | 277.9 | 376 / 1302 / 4821 | 375–382 / 1295–1310 / 4803–4842 | 0.99–1.02 | 454, 1.42 | 624 |
+| 30 | 366.7 | 482 / 1692 / 6312 | 478–485 / 1683–1694 / 6287–6338 | 1.00–1.02 | 528, 1.42 | 696 |
+
+Run counts: at t = 20 and 24, h ∈ {8, 16, 24} with two seeds each; at t = 28 and 30, h ∈ {8, 16, t}.
+
+Notes:
+- For h ≥ 8 the maxima agree with the Poisson maxima within a few units at every window size.
+- The one-per-fibre-cell level is ≈ 11/s, i.e. 2.6·10⁴ at t = 28 and 4.5·10⁴ at t = 30, against observed maxima of
+  ≈ 1.3λ.
+- h = 4 is mildly clustered (var/mean 1.42). Short sources have stabiliser coincidences W φ = W′ φ with W⁻¹W′ short.
+- h = 0 is the two-round case. Each point there carries multiplicity 8 from W T^m, and the t = 24 maximum sits at
+  a Clifford point (the rich circles of Test B).
+
+Verdict: Conjecture H in Hopf form, with arithmetic sources of any height up to t, also looks Poisson at T-count
+≤ 30. Together with Tests A and B there is no numerical sign that α = 3 is false.

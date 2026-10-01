@@ -1,0 +1,10 @@
+t=28 beta=0.400 h=0 seed=1 phi=(0.0000,-1.0000,0.0000) s=2^-11.20 lambda=277.90 mean=277.89 var/mean=6.667 max1=624 at (z=-0.8536,phi=-2.6394) max2=1724 max4=5524  time 105.9s
+t=28 beta=0.400 h=4 seed=1 phi=(0.2500,-0.1464,0.9571) s=2^-11.20 lambda=277.90 mean=277.90 var/mean=1.421 max1=454 at (z=0.0008,phi=-1.5703) max2=1457 max4=5352  time 105.3s
+t=28 beta=0.400 h=8 seed=1 phi=(-0.2178,0.7134,-0.6661) s=2^-11.20 lambda=277.90 mean=277.90 var/mean=1.022 max1=382 at (z=0.4149,phi=-1.2319) max2=1305 max4=4842  time 105.2s
+t=28 beta=0.400 h=16 seed=1 phi=(-0.5197,-0.6426,-0.5630) s=2^-11.20 lambda=277.90 mean=277.90 var/mean=1.005 max1=375 at (z=-0.0459,phi=1.3219) max2=1310 max4=4803  time 103.1s
+t=28 beta=0.400 h=28 seed=1 phi=(0.4551,-0.7578,-0.4676) s=2^-11.20 lambda=277.90 mean=277.90 var/mean=0.993 max1=376 at (z=0.6929,phi=-0.4039) max2=1295 max4=4809  time 104.7s
+t=30 beta=0.400 h=0 seed=1 phi=(0.0000,-1.0000,0.0000) s=2^-12.00 lambda=366.69 mean=366.69 var/mean=6.683 max1=696 at (z=-0.4706,phi=1.0082) max2=2112 max4=7200  time 532.6s
+t=30 beta=0.400 h=4 seed=1 phi=(0.2500,-0.1464,0.9571) s=2^-12.00 lambda=366.69 mean=366.69 var/mean=1.423 max1=528 at (z=0.5350,phi=1.8956) max2=1738 max4=6401  time 531.4s
+t=30 beta=0.400 h=8 seed=1 phi=(-0.2178,0.7134,-0.6661) s=2^-12.00 lambda=366.69 mean=366.69 var/mean=1.024 max1=485 at (z=-0.4840,phi=-0.4227) max2=1683 max4=6287  time 532.1s
+t=30 beta=0.400 h=16 seed=1 phi=(-0.5197,-0.6426,-0.5630) s=2^-12.00 lambda=366.69 mean=366.69 var/mean=1.003 max1=479 at (z=0.8795,phi=1.0158) max2=1694 max4=6338  time 534.6s
+t=30 beta=0.400 h=30 seed=1 phi=(-0.4820,0.8577,0.1793) s=2^-12.00 lambda=366.69 mean=366.69 var/mean=0.995 max1=478 at (z=0.7928,phi=0.1351) max2=1688 max4=6319  time 534.1s

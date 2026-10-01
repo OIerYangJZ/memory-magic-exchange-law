@@ -455,5 +455,51 @@ Computed S_ℓ exactly for every band and every ℓ ≤ 1/ε, for k ≤ 16 (up t
 - **Exceptions at arithmetic points.** At |+⟩ and at the H-eigenstates there are rich circles (states sharing
   |u − t|²). The excess reaches 5.5× at k = 12, decays to ≤ 1.4× for k ≥ 14, and is divisor-bounded.
 
-Verdict: the numerics support SA and θ = 1/2. They give no proof. The needed pointwise θ > 1/3 is of subconvexity
-strength, while the provable mean square over ℓ is the L² statement that is blind at the critical scale.
+Verdict: the numerics support SA and θ = 1/2. They give no proof. *Corrected in §12(b):* θ > 1/3 in mean square over ℓ
+already suffices. The whole-sphere pair count is provable, but the in-band one is not, and an in-band asymptotic
+would not be blind.
+
+## 12. Eighth pass (2026-10-01): necessity, a variance route, Hecke-ball numerics
+
+**(a) Any proof of α = 3 must prove SA.**
+- "α = 3 for every r" includes r = 2, and by §7 the two-round rate is 3 ⟺ SA. So there is no route to 3 that avoids
+  SA, an S-arithmetic Bourgain–Rudnick small-cap theorem for a single Hecke orbit.
+- Its rational toy (Zhang–Zhu's tube conjecture on λS³, §8(d)) is open. The best bound there is λ^{2/3}, from the
+  determinant method, which is the same barrier as our 5/2.
+
+**(b) Variance route (new reduction, rigorous).** Work in a z-band R of width ε, cut into cells of side ε.
+- *The inequality.* max_c |N_c − vol| ≤ (Σ_c (N_c − vol)²)^{1/2} = (P(R) − B·vol)^{1/2}. Here P(R) is the
+  number of pairs of states in R lying in the same cell, B = |R ∩ states| ≈ ε4^k, and vol = εB/2π.
+- *Critical balance.* At the critical scale, B·vol = cells² exactly.
+- *Reduction.* Q1 (r = 2) ⟸ P(R) = B·vol·(1 + O(2^{−δk})) for every band. This is a power-saving *asymptotic* for a
+  two-point statistic. The no-go of §8(f) concerns L² *upper* bounds with constant or 2^{o(k)} slack, so it does
+  not apply here.
+- *The global version holds (rigorous).* The smoothed whole-sphere pair count is a sum of squares,
+  Σ_φ k̂(φ)|λ_φ(P^{2k})φ(z)|². Ramanujan gives it with relative error O(k²/vol). But the whole sphere gives only
+  sup ≤ vol + √N, the Ramanujan bound.
+- *Localising to the band destroys positivity.* The band statistic is v*Gv with v_φ = λ_φ φ(z) and an
+  off-diagonal Gram matrix G (‖G‖ = |R|). Ramanujan with Bessel's inequality gives only P(R) − B·vol ≲ k²N, i.e.
+  Ramanujan again.
+- *What would be needed.* The L² mass of the fluctuation F = Σ_{φ≠1} λ_φ(P^{2k})φ(z)φ (the smoothed state measure
+  minus its mean) must be equidistributed in z-bands of measure ≲ vol⁻¹, with a power saving. Spectrally this is
+  cancellation in Σ λ_φ λ_φ' φ(z) φ'(z) φ''(z) ⟨φφ'φ''⟩ over ~ε⁻⁵ triples, i.e. effective QUE for a combination of
+  ε⁻² Hecke forms at a shrinking scale. That is not available: Brooks–Lindenstrauss QUE on S² is ineffective, and
+  Watson–Ichino plus subconvexity gives rates only for fixed test functions.
+- *Arithmetic form, possibly worth more thought.*
+  - P(R) − B·vol = Σ_D (angular Weyl sums of the representations by the binary form Q_D on D^⊥).
+  - The sum runs over differences D ∈ O_K³ with |σ₁D| ≤ ε2^k. The discriminants |D|² have arbitrary norms, so
+    unlike the one-point count this *is* a family.
+  - The band cuts each circle C_D to two short arcs. So one needs Hecke-angle equidistribution in short arcs for
+    K(√−|D|²), on average over D. Not pursued.
+
+**(c) Hecke-ball numerics (Test C, rounds ≥ 3; numerics/orbit.c, RESULTS.md).**
+- *Method.* Take the orbit Λ_t·φ of a source φ = V|0⟩, with V of T-count h. All 72·2^t − 48 words are enumerated
+  in Matsumoto–Amano form and binned at the critical scale s = 2^{−2t/5}.
+- *Results at t = 28 (λ = 278 per cell; t = 30 agrees, see RESULTS.md).*
+  - h ≥ 8: var/mean 0.99–1.02. The maximum is 375–382, against a Poisson maximum of ≈ 380.
+  - h = 4: var/mean 1.42, from short stabiliser clusters.
+  - h = 0: the T-multiplicity 8.
+- So Conjecture H in Hopf form, with arithmetic sources, also looks Poisson.
+- *Correction to §8(c).* Measured counts at T-count 28 are ≈ 1% of the one-per-fibre-cell level. So numerics at
+  T-count 28–32 *do* separate volume from cells; §8(c)'s ratio formula was too pessimistic. They still cannot
+  separate "volume × poly" from "cells^{1−κ}" asymptotically, of course.
