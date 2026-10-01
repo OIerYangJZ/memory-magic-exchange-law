@@ -1,0 +1,459 @@
+# Attempt at α = 3 (2026-10-01)
+
+**Verdict: α = 3 is not reached. No exponent beyond 5/2 is obtained.** This note records the new reductions and the
+routes tried, and says where each one stops. Nothing here touches main.tex. Earlier work is in
+`research/conditional3/` (NOTES, NOTES_a, NOTES_moments) and `research/uniform52/`.
+
+## 1. What rate α > 5/2 needs (recap)
+
+The Gibbs step only needs the number of grid cells along the core that are reachable at cost ≤ τ, because A ↦ W is
+injective into cells given the context. That count is trivially ≤ 2^L. So rate α needs
+n(τ) ≤ 2^{τ/α + o(L)} only for τ < αL.
+
+- **Where it binds.** For α = 5/2 + δ, the binding T-count is τ ≈ 5L/2. There the determinant method gives exactly
+  2^L, one point per ε-cell.
+- **What is needed there.** n(5L/2) ≤ 2^{(1 − 2δ/5 + O(δ²))L}, i.e. a power-fraction of the ε-cells along *every*
+  tube must be empty. Volume predicts 2^{L/2}.
+- **Rate 3.** At τ = 2.9L the requirement is 2^{0.967L}, against a volume of 2^{0.9L}. As α → 3, only a vanishing
+  power of slack over the volume law remains.
+
+## 2. Two rounds: only Hopf fibres matter (new reduction)
+
+In round 1 there is no prefix, so G₁ = I. For r = 2 this is the only committed round. So the two-round exchange
+rate depends only on the cosets {R_z(θ)G₂}.
+
+**State form.**
+- W ≈ R_z(θ)G₂ iff W⁻¹|0⟩ ≈ e^{iθ/2}G₂⁻¹|0⟩. So these tubes are the ε-neighbourhoods of Hopf fibres, i.e. of right
+  complex lines of the Z[ω]-module O.
+- W⁻¹ is determined by W⁻¹|0⟩ up to right multiplication by the 8 diagonal elements T^j of Γ.
+- Hence #(Λ_τ ∩ tube) ≤ 8·#{Clifford+T states ψ of T-count ≤ τ whose Bloch vector lies in a cap of radius cε}.
+- The core position is the phase of ψ, taken mod π/4.
+
+**Conjecture SA (state approximation).** Every single-qubit state has at most 2^{o(τ)}(1 + 2^τ ε²)
+ε-approximations among Clifford+T states of T-count ≤ τ.
+
+**Consequences.**
+- SA implies α = 3 for r = 2, by Theorem 1 of conditional3/NOTES.md.
+- Conversely, if SA fails with phases spread along the fibre, the process of Prop. S beats 3 for r = 2. The
+  phase-spread caveat is the one in Remark what52.
+
+**Rounds t ≥ 2.** These have an arithmetic prefix P of T-count h. The relevant set is Λ_τ·φ with φ = P⁻¹|0⟩, which
+is state-to-state approximation, i.e. Conjecture H in Hopf form.
+- SA for |0⟩ alone does not suffice: applying it to PW ∈ Λ_{τ+h} loses a factor 2^h.
+- So for general r, nothing weaker than H (tube form) is visible.
+
+**Classical analogue.** SA is the S-arithmetic analogue (S = {√2}) of the Bourgain–Rudnick cap conjecture for
+x² + y² + z². The literature status for Z³:
+- *Individual caps:* no bound better than the Jarník-type R^ε(1 + r²/R^{1/2}) of Bourgain–Rudnick (2012) is known.
+- *Almost all caps:* Humphries–Radziwiłł (arXiv 1910.01360) and Lutsko (arXiv 2402.12822, averaged over n).
+- *Under GRH:* Shubin (arXiv 2108.00726) gets the variance of the conjectured order.
+
+The adversary picks the frame G₂ freely, because the final round is free. So almost-all and variance results do not
+help: local constancy turns them back into the worst case (NOTES_moments §6).
+
+## 3. Routes tried; where each stops
+
+**(a) Dirichlet fibration on a Hopf fibre.**
+- *Construction.* Take t ≈ z₀u. Choose p/q ∈ Q(ω) by Minkowski with |q|, |p| ≤ X in both embeddings and
+  |σ₁(qz₀ − p)| ≤ cX^{−3}. Then the tube points fibre over g = qt − pu ∈ Z[ω].
+- *Fibres.* Each fibre is a circle parallel to the core. It carries ≤ 2^{o(τ)} points (norm equation in Q(ω)).
+- *Count.* #g ≍ R'^4(X²ε + X^{−2})² ≥ 4εR'^4. This gives rate 2 alone.
+- *Where the difficulty went.* In the coordinates (⟨w,v⟩, Δ(w,v)) this is the Clifford-frame count on a sublattice
+  of index N(H)². The g-projection is onto, and the whole difficulty sits in a congruence mod H in the fibre: a
+  shifted-convolution sum, which is square-root at best.
+
+**(b) Quotients and energy.**
+- W_jW_i⁻¹ lies in the tube of the *standard* torus, where the volume law is proved (Thm. clifford), but at T-count
+  2τ.
+- Even with minimal multiplicative energy this gives N² ≤ 2^{o}ε²4^τ, i.e. rate 2.
+
+**(c) Hecke-orbit bootstrapping.**
+- Use n_τ(x) ≤ Σ_{σ∈Λ_j} n_{τ−j}(R(σ)x). Split g = n_{τ−j}^{(2φ)} at level λ, and use Ramanujan on min(g, λ) with
+  a φ-ball average.
+- The error is j·λ^{1/2}·2^{τ/2}, independent of j. This is the square-root barrier again.
+
+**(d) Degree-D auxiliary forms on the quadric** (leading-order count).
+- Monomials c^a t₁^b t₂^e r^f with f ≤ 1, where the quadric removes r².
+- The leading term requires b > 6 − 2a₀, and σ₂ patches do not change this. That is worse than (8 − 2a₀)/3 for
+  a₀ < 5/2.
+- The reason: the curvature gain enters only through monomials linear in the normal coordinate. This is consistent
+  with the last paragraph of Remark what52.
+
+**(e) 2-adic determinant.**
+- Points sharing a suffix σ of length s have their 4×4 determinant in nrd(σ)²O_K.
+- This is the same as factoring σ off, so it is the same problem at T-count τ − s for 2^s frames, and it loses
+  2^{s/3}.
+
+**(f) Complex determinant for Hopf fibres.**
+- The 3-point Δ over Z[ω] vanishes only for ℓ < 1/(8εR'^4).
+- Its size is ℓ²ε²R'^8, against ℓ³ε²R'^8 for the 5-point K-determinant, so it is weaker.
+
+**(g) Fourier analysis in the fibre angle.**
+- *Expansion.* The count is Σ_{|a|≤1/ε} ĉ_a e^{−ia·arg z₀} S_a(2^k), where S_a are shifted convolution sums of the
+  coefficients of the CM theta series of the Hecke characters (u/|u|)^a (a ≡ 0 mod 8) of Q(ω).
+- *Single a.* Each S_a with a ≠ 0 is at least 2^{τ/2} under square-root cancellation.
+- *Over a.* Beating that needs cancellation over the weight a, which is the count itself.
+
+## 4. Status
+
+- **Unconditional:** α ≥ 5/2 − o(1) is unchanged.
+- **Necessary for any α > 5/2** (already the conclusion of NOTES_a): sparsity of isolated points along every tube
+  at T-count 5L/2. For r = 2 this is a worst-case statement about Clifford+T *states* in Bloch caps.
+- **Classical analogue:** in the Z³ analogue, no worst-case cap bound of this kind is known beyond the elementary
+  Jarník range.
+- **Conditional:**
+  - Conjecture H gives α = 3 for all r (paper).
+  - SA (states only) gives α = 3 for r = 2 (§2).
+
+## 5. Second attempt: sparsity of isolated points along tubes (2026-10-01, later)
+
+**Target.** It is enough to beat the uniform52 exponent at the critical point by any fixed amount. Precisely: there
+should be κ, η > 0 such that for all a₀ ∈ [8/5 − η, 8/5 + η] and all tubes,
+#(tube points) ≤ R'^{8/5 − κ + o(1)}. That gives α = 5/2 + c(κ, η) > 5/2. **Not achieved.**
+
+What was found, in order.
+
+**(i) Short differences fill the lattice exactly.**
+- Consecutive points of a fully occupied tube differ by d ∈ O with |σ₁d| ≲ δ in *all* four directions and
+  |σ₂d| ≲ R'. The body is a product of balls, so #(O ∩ B) ≍ Σ_{N(m) ≲ R'^{4/5}} r_O(m) ≍ R'^{8/5}, which equals the
+  number of cells.
+- Each d is realised by O(1) pairs. The direction of P_Π σ₁d fixes the cell up to the radial wobble ε²R', which is
+  sub-cell.
+- So "one point per cell" is consistent with the lattice at every gap J: pairs NJ against J²R'^{8/5} available
+  differences. No counting contradiction exists at the level of differences.
+
+**(ii) No gap principle at cell scale.**
+- Up to four points impose nothing.
+- Five points within J cells have a determinant in O_K/16 of norm O(J³). It is forced to vanish only for J < c.
+- With six points, the Plücker relation Σ(−1)^j D_j w_j = 0, with all D_j in a finite set, makes the sixth point
+  one of O(J^{c}) affine combinations of the other five. The sphere condition then holds identically (Cayley–Menger),
+  so there is no contradiction.
+- Fixing σ₂-patches does not help either: pigeonhole needs J > J^{9/5}.
+
+**(iii) Fourier/spectral variants stop at 2.**
+- *Bilinear (Cauchy–Schwarz over factorisations W = W₁W₂).* Two tubes meet only if they are Clifford-parallel.
+  This gives N² ≲ 2^τ · (return count at length 2τ₂) · M(τ₁).
+  - With volume laws inserted it gives 8/3, but only under an unproved fourth moment at the unit scale.
+  - With the unconditional sup bounds it gives nothing.
+- *Quotients near the identity.* Duke-type equidistribution does apply, because the axis cap is macroscopic.
+  But the pair count still gives N ≲ ε2^τ, i.e. rate 2.
+
+**(iv) Where 5/2 sits analytically (heuristic, Hopf fibre).** This explains why each route stops where it does.
+- *Fibration.* Use the Dirichlet fibration (§3a) with Bezout qa − pb = 1. Then exactly
+  |Hλ + κg|² + |g|² = Hn, with H = |p|² + |q|² and κ = q̄b + p̄a. So
+  N ≤ #{(λ', g) : N(λ') + N(g) = Hn, λ' ≡ κg (mod H), g ∈ Box}. This is a Clifford tube, where the divisor bound
+  holds, plus one congruence on an isotropic line of the quadric mod H.
+- *Sizes.* At X⁴ = 1/ε the box has T₀ ≈ εR'^4 points and N(H) ≈ 1/ε. The expected count is T₀/N(H) = E, the
+  volume.
+- *The dictionary.* An error T₀/N(H)^θ gives rate α = 2 + θ:
+  - θ = 0 (congruence ignored) gives 2;
+  - θ = 1/2 gives 5/2;
+  - θ = 1 gives 3.
+- *What θ = 1/2 is.* The error N(H) ≈ 1/ε is the square root of the number q = N(H)² of residue classes of g. That
+  is the Pólya–Vinogradov completion error, and it equals the cell count.
+- *Shape of the box.* After rebalancing by units of O_K, the g-box is a balanced box of side q^{3/16} against a
+  period q^{1/4}: an incomplete sum of length q^{3/4}.
+- **So, heuristically, α > 5/2 ⟺ beating Pólya–Vinogradov-type completion for this incomplete sum.** For signed
+  1-dimensional character sums of length q^{3/4}, PV is essentially sharp in the worst case. Our quantity is a count,
+  not a signed sum, so this is a warning sign rather than an obstruction.
+- *Two complementary pictures.* The geometric 5/2 (determinant boxes = cells) and the analytic 5/2 (PV completion)
+  coincide.
+
+**(v) Rigid 1-dimensional analogues.**
+- For lattice points on circles in short arcs, unique factorisation beats Jarník (Cilleruelo–Córdoba). For n = p^k
+  the points form an AP in angle, which gives three-gap rigidity.
+- The non-abelian analogue here is words of the free product near a torus coset. No three-gap-type rigidity is known
+  for it, and §3d shows that higher-degree auxiliary forms lose on S³ × S³.
+
+**Verdict.** Not solved. Every available input gives exactly 2 (spectral, quotients, square-root inputs) or exactly
+5/2 (determinants, PV-type completion). The missing ingredient is cancellation beyond completion for an incomplete
+sum, or an equivalent non-abelian gap principle. Both are open problems in their own right.
+- *Toy model.* The cleanest place to try is Z⁴: four squares of a prime power near a great circle of S³. There the
+  same barrier sits at tube width n^{1/10}: n^{2/5} cells against volume n^{1/5}. Any power saving in that model
+  would already be new.
+
+## 6. Third pass: the same count in the sup-norm literature (2026-10-01)
+
+Our tube count is a **Hecke-return count near a torus at a single norm**:
+#{γ ∈ O, nrd γ = π^τ, γ within ε of a torus coset}. The automorphic-forms literature needs exactly this count for
+sup-norm and geodesic-restriction bounds.
+
+**Single norm: only elementary bounds are known.**
+- Marshall (arXiv 1204.0781, Duke 2016), Lemma 3.2: M(ℓ, n, κ) ≪ (κ² + κ^{1/2}) n^{1+ε} + n^ε, uniformly in the
+  geodesic, by geometry of numbers. In our normalisation this is ≈ 2^τ ε^{1/2}, weaker than our 5/2 analysis.
+- Blomer–Michel (definite case) and Khayutin–Nelson–Steiner (arXiv 2207.12351), Type I/II: also geometry of numbers
+  for a fixed lattice R(ℓ)⁰.
+
+**Every improvement averages over the norm.**
+- Marshall's Prop. 5.2: Σ_{M/2<m<M} M(ℓ, m, δ)/√m ≪ δ² M^{3/2} (volume law on average) once M ≥ δ^{−2−ε}.
+- The proof expands f = (smoothed tube) spectrally and uses Σ_m g(m/M) λ_i(m) ≪ M^{−A} (his Lemma 5.3). That comes
+  from the analytic continuation of L(s, ψ_i): shift the contour to Re s = −A.
+- KNS bound fourth moments through theta kernels together with a second-moment count over the determinant.
+
+**Why this is unavailable to us.**
+- In Clifford+T every norm is a power of the single prime P = (√2).
+- The analogue of Σ_m g(m/M)λ(m) is Σ_k g(2^k/M) λ(P^k). Its generating function is the local factor
+  L_P(ψ, X) = 1/(1 − a_ψ X + 2X²), whose poles lie at |X| = 2^{−1/2} under Ramanujan. So there is no contour to
+  shift: the sum has size 2^{K/2}, with no cancellation.
+- This is the square-root barrier again (rate 2), now seen as "one prime".
+- Equivalently: the Gibbs sum Σ_τ n(τ) 2^{−λτ} of our rate argument is spectrally Σ_π L_P(π, 2^{−λ}) w_π. For
+  λ < 1/2 the evaluation point lies beyond the radius of convergence of every non-trivial L_P.
+
+**Verdict.**
+- Pushing to α > 5/2, and a fortiori to 3, needs a *single-norm* bound for Hecke returns near a generic torus
+  beyond geometry of numbers.
+- That is not known even in the settings (Marshall, Blomer–Michel, KNS) where the community needed it; they avoided
+  it by averaging over the norm.
+- *Side remark (corrected in §9).* A gate set with generators at many primes, with cost = log norm, does **not**
+  escape. Its words of cost ≤ τ number ~4^τ, so the rate-relevant range shrinks to τ ≤ 1.5L, while averaging
+  over norms only reaches 2^τ ≥ ε^{−2}, i.e. τ ≥ 2L. For Clifford+T itself, averaging over all norms of size 2^τ
+  would cover the relevant range [2L, 3L]. The obstruction is that only the single norm (√2)^τ occurs.
+
+## 7. Fourth pass: no loophole on the process side; the two-round rate is exactly the occupancy exponent
+
+This pass looked for slack in the information-theoretic reduction, so that some averaging or spread condition might
+replace the worst-case tube bound. There is none. The following is rigorous.
+
+**Proposition (covering by translates; sharpens Prop. S, and settles "lies between" in Remark what52).**
+*Hypothesis.* For some ε, with the tuned Q = Q_ε, some τ and some frame G, let U ⊂ Z_Q be a set such that each
+u ∈ U has a word W_u with t(W_u) ≤ τ and d(W_u, R_z(Δu)G) ≤ ε/2.
+*Conclusion.* For r = 2 there is a deterministic zero-error CW process with T_pre ≤ mτ and
+S ≤ m(log₂(Q/|U|) + log₂ ln Q + 2). No condition on the gaps of U is needed.
+
+*Proof.*
+1. **Shifts.** Choose a public set of shifts K ⊂ Z_Q with ∪_{k∈K}(U − k) = Z_Q and |K| ≤ ⌈(Q/|U|) ln Q⌉ + 1.
+   It exists by the random choice plus union bound (P[a uncovered] ≤ e^{−|K||U|/Q} < 1/Q).
+2. **Round 1.** For share a, pick k ∈ K with a + k ∈ U. Emit W_{a+k} ≈ R_z(Δ(a+k))G, and store k.
+3. **Round 2.** Emit V within ε/2 of G⁻¹R_z(Δ(a₂ − k)). This costs nothing in T_pre.
+4. **Correctness.** W V is within ε of R_z(Δ(a + a₂)), by unitary invariance and the triangle inequality. ∎
+
+**Corollary (exact two-round rate).**
+- Let 𝒰_τ(G) be the set of grid cells reachable along the tube of G at cost ≤ τ.
+- The Gibbs lower bound (Cor. profile, cell version) gives α ≥ α* whenever max_G |𝒰_τ(G)| ≤ 2^{τ/α* + o(L)} for all
+  τ ≤ α*L.
+- The Proposition gives α ≤ τ/(log₂|𝒰_τ(G)| − log₂ L)·(1 + o(1)) for every τ and G.
+- Hence the r = 2 exchange rate equals sup{α : max_G |𝒰_τ(G)| ≤ 2^{τ/α + o(L)} for all τ < αL}.
+- **So α = 3 for r = 2 is equivalent to the cell form of SA.** Any proof of 3 must prove SA; no modelling or
+  averaging loophole exists. The frame is free because the final round is free, and the translates reuse a single
+  tube.
+- For r ≥ 3, rounds t ≥ 2 need SA for the arithmetic sources φ = P⁻¹|0⟩ (Hecke-ball version, i.e. Conjecture H in
+  Hopf form).
+
+**Status of the attempt to prove SA (cumulative).** No route found.
+- Every input available is listed in §§3, 5 and 6.
+- In the language of §6, the needed statement is a single-norm Hecke-return bound near a generic torus beyond
+  geometry of numbers. It is not known in any setting.
+
+Further checks made in this pass, each a dead end:
+- *Subspace theorem.* The tube points are Dirichlet-level approximations: the product of the linear forms is
+  ≈ R'^{8−2a₀} ≫ 1. The theorem needs a₀ > 4.
+- *Cilleruelo–Córdoba products.* These need Liouville in a single complex embedding. Z[ω] has two complex places, and
+  σ₂ is free. Pigeonholing σ₂ forces equality only when εη2^τ < 1/4, i.e. N > 16ε²2^{2τ}.
+- *Expander mixing on an ε-net.* The error is 2^{τ/2}ε^{−1/2}, worse than Ramanujan.
+- *Hecke-stable profiles.* The target 2^{τ/3} grows by 2^{1/3} per level against the tree's factor 2, so no
+  inductive argument over levels can produce it.
+
+## 8. Fifth pass (2026-10-01)
+
+**(a) Reduction to arithmetic frames (rigorous).**
+- Every great circle lies within ε of an arithmetic one, G₁, G₂ ∈ Γ, of height about 2L, because cosets meet Λ_h
+  once h ≥ 2L.
+- Hence Q2 holds for all frames ⟺ Q2 holds for arithmetic frames, uniformly in their height.
+- *Equivalent tree form.* For V in the Clifford tube (off-diagonal entry small), the count of V with
+  d(y, Vx) ≤ τ, for vertices x, y of the tree, should be ≤ 2^{o}(1 + 2^τ ε²). That is, Clifford-tube elements must be
+  equidistributed in the 2-adic tree. Theorem clifford pays exactly the factor 2^{d(x,v₀) + d(y,v₀)} for ignoring
+  this.
+- Splitting off prefixes is circular: Σ over prefixes P of length h of n_τ(P⁻¹T) is the proven Clifford count, and
+  each term is the arithmetic-frame count again.
+
+**(b) Beyond GRH.**
+- For each (character, harmonic), Deligne/Ramanujan/Lindelöf applied to the theta series bounds the hybrid sums S_χ
+  only by roughly the square root of the *complete* count. This is larger than T₀, so it gives at best rate 2.
+- So α > 5/2 is beyond what GRH-type inputs give by the standard routes. The unconditional 5/2 is already past them.
+
+**(c) Numerics cannot reach the asymptotic regime.**
+- Meet-in-the-middle (W = AB, A ∈ prefixes of length m, B = suffix·Clifford) makes one tube cost O(2^{τ/2}). Close
+  pairs Bloch(A^†G₁|0⟩) ≈ Bloch(B G₂⁻¹|0⟩) are found with a spatial hash at resolution 2 arcsin ε.
+- But at τ = 5L/2 the ratio volume/cells is ≈ 92·2^{−L/2}, because of the Haar constants (72·2^{τ}ε² against
+  π/(4ε)).
+- It drops below 1/100 only for L ≳ 26, i.e. τ ≳ 65. At feasible τ ≤ 48 it is ≈ 0.1, so no search can separate
+  "volume × poly" from "cells^{1−κ}".
+- Not pursued.
+
+**(d) Side observation (corrected after agent_decoupling).**
+- Lifting through the Hopf map, the S³ determinant method bounds the points of x² + y² + z² = n² in caps of radius
+  r ≤ n^{3/5} by n^{2/5+o(1)}. Monotonicity in r gives this for every r ≤ n^{3/5}.
+- The general Bourgain–Rudnick bounds give min(r²n^{−1/2}, r)·n^{o(1)}. Their Lemma 2.2, the "(1 + λ)" bound, gives
+  n^{3/5} at r = n^{3/5}, not n^{7/10} as first written here.
+- So the lift improves on Bourgain–Rudnick for r ∈ (n^{9/20}, n^{3/5}]. No prior statement of this lift was found.
+- Related work: Zhang–Zhu (arXiv:2606.08650) prove ≤ λ^{3/4} lattice points in unit-width tubes around circles on
+  λS³ and conjecture λ^ε. Their conjecture would imply the toy-model volume law. The determinant method already gives
+  ≈ λ^{2/3} at unit width.
+
+**(e) Delegated directions, reports in this folder:** Burgess/bilinear forms on the hybrid sums S_χ
+(`agent_burgess.md`); decoupling and polynomial methods (`agent_decoupling.md`); Linnik basic lemma and entropy
+(`agent_linnik.md`).
+
+**(f) Reports received.**
+- *Burgess (`agent_burgess.md`): fails.*
+  - With the weight dropped, the critical scale is exactly the Burgess endpoint: the dual sum has length q^{1/4}.
+    Beating it needs uniform subconvexity C^{1/8−η}, which is beyond Weyl and beyond Milićević's sub-Weyl bound for
+    prime-power moduli.
+  - The weight a_χ(Hn − N(g)) breaks Burgess's collection step: the summation set is a definite quadric with no
+    translation invariance.
+  - Type II bounds are trivial: the kernel is a non-negative incidence and all oscillation sits in multiplicative
+    coefficients.
+  - Dispersion needs an average over the shift or over the modulus, and neither exists.
+- *Decoupling (`agent_decoupling.md`): fails. Main structural finding, the window barrier.*
+  - The determinant input holds for the union of tube points over all norms in a window |nrd − n| ≲ w², and that union
+    has ≍ one point per cell on average (proved in the toy model, sketched for O).
+  - So every Archimedean method stops exactly at the cell count. Q1 needs arithmetic that singles out the exact norm.
+  - Congruences mod M only reduce the union to cells/M. A power saving needs tree depth ≳ κ log(1/ε).
+  - Decoupling caps at the critical width are exactly the cells. Even the conjectured endpoint gives n^{3/5}, against
+    n^{2/5} cells.
+  - Degree-D determinants: on one-cell boxes the log-norm of the determinant is (6/5)·C(D+2,3)·(D − 1)/2 > 0 for
+    D ≥ 2.
+- *Linnik / entropy (`agent_linnik.md`): fails.*
+  - Basic lemmas, proved:
+    - L1: shared prefix c ⟹ separation ≥ c₀2^{−(t−c)/2}, and this is sharp numerically.
+    - L2: the joint σ₁/σ₂ pair count gives the volume law at every scale.
+    - L3: a set of diameter r contains at most C(1 + r²2^t) words.
+  - On tubes these only give N ≤ 2^tε, i.e. rate 2.
+  - Tree-class splitting buys K^{1/2} (pairs) or K² (5-point determinant) where K and K³ are needed. Prefix and suffix
+    sharing is no better than a longer prefix.
+  - **Rigorous no-go.** Adding ε^{−1} points along one tube preserves every ball non-concentration bound with s ≤ 5/2,
+    and every L² bound. So no argument whose only inputs are ball or L² non-concentration of μ_t can decide Q1.
+    Flattening is already optimal.
+  - The Bourgain–Gamburd commutator relation W₂W₁⁻¹W₃ = W₃W₁⁻¹W₂ for points on a torus coset forces exact structure only
+    for ε ≤ R'^{−6}, and gives a gap principle only for ε ≲ R'^{−3}.
+  - Translates of a rich tube cannot be used either. One-sided translates are parallel cosets, and Ramanujan scales the
+    signal and the error equally. Two-sided translates carry too few incidences for any Furstenberg or
+    Szemerédi–Trotter contradiction.
+
+**Synthesis (2026-10-01).** Three independent barriers sit exactly at 5/2.
+1. *Analytic:* the dual sum has length q^{1/4}, the Burgess endpoint.
+2. *Geometric:* Archimedean methods see only a norm window, whose union has one point per cell.
+3. *Dynamical:* non-concentration inputs are blind to a single full tube.
+
+Any proof of α > 5/2 needs arithmetic of the exact single norm against a generic torus, of "beyond Burgess"
+strength. Nothing in the literature supplies it.
+
+
+## 9. Sixth pass (2026-10-01, after the user asked for further approaches)
+
+Each of the following fails, at the place indicated.
+
+- **Amplification with auxiliary odd primes.** Each tube point W gives Wγ (γ of norm p^j, near the torus T₂) at
+  norm 2^τ p^j. Spectral averaging over p^j (Marshall) gives the composite counts. But lower-bounding by the
+  T₂-returns loses exactly their density ε², so one gets only Markov-type bounds: F(C) ≤ mean(F)/ε² = 2^τ.
+  Sup bounds need regularity of F at a scale larger than ε, which a rich tube does not have.
+- **One global auxiliary polynomial.**
+  - *Setup.* Choose, by Siegel's lemma, a degree-D polynomial with K-coefficients that is small on the whole
+    σ₁-tube, then use Liouville in both embeddings.
+  - *Bookkeeping.* Unknowns ≈ D³/3; conditions ≈ D·m² (jets of order m = μD along the core). This needs
+    μ·a₀ ≥ 2(1 + c)/(1 − c) with c = μ²/(1/3 − μ²).
+  - *Verdict.* Infeasible unless a₀ ≳ 3.5. So no single hypersurface captures a one-point-per-cell configuration,
+    consistent with the window barrier.
+- **2-adic (arithmetic-frame) formulation, depth aspect.**
+  - Approximate the frame by an arithmetic one (height h ≈ 2L). The tree condition becomes t ≡ s·ū (mod P^h): the
+    same congruence structure as §5(iv), now with modulus 2^h.
+  - The core object is again the hybrid sum Σ_t ψ(t) a_χ(2^{k'} − N(t)), and the Pólya–Vinogradov size
+    √(2^h) = 2^L = cells reappears.
+  - Postnikov-type p-adic analyticity does not linearise a_χ along the quadric.
+- **van der Corput / Weyl differencing on Λ_τ.** It fails because the free group is non-amenable: |Λ_τ g Δ Λ_τ| ≍ |Λ_τ|.
+  Non-amenability is exactly what gives the spectral gap, which is capped at square root.
+- **Products of tube words** (left quotients near the Clifford torus, where the volume law is proved; k-fold
+  products; near-identity products). They land at T-count 2kτ, where the volumes grow faster than |U|^{2k}, so there
+  is never a contradiction. Pair counting is intrinsically rate 2.
+- **Fourier decay of local spectral measures.** F_τ = P_τ(A)F₀ on frame space, and the deviation from the main term is
+  2^{τ/2} times the Fourier coefficient at "time" τ of the local spectral measure. Bounding that coefficient is the
+  count itself.
+- **Random-axis families** (target axes random, revealed at the start). Round 1 then needs only
+  sup_{x₂} N(x₁, x₂) for almost every x₁. Via local constancy this costs the same high moments (U_k). It also changes
+  the paper's model.
+- **Standard conjectures.** GRH, Lindelöf, Ramanujan, twisted Linnik (BKS) and the density hypothesis each give at
+  most rate 2 for tube *upper* bounds. Ball-covering with asymptotics fails below one expected point per ball. No
+  named conjecture short of a Bourgain–Rudnick-type small-cap statement (Conjecture H / SA) implies α > 5/2.
+- **Literature.**
+  - Burrin–Gröbner (arXiv:2502.17678) treat x² + y² + z² = n², the classical analogue of SA. Individual caps reach
+    only n^{−1/4+o(1)}, the square-root scale; almost all caps reach n^{−1/2+δ}.
+  - Wang–Zhang (arXiv:2609.18290) is eigenfunction restriction, not lattice points.
+
+**Sharpest formulation of the obstruction.**
+- For Clifford+T the rate-relevant range is τ ∈ [2L, 3L].
+- Averaged over all norms m with N(m) ≍ 2^τ, the tube count obeys the volume law there: Marshall's Prop. 5.2
+  transplanted, since 2^τ ≥ ε^{−2−δ}.
+- α = 3 is exactly the statement that the single norm (√2)^τ is not exceptional in this average, at sub-square-root
+  scales.
+
+## 10. Seventh pass: new ideas only, no literature (2026-10-01)
+
+Setting: SA in point form. Count the r = t/u ∈ P¹(Q(ζ₈)) with Hermitian height |u|² + |t|² = 2^k exactly (in both
+embeddings) and σ₁(r) ∈ D(z₀, ε). Critical scale: ε = 2^{−4k/5}, cells 2^{4k/5}, volume 2^{2k/5}.
+
+**(A) Band decomposition (new and rigorous; the cleanest target found).**
+- *Bands obey the volume law.* A latitude band about a Clifford axis is {N(u) ∈ W} (σ₁-window of relative width ε).
+  Its count Σ_{m∈W} r(m) r(2^k − m) ≤ 2^{o(k)}·ε4^k is the volume law, proved by the divisor bound. More generally,
+  bands about an arithmetic axis φ of height H obey it with loss H².
+- *Caps reduce to azimuths.* A cap is the intersection of two bands about different axes. But a second band only
+  restricts the lattice points of each circle to arcs, and the divisor bound cannot see arcs. So the cap count is
+  exactly the azimuthal question in one band.
+- *Fourier expansion.* Detect the azimuth window with Grössencharacters (u/|u|)^ℓ, 8 | ℓ, |ℓ| ≲ 1/ε. These are
+  unramified Hecke characters of Q(ζ₈). Then cap count = main + Σ_ℓ ĉ_ℓ e^{−iℓα₀} S_ℓ, where
+  S_ℓ = Σ_{m∈W} a_ℓ(m) ā_ℓ(2^k − m): a short shifted convolution of a CM Hilbert form with itself at shift 2^k, of
+  length L ≈ ε4^k.
+- *Dictionary.*
+  - The trivial bound |S_ℓ| ≤ L gives rate 2.
+  - A saving L^{1/3} reaches 5/2; a saving L^{1/3+δ} beats it.
+  - Square-root cancellation gives 3.
+  - Spectral methods give |S_ℓ| ≲ 2^k = √(complete length), i.e. rate 2.
+
+**(B) Excess invariance: no transport proof exists.** Let E = count/volume.
+- E is preserved by 2-adic splitting (children at lower level) and by transverse splitting (narrower tubes).
+- E is diluted by merging, by left translates, and by right shifts along the torus. A shift by V near T₂ multiplies
+  E by ε²η²/(ε + η)².
+- At a₀ = 8/5 a saturated tube has E = 2^{L/2}. The window barrier allows exactly this at a₀ = 8/5, and allows more
+  at a₀ > 8/5. So no sequence of splittings or translations reaches a scale where a known bound is violated.
+- Theorem U's unit-scale route needs θ < 1/4, but the window barrier at the unit scale is 2^{τ/3}.
+
+**(C) Cilleruelo–Córdoba transplanted fails for a structural reason.** On a circle of norm p^e, any m points share
+Gaussian factors, of total size ≈ n^{m²/4}, because each prime contributes a 1-dimensional exponent: the tree is a
+line. Words of norm P^τ are paths in a 3-regular tree. The minimal total sharing (prefixes and suffixes) is ≈ m²
+syllables, i.e. a divisibility of about 2 per pair, against the δR' = R'^{2/5} needed. Non-commutative unique
+factorisation forces no sharing.
+
+**(D) Other dead ends.**
+- *One global auxiliary polynomial.* Infeasible for a₀ < 3.5 (§9).
+- *Exact σ₂-sphere.*
+  - Circumcentres: for exact-norm 5-tuples the circumcentre is 0, but that only restates nrd = n.
+  - Cayley–Menger and parallelogram relations are identities; the midpoints of exact points are window points.
+- *Pancharatnam/Bargmann invariants and cross-ratios.* Their small parts factor as Δ_{24} Δ̄_{13}, i.e. no new
+  information.
+- *Double caps (σ₁ and σ₂).* Liouville gives separation only below η ≈ 4^{−k}/ε.
+- *Sum-product.* The Hopf map is the sum-product structure (|u|² + |t|², ūt), but no small-scale theorem applies.
+- *Approximate APs in phase and k-fold products of tube words.* They land at T-count 2kτ, where volumes grow faster.
+- *Meet-in-the-middle.* The tube count equals the number of ε-close pairs between two Hecke orbits Λ_{τ/2}x₁ and
+  Λ_{τ/2}x₂. Each orbit is spread (≤ 2^{L/6} points per cap), but bounding close pairs needs independence of the two
+  orbits at scale ε, which is the problem itself.
+- *Arithmetic CM tori and section clusters.* These give O(τ) exact points or fewer than volume, so no candidate
+  counterexample exists either.
+
+**Verdict.** No new working mechanism. The obstruction is now located three ways: the window barrier (B),
+non-commutativity of factorisation (C), and the short shifted convolution S_ℓ (A).
+
+## 11. Numerics for §10(A) (2026-10-01; details in numerics/RESULTS.md)
+
+Computed S_ℓ exactly for every band and every ℓ ≤ 1/ε, for k ≤ 16 (up to 1.7·10^10 states), at β = 4/5 and β = 2/3.
+
+- **Test A.** The normalised Z = S_ℓ/(8√S_0) has a k-independent distribution:
+  - E Z² = 1.00;
+  - kurtosis 3.45;
+  - 99.99% quantile 4.5 for every k = 13, …, 16.
+  Effective θ = 1/2 up to logarithms, far from the θ = 1/3 line.
+- **Test B.** Direct cap counts at the critical scale are Poisson: var/mean = 1.00, and the maxima equal the Poisson
+  maxima (k = 16: 166 against 168, volume 107). The determinant bound allows about 1.1·10⁴.
+- **Exceptions at arithmetic points.** At |+⟩ and at the H-eigenstates there are rich circles (states sharing
+  |u − t|²). The excess reaches 5.5× at k = 12, decays to ≤ 1.4× for k ≥ 14, and is divisor-bounded.
+
+Verdict: the numerics support SA and θ = 1/2. They give no proof. The needed pointwise θ > 1/3 is of subconvexity
+strength, while the provable mean square over ℓ is the L² statement that is blind at the critical scale.
