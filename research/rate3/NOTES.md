@@ -750,3 +750,11 @@ is ≍ X³ for frames X arcs apart; the Bloch 4-point determinant, the 2×2 mino
 ε ≤ 2^{−3t/4} or the Liouville scale 2^{−t}. Hence Σ_c N_c⁵ (⇒ 13/5) is governed by cross-arc 5-tuples, on which the determinant
 method is silent; same-arc tuples contribute ≤ 2^{6t/5+o} ≪ 2^{9t/5}. Dictionary in T-count units: ε = 2^{−2t/5}, vol = 2^{t/5},
 1/ε = vol², B = vol³, √N = vol^{5/2}.
+
+**(g) Properties of the orbit tested against the spike (round 10; `scratch/round10_model_tests.md`).** Exact multiplicativity
+X_{P^τl} = X_{P^τ}X_l/48 together with the norm-averaged and Hecke-averaged volume laws, the exact identity Σ_W D(W) = whole-sphere
+pair deviation, unique factorisation of quotients, Galois symmetry, the flat tube bound at all levels with the Hecke recursion, the
+exact band identity, Clifford-coset cube counts, the window-union count, the prefix-class structure with L1, and the known arithmetic
+excesses are all satisfied by M_vol. Each is (α) a Weyl-sum statement with error ≥ √N ≫ M², (β) an exact identity for a divisor-type
+total in which the spike is lower order, or (γ) a counting bound whose capacity exceeds the spike's demand. A killer must be a
+single-norm, single-cap, sub-√N statement, i.e. of SA type.
