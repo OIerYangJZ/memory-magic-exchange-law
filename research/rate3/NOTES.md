@@ -679,3 +679,18 @@ With D(W) := Σ_c(N_c − vol)² = Σ_{ℓ≠0}ĉ_ℓ|S_ℓ|² ≥ 0 and the cri
 - *Small positive by-product (rigorous).* For band width ε and azimuth cells of width η ≥ vol^{−1+δ}, the in-band pair count is
   Poisson with a power saving: Σ_{|ℓ|≤vol^{1−δ}}|S_ℓ|² ≤ B²vol^{−δ}. This is §12(b)'s asymptotic on the range ℓ ≤ vol; the
   missing range is exactly ℓ ∈ [vol, vol²], i.e. Grössencharacter conductors ℓ² ∈ [1/ε, 1/ε²].
+
+**(b) P-adic Fourier form and the depth-split determinant bound (round 5; `scratch/round5_padic.md`).**
+- Class P ⟺ ν ∈ L_P := O_Kν_P + P^τO_K³ (index 2^{2τ}). Exactly n(P) − vol = 2^{−2τ}Σ_{η∈L_P^⊥∖0}Ŵ(η) with
+  Ŵ(η) = Σ_{ν∈X∩cap}e_{P^τ}(⟨η,ν⟩). Per-η square root with absolute values gives vol³; Parseval over L_P^⊥ counts cap pairs
+  with difference in L_P and its diagonal N_cap = 2^{6τ/5} exceeds the target vol². Ŵ(η) is a theta coefficient with
+  characteristic η/P^τ at index = level (depth aspect, §14(b)). Grouping η by valuation is the Hecke recursion.
+- *Rigorous.* Splitting words at depth p, the suffix orbit has 2^{2k−p} points and App. E's determinant scale is below ε iff
+  p ≥ 2k/3. Hence for p ≥ 2k/3 each prefix class contributes ≤ 2^{o(k)} points to an ε-cell, and N_c ≤ 2^{o}H_{2k/3},
+  H_p := #{classes of depth p hitting the cell}. SA ⟺ H_{2k/3} ≤ vol·2^{o}, i.e. H_{2k/3} = #{P ∈ Λ_{2k/3} : P^{−1}z₀ ∈ U},
+  U the ε-neighbourhood of the fixed orbit Λ_{4k/3}|0⟩ (measure N^{−2/15}). Ramanujan gives error √N again.
+- *Exact recursion of deviation fields.* F_j(z) := N_{cap(z,ε)}(j) − main; T₂F_k = F_{k+1} + F_k + 4F_{k−1} with T₂ = Σ_{Λ₂}g^*.
+  On L²₀ Ramanujan gives spec T₂ ⊂ [−3,5], and each component grows exactly like 2^k: the Poisson growth saturates Ramanujan.
+  Backward propagation of a spike against the determinant bound at lower levels gains nothing (factor 1.137^s against it).
+- Literature (search only): no individual-cap bound beyond the determinant method for x²+y²+z² = n (Bourgain–Rudnick
+  F₃(R,λ) ≪ R^ε(1+λ²)); Humphries–Radziwiłł is variance; Burrin–Gröbner averages over heights.
