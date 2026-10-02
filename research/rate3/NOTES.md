@@ -668,7 +668,8 @@ correlation (⇒ 13/5) added below 6-point.
 
 **(a) The sign in §15(d) gives nothing beyond Ramanujan (rigorous accounting; details in `scratch/round4_sign.md`).**
 With D(W) := Σ_c(N_c − vol)² = Σ_{ℓ≠0}ĉ_ℓ|S_ℓ|² ≥ 0 and the critical-scale dictionary 1/ε = vol², B = vol³, N = vol⁵:
-- The provable functionals of {S_ℓ} are: per-ℓ |S_ℓ| ≤ √N k^C; the large sieve Σ_{|ℓ|≤Λ}|S_ℓ|² ≤ (Λ+B)B; the isotropic
+- The functionals of {S_ℓ} with usable bounds are: per-ℓ |S_ℓ| ≤ √N·2^{o} (the shifted-convolution spectral bound of §10(A), taken
+  from there; S² Ramanujan on the ~1/ε harmonics of e^{iℓα}1_W gives only √N ε^{−1/2} = N^{7/10}, worse than the trivial B); the large sieve Σ_{|ℓ|≤Λ}|S_ℓ|² ≤ (Λ+B)B; the isotropic
   whole-sphere sum of squares Σ_W D(W) ≤ N k^C; and exact long-range Parseval Σ_{ℓ mod Λ}|S_ℓ|² = ΛB·2^{o} for Λ ≥ B.
   The gap is Σ_{|ℓ|≤Λ}|S_ℓ|² for Λ ∈ [vol, vol²]: per-ℓ Ramanujan reaches exactly B² at Λ = vol, the target is B^{2−δ} at Λ = vol².
 - Positivity transfer D(W₀) ≤ Σ_{W∈F}D(W) costs |F| and gains the family's power saving. Window sums (|F| = 1/ε, gain vol):
@@ -676,21 +677,35 @@ With D(W) := Σ_c(N_c − vol)² = Σ_{ℓ≠0}ĉ_ℓ|S_ℓ|² ≥ 0 and the cri
   2^s ≥ ε^{−2−δ}) have deficit vol³. The Gram matrix over windows is PSD with total ≤ N k^C but signed off-diagonal.
 - A rich cell N_c = X vol forces RMS_{|ℓ|≤2vol²/X}|S_ℓ| ≥ X vol/2; against per-ℓ Ramanujan this is X ≤ vol^{3/2}, against the
   large sieve X ≤ vol. Nothing new.
-- *Small positive by-product (rigorous).* For band width ε and azimuth cells of width η ≥ vol^{−1+δ}, the in-band pair count is
-  Poisson with a power saving: Σ_{|ℓ|≤vol^{1−δ}}|S_ℓ|² ≤ B²vol^{−δ}. This is §12(b)'s asymptotic on the range ℓ ≤ vol; the
-  missing range is exactly ℓ ∈ [vol, vol²], i.e. Grössencharacter conductors ℓ² ∈ [1/ε, 1/ε²].
+- *Withdrawn (round 6 correction).* The round-4 claim that azimuth cells of width η ≥ vol^{−1+δ} give a power-saving in-band
+  Poisson asymptotic was wrong: it majorised the anisotropic (ε-band × η-cell) pair count by the isotropic η-pair count, whose
+  main term is larger by η/ε. Correct accounting (Schur bound on the anisotropic kernel) gives relative error k²/vol only for
+  the sum over all bands, i.e. nothing for a single band. The gap remains the whole range 0 < |ℓ| ≤ 1/ε.
 
 **(b) P-adic Fourier form and the depth-split determinant bound (round 5; `scratch/round5_padic.md`).**
 - Class P ⟺ ν ∈ L_P := O_Kν_P + P^τO_K³ (index 2^{2τ}). Exactly n(P) − vol = 2^{−2τ}Σ_{η∈L_P^⊥∖0}Ŵ(η) with
   Ŵ(η) = Σ_{ν∈X∩cap}e_{P^τ}(⟨η,ν⟩). Per-η square root with absolute values gives vol³; Parseval over L_P^⊥ counts cap pairs
   with difference in L_P and its diagonal N_cap = 2^{6τ/5} exceeds the target vol². Ŵ(η) is a theta coefficient with
   characteristic η/P^τ at index = level (depth aspect, §14(b)). Grouping η by valuation is the Hecke recursion.
-- *Rigorous.* Splitting words at depth p, the suffix orbit has 2^{2k−p} points and App. E's determinant scale is below ε iff
-  p ≥ 2k/3. Hence for p ≥ 2k/3 each prefix class contributes ≤ 2^{o(k)} points to an ε-cell, and N_c ≤ 2^{o}H_{2k/3},
-  H_p := #{classes of depth p hitting the cell}. SA ⟺ H_{2k/3} ≤ vol·2^{o}, i.e. H_{2k/3} = #{P ∈ Λ_{2k/3} : P^{−1}z₀ ∈ U},
-  U the ε-neighbourhood of the fixed orbit Λ_{4k/3}|0⟩ (measure N^{−2/15}). Ramanujan gives error √N again.
+- *Withdrawn (round 6 correction).* Round 5 claimed that for prefix length p ≥ t/3 each prefix class contributes ≤ 2^{o} points
+  to an ε-cell, assuming the determinant bound for the suffix orbit improves below its critical scale. It does not: by Theorem
+  rate52 / Remark what52 the tube bound is "≤ 2^{o} words per δ-cube along the core" with δ the critical cube for the T-count,
+  i.e. 2^{2t′/5} for T-count t′ at every radius ≤ 2^{−2t′/5}. A class at depth p therefore contributes ≤ 2^{2(t−p)/5+o}, and
+  summing over 2^{p} classes gives 2^{2t/5+3p/5}: a loss of 2^{3p/5}, confirming §3(e). The hitting-set reformulation H_p is
+  void. What survives: the structure of a hypothetical rich cap at the critical scale is "one frame per ε-arc of the Hopf fibre"
+  (the determinant method constrains the fibre coordinate, not sub-cells of the cap).
 - *Exact recursion of deviation fields.* F_j(z) := N_{cap(z,ε)}(j) − main; T₂F_k = F_{k+1} + F_k + 4F_{k−1} with T₂ = Σ_{Λ₂}g^*.
   On L²₀ Ramanujan gives spec T₂ ⊂ [−3,5], and each component grows exactly like 2^k: the Poisson growth saturates Ramanujan.
   Backward propagation of a spike against the determinant bound at lower levels gains nothing (factor 1.137^s against it).
 - Literature (search only): no individual-cap bound beyond the determinant method for x²+y²+z² = n (Bourgain–Rudnick
   F₃(R,λ) ≪ R^ε(1+λ²)); Humphries–Radziwiłł is variance; Burrin–Gröbner averages over heights.
+
+**(c) Black-box insufficiency model (round 6; `scratch/round6_model.md`).** Let (R) be Ramanujan Weyl sums at every frequency,
+(D) the 5/2 tube bound ("≤ 2^{o} words per critical δ-cube along the core", flat below δ), (C) the divisor bound on arithmetic
+circles, (L) Liouville/L1 separation, (V) the band volume law about arithmetic axes, (H1) the exact Hecke recursion of deviation
+fields, (H3) joint σ₁/σ₂ equidistribution at the Ramanujan rate. A configuration consisting of a Poisson-like background plus
+M = 1/ε = vol² frames over one critical ε-cap, one per fibre ε-arc, satisfies all of (R),(D),(C),(L),(V),(H1),(H3) (checked
+item by item) and saturates the trivial in-band pair bound. Hence no combination of these inputs by positivity, Cauchy–Schwarz,
+Hölder, interpolation or Hecke recursion gives N_c ≤ vol^{2−δ}. It is killed exactly by the criteria of §12–§15 (5-point
+correlation, in-band pair asymptotic, centred fourth moment), and by nothing weaker. The only input not absorbed by the model
+is the exact arithmetic of Z[ζ₈] (band counts and circle multiplicities as identities rather than divisor upper bounds).
