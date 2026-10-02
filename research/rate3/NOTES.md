@@ -663,3 +663,19 @@ now with the sign information that the deviation is non-negative. The large siev
 
 **Status after §15.** Unchanged: 5/2 unconditional. The cleanest open targets are those of §14, with 5-point
 correlation (⇒ 13/5) added below 6-point.
+
+## 16. Eleventh pass (2026-10-02, cloud session; per-round log in PROGRESS.md §4–§7)
+
+**(a) The sign in §15(d) gives nothing beyond Ramanujan (rigorous accounting; details in `scratch/round4_sign.md`).**
+With D(W) := Σ_c(N_c − vol)² = Σ_{ℓ≠0}ĉ_ℓ|S_ℓ|² ≥ 0 and the critical-scale dictionary 1/ε = vol², B = vol³, N = vol⁵:
+- The provable functionals of {S_ℓ} are: per-ℓ |S_ℓ| ≤ √N k^C; the large sieve Σ_{|ℓ|≤Λ}|S_ℓ|² ≤ (Λ+B)B; the isotropic
+  whole-sphere sum of squares Σ_W D(W) ≤ N k^C; and exact long-range Parseval Σ_{ℓ mod Λ}|S_ℓ|² = ΛB·2^{o} for Λ ≥ B.
+  The gap is Σ_{|ℓ|≤Λ}|S_ℓ|² for Λ ∈ [vol, vol²]: per-ℓ Ramanujan reaches exactly B² at Λ = vol, the target is B^{2−δ} at Λ = vol².
+- Positivity transfer D(W₀) ≤ Σ_{W∈F}D(W) costs |F| and gains the family's power saving. Window sums (|F| = 1/ε, gain vol):
+  deficit vol^{1+δ}, i.e. the Ramanujan sup bound √N. Axis averages and Hecke translates of the axis (orbit-in-band counts need
+  2^s ≥ ε^{−2−δ}) have deficit vol³. The Gram matrix over windows is PSD with total ≤ N k^C but signed off-diagonal.
+- A rich cell N_c = X vol forces RMS_{|ℓ|≤2vol²/X}|S_ℓ| ≥ X vol/2; against per-ℓ Ramanujan this is X ≤ vol^{3/2}, against the
+  large sieve X ≤ vol. Nothing new.
+- *Small positive by-product (rigorous).* For band width ε and azimuth cells of width η ≥ vol^{−1+δ}, the in-band pair count is
+  Poisson with a power saving: Σ_{|ℓ|≤vol^{1−δ}}|S_ℓ|² ≤ B²vol^{−δ}. This is §12(b)'s asymptotic on the range ℓ ≤ vol; the
+  missing range is exactly ℓ ∈ [vol, vol²], i.e. Grössencharacter conductors ℓ² ∈ [1/ε, 1/ε²].
