@@ -766,3 +766,18 @@ B_W = Σ_{m∈W}r(m)r(n−m), main |W| = εN = N^{3/5}. Hyperbola method with Ha
 exponent 2/3 gives N^{2/3} > N^{3/5}. Needed: exponent 3/5 − δ for the binary additive divisor problem over Q(√2) with a σ₁-short
 window. Numerically (k = 12–15) the band count fluctuates across bands with relative local std 0.76/√L, k-independent, Gaussian
 tails: B_W = main(1 + O(|W|^{−1/2})), deviation ≍ N^{3/10}. So already the ℓ = 0 statistic sits N^{11/30} beyond what any method proves.
+
+**(i) The minimal open problem below SA (round 12; `scratch/round12_minimal.md`).** With J = 1/ε = N^{2/5} and the Clifford-axis zonal
+Weyl sums Z_j = Σ_x Y_{j0}(z(x)): the band asymptotic for all bands follows from the variance Σ_W(B_W − main)² ≍ εΣ_{j≤J}|Z_j|², hence from
+  (M₀)  Σ_{j ≤ N^{2/5}} |Σ_{x∈X_n} Y_{j0}(ẑ·x)|² ≤ N^{8/5−δ}.
+Truth ≍ N^{7/5} (Test E), Ramanujan ≤ N^{9/5}k². Equivalent forms: latitude pair correlation at scale ε with relative error N^{−2/5−δ};
+the mean over ≍ N^{3/5} σ₁-short shifts h of the 4-fold divisor correlations C(h) = Σ_m r(m)r(n−m)r(m+h)r(n−m−h) with per-shift error
+N^{3/5−δ}. Spectrally Z_j = Σ_{f∈H_j^C}⟨Y_{j0},f⟩f(ẑ)2^{t/2}U_t(cos θ_f) with ‖Π_CY_{j0}‖² = (1+(−1)^j)/6 + (2/3)P_j(0) (zero for odd j), so
+(M₀) is weighted equidistribution of the Satake angles of the ≍ j/12 Clifford-invariant forms of each even degree j at scale 1/log N:
+the vertical Sato–Tate statement of §14(b) at exactly the scale where Serre-type results have no power saving. (M₀) involves no
+azimuth and no cusp forms and is strictly easier than every mean-square route to SA; nothing proves it. Over Q the analogous
+individual short-interval additive divisor asymptotics are unknown below x^{2/3} (Motohashi); Ivić–Motohashi-type mean-over-shifts
+bounds miss (M₀)'s analogue by N^{1/3}.
+
+**Status after §16(i).** Unchanged: 5/2 unconditional. The two orientation results of the cloud sessions: (c) every input used so far
+is consistent with a vol² spike; (i) the first missing input is already needed at ℓ = 0, as (M₀).

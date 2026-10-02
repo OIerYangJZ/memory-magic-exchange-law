@@ -106,6 +106,15 @@ Spectral form of the obstruction (§14(b)):
 - Two claims made during the session were withdrawn in round 6 (PROGRESS §6 勘误): the 5/2 tube bound is flat below the critical
   cube, so prefix splitting loses 2^{3p/5} (confirming §3(e)).
 
+## 5c. Cloud session 2026-10-02, rounds 9–12 (NOTES §16(f)–(i), PROGRESS.md §9–§12)
+
+- The K-determinant constrains only frames within one fibre ε-arc; cross-arc 5-tuples (the content of the 5-point criterion) carry no
+  algebraic relation at the critical scale (§16(f)).
+- Eleven true properties of the orbit are all absorbed by the spike model; a killer must be single-norm, single-cap, sub-√N (§16(g)).
+- The band count B_W has no provable asymptotic at the critical scale; numerically B_W = main(1 + O(|W|^{−1/2})) (Test E, §16(h)).
+- **Minimal open problem (M₀)** (§16(i)): Σ_{j≤N^{2/5}}|Σ_x Y_{j0}(ẑ·x)|² ≤ N^{8/5−δ} — zonal Weyl sums of one orbit about the Clifford
+  axis; implies the band asymptotic; spectrally it is vertical Sato–Tate at scale 1/log N. Attack this before SA.
+
 ## 6. Corrections inside NOTES (read the corrected versions)
 
 - The §6 side remark on multi-prime gate sets is corrected in §9.
