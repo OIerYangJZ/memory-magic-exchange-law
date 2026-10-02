@@ -407,7 +407,9 @@ embeddings) and σ₁(r) ∈ D(z₀, ε). Critical scale: ε = 2^{−4k/5}, cell
   - The trivial bound |S_ℓ| ≤ L gives rate 2.
   - A saving L^{1/3} reaches 5/2; a saving L^{1/3+δ} beats it.
   - Square-root cancellation gives 3.
-  - Spectral methods give |S_ℓ| ≲ 2^k = √(complete length), i.e. rate 2.
+  - Spectral methods give |S_ℓ| ≲ 2^k = √(complete length), i.e. rate 2. *[Corrected in §16(e): this is proved only
+    in mean square over ℓ. Per ℓ, spherical harmonics + Ramanujan give k√N·ε^{−1/2}, worse than the trivial bound at the
+    critical scale; the √N heuristic is for the complete shifted convolution, and even there the ℓ-dependence is not written.]*
 
 **(B) Excess invariance: no transport proof exists.** Let E = count/volume.
 - E is preserved by 2-adic splitting (children at lower level) and by transverse splitting (narrower tubes).
@@ -719,3 +721,24 @@ all express the cap count as an angle-selected sub-sum of an exact divisor sum a
 **Status after §16.** Unchanged: 5/2 unconditional. New: the black-box insufficiency model of (c) shows that every input used
 in §3–§16 is consistent with a vol² spike, so a proof needs a genuinely new input; the cleanest open targets remain those of §14
 (5-point correlation ⇒ 13/5, in-band pair asymptotic, centred fourth moment).
+
+**(e) Correction (2026-10-02, local check of the §10(A) dictionary line "spectral methods give |S_ℓ| ≲ √N").**
+- *Per ℓ it is not proved.* With a z-smoothed band weight w of width ε, g_ℓ := w(z)e^{iℓα} has ‖g_ℓ‖₂² ≍ ε and spherical-harmonic
+  components in degrees L ∈ [|ℓ|, |ℓ| + C/ε]. Pointwise Ramanujan as in App. tube (|(S_τ g_L)(ẑ)| ≤ √(2L+1)·(τ+1)2^{τ/2}‖g_L‖₂,
+  Cauchy–Schwarz over L) gives |S_ℓ − main| ≤ k√N·((1/ε)(|ℓ|+1/ε))^{1/2}·ε^{1/2} ≍ k√N·ε^{−1/2} for |ℓ| ≤ 1/ε. At the critical
+  scale this is N^{7/10} > B = N^{3/5}: worse than trivial. For the cap indicator the same computation gives k√N because
+  ‖cap‖₂ = ε compensates the ε^{−1} harmonics; for a single azimuthal mode of a band it does not.
+- *In mean square it is proved.* Σ_{|ℓ|≤1/ε}|S_ℓ(W)|² ≍ ε^{−1}D(W) with D(W) = Σ_c(N_c − vol)² ≥ 0, and by positivity plus the
+  isotropic majorant (round 4, T1) Σ_W D(W) ≤ (whole-sphere ε-pair deviation) = Σ_L K̂(L)Σ_ψ|λ_ψ|²|ψ(ẑ)|² ≤ k²N. Hence
+  D(W) ≤ k²N for every band and RMS_{|ℓ|≤1/ε}|S_ℓ| ≲ k√N. This is the §12(b) bound P(R) − B·vol ≲ k²N; it does not go through
+  per-ℓ bounds.
+- *Complete sum.* Σ_{all m} a_ℓ(m)ā_ℓ(n−m) is a coefficient of θ_{χ_ℓ}θ̄_{χ_ℓ} (weight (2ℓ+2, 2) after the σ₁-weight
+  normalisation, which is not constant over the full range of m); "≲ √N" there is the Deligne bound for the cuspidal part with an
+  unrecorded dependence on ℓ. It was never a statement about the short window.
+- *Band count.* The same computation shows that Ramanujan does not give an asymptotic for the band count B_W = Σ_{m∈W}r(m)r(n−m)
+  at the critical scale (error k√N ε^{−1/2} = N^{7/10} against N^{3/5}); only the divisor upper bound B_W ≤ 2^{o}Nε is known. The
+  "volume law for bands" of §10(A) is that upper bound.
+- *Consequences.* Nothing proved elsewhere depends on the per-ℓ bound: Theorem tube (main.tex, App. tube) bounds the cap
+  indicator directly; §12(b) and round 4 T1 use the mean square. What changes: round 4's input (A) and its localisation of the gap
+  to ℓ ∈ [vol, vol²] are void (round 6 already moved the gap to the whole range 0 < |ℓ| ≤ 1/ε); the §10(A) dictionary line is
+  now annotated. Numerically (Test A) |S_ℓ| ≈ 36√B ≪ √N at k ≤ 16, so the per-ℓ bound is very likely true, merely unproved.
