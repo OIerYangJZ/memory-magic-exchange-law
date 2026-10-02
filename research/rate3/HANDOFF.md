@@ -96,6 +96,16 @@ Spectral form of the obstruction (§14(b)):
   corresponds to F, 5/2 to F^{5/4} and 3 to F^{3/2}.
 - Petersson over K has no decay at σ₂, where the weight is 2.
 
+## 5b. Cloud session 2026-10-02 (rounds 4–7; NOTES §16, PROGRESS.md §4–§7)
+
+- Positivity transfers from the §15(d) sum of squares all return the Ramanujan sup bound (§16(a)).
+- P-adic Fourier form of the class count; exact Hecke recursion of deviation fields, Poisson growth saturates Ramanujan (§16(b)).
+- **Black-box insufficiency model (§16(c)):** every input used so far (Ramanujan Weyl sums, the 5/2 tube bound, divisor bounds,
+  Liouville/L1, band law, Hecke recursion, σ₂ shadow) is satisfied by a configuration with a vol² spike. A proof needs a new input.
+- SA ⟺ small-scale equidistribution of signed prime-Hecke-angle sums over the shifted pair (m, n−m) (§16(d)).
+- Two claims made during the session were withdrawn in round 6 (PROGRESS §6 勘误): the 5/2 tube bound is flat below the critical
+  cube, so prefix splitting loses 2^{3p/5} (confirming §3(e)).
+
 ## 6. Corrections inside NOTES (read the corrected versions)
 
 - The §6 side remark on multi-prime gate sets is corrected in §9.

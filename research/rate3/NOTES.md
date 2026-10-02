@@ -709,3 +709,13 @@ item by item) and saturates the trivial in-band pair bound. Hence no combination
 Hölder, interpolation or Hecke recursion gives N_c ≤ vol^{2−δ}. It is killed exactly by the criteria of §12–§15 (5-point
 correlation, in-band pair asymptotic, centred fourth moment), and by nothing weaker. The only input not absorbed by the model
 is the exact arithmetic of Z[ζ₈] (band counts and circle multiplicities as identities rather than divisor upper bounds).
+
+**(d) Exact arithmetic form of a critical rich cap (round 7; `scratch/round7_arith.md`).** With Θ(m) := {arg u : |u|² = m}
+(a set of r(m) ≤ 2^{o} signed sums of prime Hecke angles of Z[ζ₈]/Z[√2]), N_c ≤ 2^{o}#{m ∈ W : (Θ(n−m) − Θ(m)) ∩ (α₀ ± ε) ≠ ∅}.
+SA at the critical scale ⟺ the multiset {Σ_{𝔮|n−m}±θ_𝔮 − Σ_{𝔭|m}±θ_𝔭 : m ∈ W} of size ≈ B is 2^{o}-uniform at scale B^{−2/3};
+its Fourier coefficients are the S_ℓ of §10(A). The exact identities (band count, Lagrange identity for quotients, Bloch vector)
+all express the cap count as an angle-selected sub-sum of an exact divisor sum and give no second identity for the selected part.
+
+**Status after §16.** Unchanged: 5/2 unconditional. New: the black-box insufficiency model of (c) shows that every input used
+in §3–§16 is consistent with a vol² spike, so a proof needs a genuinely new input; the cleanest open targets remain those of §14
+(5-point correlation ⇒ 13/5, in-band pair asymptotic, centred fourth moment).
