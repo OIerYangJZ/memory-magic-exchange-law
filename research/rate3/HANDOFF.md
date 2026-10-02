@@ -3,9 +3,9 @@
 The goal is to raise the paper's unconditional exchange rate (arXiv:2609.37368; v2 proves every α < 5/2) to α = 3,
 or to anything above 5/2.
 
-**Status: not reached. The unconditional rate is still 5/2.** All reasoning is in `NOTES.md` §1–§14 and the numerics
+**Status: not reached. The unconditional rate is still 5/2.** All reasoning is in `NOTES.md` §1–§15 and the numerics
 are in `numerics/RESULTS.md`. This file is a summary and an index. Read it first; then go to NOTES for proofs and
-exact statements.
+exact statements. Per-round work log (from 2026-10-02 on): `PROGRESS.md`.
 
 ## 1. Setting (one paragraph)
 
@@ -46,6 +46,7 @@ Conditional results: Conjecture H ⇒ α = 3 (in the paper), and SA ⇒ α = 3 f
 | B: r = 2 caps at the critical scale | k ≤ 16 | Poisson. k = 16: max 166, Poisson max 168, volume 107, determinant level ≈ 1.1·10⁴ |
 | C: Hecke-ball tubes (rounds ≥ 3), all words of T-count ≤ t applied to V\|0⟩ | t ≤ 30 | For source T-count h ≥ 8 the maxima equal the Poisson maxima (t = 30: 478–485 against 482) |
 | Special points (`caps.c`) | k ≤ 16 | Divisor-type "rich circles" at \|+⟩ and the H-eigenstates: ≤ 5.5× volume at k = 12, ≤ 1.4× for k ≥ 14 |
+| D: factorial moments of cell counts, orders 2–8, both scales (`moments.py`) | k ≤ 16 | Poisson to three decimals for k ≥ 12; centred 4th moment within 1–7% of 3λ²+λ |
 
 There is no numerical sign that α = 3 is false.
 
@@ -53,7 +54,7 @@ There is no numerical sign that α = 3 is false.
 
 Each line gives the conclusion for r = 2. Rounds ≥ 3 need the same statement for Hecke-ball sources V|0⟩, uniformly
 in the height of V.
-1. 6-point correlation upper bound for states in ε-caps, at most 2^{o} × Poisson ⇒ **8/3** (§13(a)).
+1. 5-point correlation upper bound for states in ε-caps, at most 2^{o} × Poisson ⇒ **13/5** (§15(b)); 6-point ⇒ **8/3** (§13(a)). The 4-point bound (⇒ 5/2) is itself unproved.
 2. Power-saving asymptotic for the in-band pair count ⇒ **> 5/2** (§12(b)).
 3. θ > 1/3 in mean square over ℓ for S_ℓ ⇒ **> 5/2** (§10(A), §12(b)).
 4. Centred fourth moment of cap counts ⇒ **3** (§14(a)).
@@ -86,6 +87,8 @@ same exponent (§8(d)).
 | Variance in a band (spectral) | Ramanujan only, Var_R ≲ N: localisation fails | §12(b) |
 | Difference-vector family (averages over ~2^{2.4k} norms) | class-group characters: the diagonal h_M dominates; needs family cancellation | §13(b) |
 | Residue classes mod P^τ (midpoints), Hecke-orbit unions, recursive splitting | localisation barrier | §13(c) |
+| Norm-averaged volume law made precise; sub-family {P^τl}; positivity; moments over norms | weight 2^{−τ}; orbit averaging is neutral; loses 2^τ | §15(a) |
+| 3-point correlation: prefix/slope/tree-distance/operator-norm forms; joint σ₁-cap × ∂tree-ball form | all return to depth-τ caps at depth-τ arithmetic points | §15(c) |
 | Rarity + propagation; determinant + L² interpolation; two-embedding determinant; additive energy; circle method; genus-2 Siegel / Saito–Kurokawa; sieves; incidences; composite-norm lift; additive perturbation; random targets | as stated in §14(c) | §14(c) |
 
 Spectral form of the obstruction (§14(b)):

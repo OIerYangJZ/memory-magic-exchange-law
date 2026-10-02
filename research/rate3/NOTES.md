@@ -611,3 +611,55 @@ form a 4-parameter one. Hence, for r = 2:
   - a centred fourth moment gives 3 (§14(a)).
 - *Rounds ≥ 3* need the same statements for Hecke-ball sources V|0⟩, uniformly in the height of V.
 - All of these are beyond-square-root statements for a single Hecke orbit. No known technique reaches them.
+
+## 15. Tenth pass (2026-10-02, new session): three precise statements, no new mechanism
+
+Per-round log in `PROGRESS.md`. Nothing here moves the unconditional rate.
+
+**(a) The norm-averaged volume law, stated precisely (routine; Marshall Prop. 5.2 + Jacquet–Langlands).**
+X_m := {w ∈ O : nrd w = m}, m ∈ O_K⁺ mod (3+2√2)^Z; N_m(f) := Σ_{w∈X_m} f(σ₁w/√σ₁m) for f ∈ C^∞(SO(3)) a
+smoothed ε-tube indicator with Sobolev norms ≲ ε^{−C}. For g smooth on [1/2,2]² and M = M₁M₂,
+  Σ_m g(σ₁m/M₁, σ₂m/M₂) N_m(f) = (∫f)·Σ_m g(⋯) r_O(m) + O_A(ε^{−C}M^{−A})   whenever M ≥ ε^{−2−δ}.
+Proof: N_m(f) = Σ_ψ ⟨f,ψ⟩ψ(x₀)λ_ψ(m) over Hecke eigenforms of weight (a,0), a ≲ 1/ε; non-trivial ψ are cuspidal
+on GL₂/K by JL; detect the box with the unramified Grössencharacters λ_ν of K; L(s, π_ψ ⊗ λ_ν) is entire, shift to
+Re s = −A, conductor ≍ a²(1+|ν|)² ≲ ε^{−2}.
+- P^τ has weight ≍ 2^{−τ} in the average. Positivity loses the full 2^τ; the second moment over norms gives
+  (2^τ·vol)^{1/2} = 2^τε, worse than Ramanujan.
+- The sub-family {P^τl : (l,P) = 1, N(l) ≍ Λ} has negligible spectral error for Λ ≥ ε^{−2−δ}, by multiplicativity
+  λ_ψ(P^τl) = λ_ψ(P^τ)λ_ψ(l). But X_{P^τl} = X_{P^τ}X_l/48, so the statement is Σ_{v∈X_l} N_{P^τ}(cap·v) = volume:
+  Hecke-orbit averaging of caps, i.e. agent_linnik §3(d) ("amplification is exactly neutral"). No content.
+So "α = 3 ⟺ P^τ is not exceptional in the average" has no operational content.
+
+**(b) Odd moments.** max_c N_c ≤ (Σ_c N_c^k)^{1/k} needs no parity. A k-point correlation upper bound
+Σ_c N_c^k ≤ 2^{o}·#caps·(vol + vol^k) at all scales gives rate 3 − 2/k (r = 2):
+2 ⇒ 2, 3 ⇒ 7/3, 4 ⇒ 5/2, **5 ⇒ 13/5 > 5/2**, 6 ⇒ 8/3. The 4-point bound itself is not known: the determinant
+sup bound interpolated with L² misses it by ε^{−1}/vol = ε^{−1/2} at the critical scale (§14(c)). Test D
+(numerics/RESULTS.md) checks m ≤ 8 at k ≤ 16: Poisson to three decimals.
+
+**(c) Three-point correlation, four equivalent forms (all exact).** With V ∈ T_ε(T_z) ∩ Λ_{2τ},
+n(P) := #{V : prefix_τ(V) = P}, T = Σ_P n(P) ≈ ε²4^τ (Theorem A), vol = ε²2^τ:
+  Σ_P n(P)² = #{(V,V′) ∈ tube² sharing a prefix of length ≥ τ}
+            = #{(u,t),(u′,t′) ∈ tube² : ut′ ≡ tu′ (mod √2^τ) in Z[ζ₈]}
+            = Σ_{D = A⁻¹B ∈ T_{2ε}(T_z), A,B ∈ Λ_τ} #{P ∈ Λ_τ : PA, PB ∈ tube}
+            = Σ_j ⟨A′_{2j}1_tube, 1_tube⟩  (A′_{2j}: shell adjacency at tree distance 2j).
+By L1 the j-th term vanishes for j < 2log₂(1/ε) − O(1) (= 4τ/5 at the critical scale); for j ∈ [4τ/5, τ] it is
+Σ_{ε-close (A,A′) ∈ Λ_j²} #{P ∈ Λ_{2τ−j} : PA, PA′ ∈ tube}: close pairs at depth j (known) times cap counts at depth
+2τ − j around arithmetic points of depth j (Theorem A loses 2^j). The j = τ term is Σ_A N_τ(cap_A)² itself. This
+confirms §13(a): every rewriting returns to cap counts at depth τ around depth-τ arithmetic points.
+- *Bloch form.* ν = Bloch(u,t) ∈ Z[√2]³, |ν|² = 4^τ in both embeddings. Prefix class P ⟺ ν ∧ ν_P ≡ 0 (mod √2^τ).
+  P-adically |ν|² → 0, so [ν] lies near the isotropic conic C₀ ⊂ P²(K_P), C₀(K_P) ≅ P¹(K_P) = ∂(tree); prefix
+  classes are depth-τ balls on the boundary. **SA for r = 2 is the joint distribution of the integer points of
+  x²+y²+z² = 4^τ over Z[√2] in (an ε-cap at σ₁) × (a depth-τ ball on ∂tree), at the single norm 4^τ.** Joining-type
+  results (Aka–Einsiedler–Shapira style) are qualitative and need a second prime.
+- *Operator form.* M(P,A) := 1[PA ∈ tube] is a 2^τ×2^τ 0/1 matrix with T ones (one per tube element, midpoint
+  split). Σ_P n(P)² = ‖M1‖². ‖M‖_op ≤ 2^{o}vol would give the three-point bound for all weights. ‖M‖⁴ ≤ #4-cycles
+  = the j ≥ 1 part of the multiplicative energy of the tube. Peter–Weyl splits M into ≈ ε^{−3} rank-one pieces; the
+  triangle inequality gives ‖M‖ ≤ vol·ε^{−3/2}; the needed cancellation between pieces is the problem.
+
+**(d) In-band pair count is a sum of squares (exact).** With a positive-definite azimuth window,
+P(R) − B·vol = Σ_{ℓ≠0} ĉ_ℓ|S_ℓ|² ≥ 0, ĉ_ℓ ≈ ε. So the power-saving asymptotic of §12(b) is exactly
+Σ_{0<|ℓ|≤1/ε}|S_ℓ|² ≤ B²2^{−δk}, i.e. RMS_ℓ|S_ℓ| ≤ L^{2/3−δ′} at the critical scale: §12(b)'s mean-square θ > 1/3,
+now with the sign information that the deviation is non-negative. The large sieve over ℓ returns the trivial bound.
+
+**Status after §15.** Unchanged: 5/2 unconditional. The cleanest open targets are those of §14, with 5-point
+correlation (⇒ 13/5) added below 6-point.

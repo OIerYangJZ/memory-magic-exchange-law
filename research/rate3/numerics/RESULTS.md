@@ -123,3 +123,32 @@ Notes:
 
 Verdict: Conjecture H in Hopf form, with arithmetic sources of any height up to t, also looks Poisson at T-count
 ≤ 30. Together with Tests A and B there is no numerical sign that α = 3 is false.
+
+## Test D: cell-count factorial moments up to order 8 (`moments.py`, 2026-10-02; from the stored `c*_B.bin`, `d*_B.bin`)
+
+The m-th factorial moment F_m = E[N(N−1)⋯(N−m+1)] over bulk cells equals the m-point correlation (ordered
+m-tuples of distinct states in a common cell). Poisson gives F_m = λ^m. By NOTES §15(b), an upper bound
+F_m ≤ 2^{o}λ^m at every scale gives rate 3 − 2/m (m = 5 already beats 5/2). The centred fourth moment
+(Poisson value 3λ² + λ) gives 3 (NOTES §14(a)).
+
+Critical scale β = 4/5:
+
+| k | λ | var/mean | F_m/λ^m, m = 2…8 | μ₄/(3λ²+λ) | μ₆/(15λ³+25λ²+λ) | max |
+|---|---|---|---|---|---|---|
+| 12 | 35.5 | 1.006 | 1.000 1.000 1.001 1.001 1.001 1.002 1.002 | 1.015 | 1.038 | 65 |
+| 13 | 46.8 | 1.014 | 1.000 1.001 1.002 1.003 1.005 1.008 1.013 | 1.045 | 1.281 | 112 |
+| 14 | 61.7 | 1.002 | 1.000 1.000 1.000 1.000 1.001 1.001 1.001 | 1.001 | 0.996 | 104 |
+| 15 | 81.5 | 1.000 | 1.000 1.000 1.000 1.000 1.000 1.000 1.000 | 1.002 | 1.010 | 131 |
+| 16 | 107.5 | 1.002 | 1.000 1.000 1.000 1.000 1.000 1.001 1.001 | 1.007 | 1.017 | 166 |
+
+β = 2/3 (the scale that binds α = 3): k = 12, 14, 16 give F_m/λ^m ∈ [0.996, 1.001] for all m ≤ 8,
+μ₄/(3λ²+λ) = 0.95, 1.07, 1.04. (k = 10, 11 at β = 4/5 are below Poisson in every moment, var/mean 0.90, 0.95:
+finite-size separation, L1.)
+
+Removing the top 0.01% of cells changes nothing beyond the third decimal. The k = 13 excess is the rich circle at
+|+⟩ (Test B). Small but statistically significant excess variances remain at k = 16 (var/mean 1.002 ± 0.0004 at
+β = 4/5; 1.018 ± 0.002 at β = 2/3): divisor-type coincidences at the 10⁻⁵ relative level in the pair count, consistent
+with a 2^{o(k)} factor, invisible in the normalised factorial moments.
+
+Verdict: every moment criterion of NOTES §13(a), §14(a), §15(b), up to order 8, holds numerically with constant 1
+at k ≤ 16, at both scales. Nothing is proved.
