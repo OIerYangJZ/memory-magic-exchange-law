@@ -758,3 +758,11 @@ exact band identity, Clifford-coset cube counts, the window-union count, the pre
 excesses are all satisfied by M_vol. Each is (α) a Weyl-sum statement with error ≥ √N ≫ M², (β) an exact identity for a divisor-type
 total in which the spike is lower order, or (γ) a counting bound whose capacity exceeds the spike's demand. A killer must be a
 single-norm, single-cap, sub-√N statement, i.e. of SA type.
+
+**(h) The band count at the critical scale has no provable asymptotic (round 11; `scratch/round11_bandcount.md`, Test E).**
+B_W = Σ_{m∈W}r(m)r(n−m), main |W| = εN = N^{3/5}. Hyperbola method with Hardy–Littlewood O(log) discrepancy for aligned Z[√2]-boxes
+(slopes ±1/√2, bounded partial quotients): N pairs (𝔡,𝔢), error N log N. Harmonics + Ramanujan: N^{7/10}, asymptotic only for
+ε > N^{−1/3}k^{2/3}. Shifted-convolution/additive-divisor analogues: smooth with Sobolev cost ≥ N^{7/10+θ}; sharp-cutoff Kuznetsov
+exponent 2/3 gives N^{2/3} > N^{3/5}. Needed: exponent 3/5 − δ for the binary additive divisor problem over Q(√2) with a σ₁-short
+window. Numerically (k = 12–15) the band count fluctuates across bands with relative local std 0.76/√L, k-independent, Gaussian
+tails: B_W = main(1 + O(|W|^{−1/2})), deviation ≍ N^{3/10}. So already the ℓ = 0 statistic sits N^{11/30} beyond what any method proves.

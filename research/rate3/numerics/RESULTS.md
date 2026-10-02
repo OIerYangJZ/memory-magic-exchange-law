@@ -152,3 +152,21 @@ with a 2^{o(k)} factor, invisible in the normalised factorial moments.
 
 Verdict: every moment criterion of NOTES §13(a), §14(a), §15(b), up to order 8, holds numerically with constant 1
 at k ≤ 16, at both scales. Nothing is proved.
+
+
+## Test E: fluctuations of the band count B_W across bands at the critical scale (2026-10-02, cloud; `bandstats.py`)
+
+`./sl k 0.8` on the cloud container (4 cores; k = 15 takes 105 s, ~6 GB). S₀(W_j) = B_W/64 (orbit pairs) per band, bulk |z| ≤ 0.8,
+local relative std from neighbour differences (removes the smooth z-trend), L = number of norms m in the band with r(m)r(n−m) > 0.
+
+| k | bulk bands | mean S₀ | mean L | S₀/L | rel. std (local) | rel. std · √L | max dev / std |
+|---|---|---|---|---|---|---|---|
+| 12 | 620 | 6.92·10⁵ | 913 | 758 | 0.0247 | 0.745 | 2.97 |
+| 13 | 1081 | 1.59·10⁶ | 1917 | 829 | 0.0190 | 0.832 | 2.34 |
+| 14 | 1883 | 3.65·10⁶ | 4056 | 900 | 0.0119 | 0.756 | 3.15 |
+| 15 | 3276 | 8.39·10⁶ | 8641 | 971 | 0.0082 | 0.761 | 3.16 |
+
+- rel. std · √L is k-independent (≈ 0.76): the band count is its main term times 1 + O(L^{−1/2}), square-root cancellation in the
+  number of norms, with Gaussian-like tails. S₀/L grows linearly in k (divisor-type mean weight).
+- No analytic method proves any power saving for B_W at this scale (NOTES §16(h)); the observed deviation ≍ |W|^{1/2} = N^{3/10}
+  is N^{11/30} below the best provable error N^{2/3}.
