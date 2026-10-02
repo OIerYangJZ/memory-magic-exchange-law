@@ -503,3 +503,46 @@ would not be blind.
 - *Correction to §8(c).* Measured counts at T-count 28 are ≈ 1% of the one-per-fibre-cell level. So numerics at
   T-count 28–32 *do* separate volume from cells; §8(c)'s ratio formula was too pessimistic. They still cannot
   separate "volume × poly" from "cells^{1−κ}" asymptotically, of course.
+
+## 13. Ninth pass (2026-10-02): the difference-vector family, moment criteria for r = 2
+
+**(a) Moment criterion for two rounds (new, rigorous).** Caps on S² form a 2-parameter family, whereas tubes in S³
+form a 4-parameter one. Hence, for r = 2:
+- *Hypothesis.* For all scales, Σ_caps N_c^{2k} ≤ 2^{o(t)}·#caps·(vol + vol^{2k}). That is, 2k-tuples of states in
+  a common ε-cap are at most 2^{o} times Poisson.
+- *Bound.* Then max N ≤ (#caps·vol^{2k})^{1/(2k)} = ε^{−1/k}·vol, and the Gibbs bound gives rate ≥ **3 − 1/k**
+  (worst case τ = αL).
+- *Cases.*
+  - k = 1 is provable (pair correlation, §12(b)) and gives rate 2.
+  - k = 2 gives exactly 5/2.
+  - k = 3, a 6-point upper bound, would give **8/3**.
+- *Comparison.* This needs only *upper* bounds with 2^{o} slack, unlike the variance route of §12(b), which needs a
+  power-saving asymptotic. For general tubes the same argument gives 3 − 2/k (conditional3).
+- *Why it is still open.*
+  - 6-tuples in a cap correspond to tuples of Clifford-tube elements with a common first half. Hence
+    Σ_caps N⁶ ≈ Σ_ψ N(cap ψ)⁵, which is circular.
+  - The Plücker parametrisation ψ_j = (f_{1j}ψ₂ − f_{2j}ψ₁)/f₁₂ only reorganises the count.
+  - S² determinants do not vanish at the critical scale: the 6×6 quadratic-monomial determinant needs ε < 2^{−2k}.
+
+**(b) The difference-vector family.** Write Ŵ = P + P′ and D = P′ − P. Then Ŵ ⊥ D, |Ŵ|² + |D|² = 4N and Ŵ ≡ D (2).
+- *Rewriting.* P(R) = Σ_{Ŵ ∈ band, |Ŵ|² ∈ 4N − window} r_{S+S}(Ŵ). The Ŵ run over the spheres of all norms
+  M = 4N − |D|², about 2^{2.4k} of them. This is a genuine average over norms.
+- *Weights.* r_{S+S}(Ŵ) = r_{L_Ŵ}(4N − M), where L_Ŵ = Ŵ^⊥ ∩ O_K³ is a binary lattice of discriminant ~M.
+- *Trivial genus character (provable).* Its contribution is a lattice-point count in a 6-dimensional region, thin
+  in σ₁ but long in σ₂. No dual vector fits, since ε²4^k > 1.
+- *Class-group characters χ of K(√−M) (about 4^k per M).* Their contribution is Σ_{M,χ} h_M⁻¹ a_χ(4N − M)·W_χ(M; band),
+  with twisted band Weyl sums W_χ.
+  - Trivially this is 2^{3.6k}, against the main term 2^{1.6k}. Square-root heuristics give 2^{0.8k}.
+  - Cauchy–Schwarz over (M, χ) fails: Σ_χ|W_χ|² = h_M·#{same-class pairs in the band}, and the diagonal h_M·εr₃(M)
+    dominates, since a band holds 2^{1.2k} ≪ h_M ≈ 4^k points.
+  - Pointwise Lindelöf for L(½, π_f × χ) is also not enough. One needs cancellation over the family.
+- *Verdict.* The family exists, but its cancellation is not reachable by large-sieve or Cauchy–Schwarz arguments.
+
+**(c) The localisation barrier (summary of §12(b) and this pass).**
+- Every second-moment route faces the same step: localise the provable global variance (≈ N) to a set of
+  measure ε. Routes tried: in-band pairs, residue classes mod P^τ via midpoints of Clifford-tube words,
+  Hecke-orbit unions of caps, recursive child splitting.
+- Each time Cauchy–Schwarz loses exactly the missing factor (e.g. √(|G|·q·vol) against ε|A|).
+- Bounds per eigenform are fine: latitude circles are curved, so ∫_band|φ|² ≲ ε·l^{1/3}. The obstruction is
+  entirely in the cross terms between eigenforms.
+- Bourgain–Gamburd non-concentration near cosets of SO(2) is far too weak (ε^κ against the needed ε^{3/2+δ}).
