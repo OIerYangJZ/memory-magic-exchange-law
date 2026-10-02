@@ -1,0 +1,5 @@
+#!/bin/sh
+# usage: research/colab/cscp LOCAL... :REMOTE   (a leading colon marks the remote side)
+D=$(cd "$(dirname "$0")" && pwd); H=$(cat "$D/HOST")
+args=""; for a in "$@"; do case "$a" in :*) a="root@$H$a";; esac; args="$args \"$a\""; done
+eval exec scp -i ~/.ssh/colab_ed25519 -o StrictHostKeyChecking=accept-new -o UserKnownHostsFile=$HOME/.ssh/known_hosts_colab -o ProxyCommand=\"cloudflared access ssh --hostname %h\" -r $args

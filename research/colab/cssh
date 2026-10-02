@@ -1,0 +1,4 @@
+#!/bin/sh
+# usage: research/colab/cssh [command...]   host is read from research/colab/HOST (xxx.trycloudflare.com)
+D=$(cd "$(dirname "$0")" && pwd); H=$(cat "$D/HOST")
+exec ssh -i ~/.ssh/colab_ed25519 -o StrictHostKeyChecking=accept-new -o UserKnownHostsFile=$HOME/.ssh/known_hosts_colab -o ConnectTimeout=30 -o ServerAliveInterval=30 -o ProxyCommand="cloudflared access ssh --hostname %h" root@"$H" "$@"

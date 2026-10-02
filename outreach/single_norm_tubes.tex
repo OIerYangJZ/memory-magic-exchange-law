@@ -1,0 +1,154 @@
+\documentclass[11pt]{amsart}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem*{question}{Question}
+\newtheorem{proposition}{Proposition}
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\cO}{\mathcal O}
+\newcommand{\nrd}{\mathrm{nrd}}
+\newcommand{\dproj}{d}
+
+\title[Quaternion lattice points near a great circle at one norm]{Quaternion lattice points near a great circle\\ at a single $2$-power norm: a sparsity question}
+\author{Jinze Yang}
+\address{School of Physics, Xidian University, Xi'an 710071, China}
+\date{October 2026}
+
+\begin{document}
+\begin{abstract}
+We isolate a lattice-point question that decides an exchange rate between classical memory and magic states in quantum compilation. The question is whether quaternions of a fixed $2$-power norm in the maximal order of $(-1,-1)_{\Q(\sqrt2)}$ can occupy almost every $\varepsilon$-cell along some great circle of $S^3$ at the scale where the determinant method is exactly saturated. We state what we can prove, why the methods we know stop there, and the precise questions we would like to ask. Background and all proofs are in arXiv:2609.37368.
+\end{abstract}
+\maketitle
+
+\section{Setting}
+Let $K=\Q(\sqrt2)$, $D=(-1,-1)_K$, and let
+\[
+\cO=\cO_K\oplus\cO_K\tfrac{1+i}{\sqrt2}\oplus\cO_K\tfrac{1+j}{\sqrt2}\oplus\cO_K\tfrac{1+i+j+k}{2}
+\]
+be its maximal order. The single-qubit Clifford+$T$ group modulo phase is $\Gamma=\cO[1/\sqrt2]^\times/\cO_K[1/\sqrt2]^\times$, a lattice in $\mathrm{PU}(2)\times\mathrm{PU}(2)\times\mathrm{PGL}_2(K_P)$ with $P=(\sqrt2)$. The quaternion algebra is definite at both real places, so $\Gamma$ acts on the $3$-regular tree $X_P$ with vertex stabiliser the Clifford group $\cong S_4$. The $T$-count of a word equals its tree distance from the root. Let $\Lambda_t$ be the set of elements of $T$-count $\le t$. Then $|\Lambda_t|=72\cdot2^t-48$.
+
+\emph{Numerators.} An element of minimal $T$-count $t$ is $\pm w/|\sigma_1(w)|$ for some $w\in\cO$ with $\nrd(w)=n_t$, where $n_t\in\{2^{t/2},(2+\sqrt2)2^{(t-1)/2}\}$. Thus $\sigma_1(w)$ and $\sigma_2(w)$ lie on $3$-spheres of radii $\asymp R':=2^{t/4}$, and $\#\{w\}\asymp R'^4$.
+
+\emph{Tubes.} A \emph{frame} is a pair $G_1,G_2\in\mathrm{SU}(2)$, and $\mathcal C=G_1\{R_z(\theta)\}G_2$ is a great circle of $S^3=\mathrm{SU}(2)$. With $\dproj(A,B)=\inf_\phi\|A-e^{i\phi}B\|$, put
+\[
+N_t(\mathcal C,\varepsilon):=\#\{W\in\Lambda_t:\ \exists\theta,\ \dproj(W,G_1R_z(\theta)G_2)\le\varepsilon\}.
+\]
+In arithmetic terms this counts the $w\in\cO$ with $\nrd(w)=n_t$ whose $\sigma_1$-image lies within Euclidean distance $\asymp\varepsilon R'$ of the great circle $R'\mathcal C$. There is \emph{no condition on $\sigma_2(w)$}. In Hopf form, $N_t$ counts the $W$ with $\angle(R(W)x_2,x_1)\le4\arcsin(\varepsilon/2)$, where $x_1=G_1\hat z$ and $x_2=G_2^{-1}\hat z$, and $R(W)\in\mathrm{SO}(3)$. The Haar expectation is $\asymp2^t\varepsilon^2$.
+
+\emph{Cells.} Fix a grid $\{G_1R_z(2\pi u/Q)G_2\}_{u\in\Z_Q}$ on $\mathcal C$ with $Q\asymp1/\varepsilon$ and spacing $>2\varepsilon$, and put
+\[
+M_t(\mathcal C,\varepsilon):=\#\{u\in\Z_Q:\ \exists W\in\Lambda_t,\ \dproj(W,G_1R_z(2\pi u/Q)G_2)\le\varepsilon\},
+\]
+the number of \emph{occupied $\varepsilon$-cells}. Trivially $M_t\le\min(Q,N_t)$.
+
+\section{What is known}
+Write $\varepsilon=R'^{-a_0}$, so $t\asymp(4/a_0)\log_2(1/\varepsilon)$.
+\begin{enumerate}
+\item[(R)] \emph{Spectral.} The Ramanujan bound for $\Gamma$ (Lubotzky--Phillips--Sarnak, Parzanchevski--Sarnak), via a Poisson-kernel majorant of the cap in Hopf form, gives $N_t\le C_12^t\varepsilon^2+C_2(t+1)2^{t/2}$ for all frames. The error is $2^{t/2}=R'^2$, which exceeds the cell count $Q\asymp R'^{a_0}$ for every $a_0<2$.
+\item[(D)] \emph{Determinant method} (arXiv:2609.37368, Thm.~8 and Apps.~E--H).
+  \begin{itemize}
+  \item Five numerators in a box of core length $\ell R'$ have a determinant in $\tfrac1{16}\Z[\sqrt2]$ of size $\lesssim\ell^3\varepsilon^2R'^4$ in $\sigma_1$ and $\lesssim R'^4$ in $\sigma_2$.
+  \item So the points of a box are cohyperplanar once $\ell^3\varepsilon^2R'^8<c$.
+  \item Combined with heights of the resulting sphere sections, rational projections, and an exact SMT check of the continuum case analysis, this gives, for every frame and every $0<\mu\le1/10$,
+  \[
+  N_t(\mathcal C,\varepsilon)\le R'^{\,8/5-4\mu/11+o(1)}\quad\text{whenever }\varepsilon\le R'^{-(8/5+\mu)}.
+  \]
+  \item At the critical scale $\varepsilon\asymp R'^{-8/5}=2^{-2t/5}$ the determinant boxes are exactly $\varepsilon$-cells, and the bound is $N_t\le\varepsilon^{-1}R'^{o(1)}$: \emph{one point per cell}. The volume is only $R'^{4/5}=\varepsilon^{-1/2}$.
+  \end{itemize}
+\item[(C)] \emph{Clifford frames.} If $G_1,G_2$ are Cliffords, the off-diagonal entry is an arithmetic coordinate. The divisor bound in $\Q(\zeta_8)$ then gives $N_t\le2^{O(t/\log t)}(t+1+\varepsilon^22^t)$, the volume law. For $G_1,G_2\in\Gamma$ of $T$-count $\le h$ one loses a factor $2^h$.
+\item[(N)] \emph{Numerics.} Exhaustive enumeration to $t=22$ is consistent with ``volume $+$ a sparse cluster'':
+  \begin{itemize}
+  \item The cluster consists of powers of one short hyperbolic word along its axis. It forces a term linear in $t$.
+  \item Heuristically, with exact instances, balls of radius $\varepsilon=2^{-t/\alpha}$ around low-height Hecke points $g/|g|$ carry $2^{t(2/3-5/(3\alpha))}$ points on a single sphere section. So covering a tube by balls should not beat the critical scale, and tubes have to be treated globally.
+  \end{itemize}
+\end{enumerate}
+
+\section{The question}
+\begin{question}[Q1: any power saving at the critical scale]
+Is there $\kappa>0$ such that $M_t(\mathcal C,2^{-2t/5})\le2^{(2/5-\kappa)t}$ for all great circles $\mathcal C$ and all large $t$? In words: along every great circle, is a power-fraction of the $\varepsilon$-cells empty at $\varepsilon=2^{-2t/5}$?
+\end{question}
+\begin{question}[Q2: cell form of the volume law]
+Is $M_t(\mathcal C,\varepsilon)\le2^{o(t)}(1+2^t\varepsilon^2)$ uniformly in $\mathcal C$ and $\varepsilon$? It suffices to have $M_t\le2^{t/3+o(t)}$ whenever $\varepsilon\ge2^{-t/3}$.
+\end{question}
+An affirmative answer to Q1 (in a small neighbourhood of the critical scale) raises our unconditional exchange rate above $5/2$. An affirmative answer to Q2 gives the conjectured value $3$. The questions are \emph{exactly} what the application needs. The following short argument is not in the paper.
+
+\begin{proposition}[two rounds]\label{prop:exact}
+For two-round streams the optimal exchange rate (committed $T$ gates per bit of memory forgone) is, up to $o(1)$, the largest $\alpha$ such that
+\[
+\max_{\mathcal C}M_t(\mathcal C,\varepsilon)\le2^{t/\alpha+o(t)}\qquad\text{for all }t<\alpha\log_2(1/\varepsilon).
+\]
+Only the frames with $G_1=I$ enter. Equivalently, the relevant tubes are the $\varepsilon$-neighbourhoods of Hopf fibres, and $M_t$ counts the phase cells of Clifford+$T$ \emph{states} $W^{-1}|0\rangle$ whose Bloch vectors lie in an $\varepsilon$-cap.
+\end{proposition}
+\begin{proof}[Sketch]
+\emph{Lower bound.}
+\begin{itemize}
+\item Given everything except the share $a$ of round~1, the committed word is an injective function of $a$ into the cells of one tube.
+\item That tube is determined by the round-2 output, which is free, so the frame is arbitrary.
+\item A Gibbs-measure entropy bound with the cell profile above gives the rate.
+\end{itemize}
+\emph{Upper bound.}
+\begin{itemize}
+\item Let $U\subset\Z_Q$ be the occupied cells at cost $t$ for some frame.
+\item Choose public shifts $K$ with $\bigcup_{k\in K}(U-k)=\Z_Q$ and $|K|\le(Q/|U|)\ln Q+1$.
+\item For the share $a$, pick $k\in K$ with $a+k\in U$. Commit the word of cell $a+k$, which costs $\le t$, and store $k$.
+\item In round 2, emit an approximation of $G_2^{-1}R_z(\Delta(a_2-k))$. This costs no committed magic.
+\item The memory saved is $\log_2|U|-\log_2\ln Q-O(1)$ bits at cost $t$. No condition on the gaps of $U$ is needed.
+\end{itemize}
+\end{proof}
+
+So no averaging or modelling device avoids the worst-case tube. For more than two rounds the later rounds have arithmetic left frames $G_1\in\Gamma$ of large height. The relevant points are then the orbit $\Lambda_t\cdot\phi$ of the arithmetic state $\phi=G_1^{-1}|0\rangle$.
+
+\section{Why we believe the methods we know stop at the critical scale}
+\begin{enumerate}
+\item \emph{One prime.}
+  \begin{itemize}
+  \item All norms are powers of $P$.
+  \item In Marshall's geodesic-restriction work (Duke 2016) the single-norm count of Hecke returns near a torus (his Lemma~3.2) is elementary. The volume law is obtained only on average over $m\sim M$ (Prop.~5.2), via $\sum_m g(m/M)\lambda_\pi(m)\ll M^{-A}$ from the continuation of $L(s,\pi)$.
+  \item At a single prime the analogous generating function $\sum_k\lambda_\pi(P^k)X^k=(1-a_\pi X+2X^2)^{-1}$ has, under Ramanujan, its poles on $|X|=2^{-1/2}$. So no such gain is available, and the spectral error $2^{t/2}$ appears to be intrinsic.
+  \item Equivalently, the entropy sum $\sum_tN_t2^{-t/\alpha}$ needed for rate $\alpha>2$ is evaluated beyond the radius of convergence of every non-trivial local factor.
+  \end{itemize}
+\item \emph{The determinant method is saturated.} At $\varepsilon=R'^{-8/5}$ the only configuration the case analysis cannot exclude is one lattice point per $\varepsilon$-cell. In that configuration:
+  \begin{itemize}
+  \item Consecutive points differ by $d\in\cO$ with $|\sigma_1d|\lesssim\varepsilon R'$ and $|\sigma_2d|\lesssim R'$.
+  \item This product of balls contains $\asymp\sum_{N(m)\lesssim R'^{4/5}}r_\cO(m)\asymp R'^{8/5}\asymp\varepsilon^{-1}$ lattice vectors, exactly the number of cells.
+  \item Each difference fixes its cell up to $O(1)$.
+  \end{itemize}
+  So full occupancy is not contradicted at the level of differences. Five points in $J$ consecutive cells have a determinant of norm $O(J^3)$, so there is no gap principle. A leading-order count suggests that higher-degree auxiliary forms on the quadric $\nrd=n_t$ do worse, because the curvature enters only through monomials linear in the normal coordinate.
+\item \emph{A congruence form (heuristic).}
+  \begin{itemize}
+  \item For Hopf fibres, choose a Dirichlet approximation $p/q\in\Q(\zeta_8)$ to the fibre's stereographic coordinate, with $H=|p|^2+|q|^2$ and $N(H)\asymp\varepsilon^{-1}$.
+  \item This turns the count exactly into a Clifford-frame count, where the divisor bound applies. The count is of $(\lambda,g)\in\Z[\zeta_8]^2$ with $|\lambda|^2+|g|^2=Hn_t$, $g$ in a small box, and one congruence $\lambda\equiv\kappa g\pmod H$.
+  \item After rebalancing by units, the box covers about $q^{3/4}$ of the $q=N(H)^2$ residue classes of $g$.
+  \item An error of P\'olya--Vinogradov size $q^{1/2}=\varepsilon^{-1}$ is exactly the critical exponent above. Square-root cancellation in the incomplete sum would give Q2.
+  \end{itemize}
+\end{enumerate}
+
+\section{What we would like to ask}
+\begin{enumerate}
+\item[(a)] Is any single-norm bound for $\#\{\gamma\in R(n):\gamma$ within $\varepsilon$ of a \emph{generic} torus coset$\}$ beyond geometry of numbers known? We mean a definite quaternion order, prime-power $n$, and microscopic $\varepsilon$, over any number field.
+\item[(b)] Could theta-lift or fourth-moment methods (as in Khayutin--Nelson--Steiner, or the $S^3$ sup-norm work) be adapted to a \emph{fixed} prime-power norm? It would also suffice to have them with an average over a family of tori that is uniform enough to control the worst torus at the critical scale.
+\item[(c)] A toy model over $\Q$. Take $x\in\Z^4$ (or Hurwitz quaternions) with $|x|^2=n=p^k$, within distance $n^{1/10}$ of a $2$-plane through the origin.
+  \begin{itemize}
+  \item The five-point determinant gives $\le n^{2/5+o(1)}$: one point per cell of length $n^{1/10}$.
+  \item The volume is $n^{1/5}$.
+  \end{itemize}
+  Is a bound $n^{2/5-\kappa}$ known, or expected to be within reach?
+\item[(d)] Conversely, is there a known mechanism producing a great circle with $n^{2/5-o(1)}$ such points? That would make our $5/2$ sharp by Proposition~\ref{prop:exact}.
+\end{enumerate}
+
+\begin{thebibliography}{9}
+\bibitem{ours} J.~Yang, Y.~Li, X.-H.~Deng, \emph{A memory--magic exchange law in streaming Clifford+$T$ compilation}, arXiv:2609.37368.
+\bibitem{LPS} A.~Lubotzky, R.~Phillips, P.~Sarnak, \emph{Hecke operators and distributing points on the sphere I}, Comm.\ Pure Appl.\ Math.\ 39 (1986).
+\bibitem{PS} O.~Parzanchevski, P.~Sarnak, \emph{Super-Golden-Gates for PU(2)}, Adv.\ Math.\ 327 (2018).
+\bibitem{Marshall} S.~Marshall, \emph{Geodesic restrictions of arithmetic eigenfunctions}, Duke Math.\ J.\ 165 (2016).
+\bibitem{KNS} I.~Khayutin, P.~D.~Nelson, R.~S.~Steiner, \emph{Theta functions, fourth moments of eigenforms and the sup-norm problem II}, Forum Math.\ Pi 12 (2024).
+\bibitem{Steiner} R.~S.~Steiner, \emph{Sup-norm of Hecke--Laplace eigenforms on $S^3$}, Math.\ Ann.\ 377 (2020).
+\bibitem{BR} J.~Bourgain, Z.~Rudnick, \emph{Restriction of toral eigenfunctions to hypersurfaces and nodal sets}, GAFA 22 (2012).
+\end{thebibliography}
+\end{document}
