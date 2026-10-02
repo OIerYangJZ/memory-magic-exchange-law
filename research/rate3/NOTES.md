@@ -742,3 +742,11 @@ in §3–§16 is consistent with a vol² spike, so a proof needs a genuinely new
   indicator directly; §12(b) and round 4 T1 use the mean square. What changes: round 4's input (A) and its localisation of the gap
   to ℓ ∈ [vol, vol²] are void (round 6 already moved the gap to the whole range 0 < |ℓ| ≤ 1/ε); the §10(A) dictionary line is
   now annotated. Numerically (Test A) |S_ℓ| ≈ 36√B ≪ √N at k ≤ 16, so the per-ℓ bound is very likely true, merely unproved.
+
+**(f) Five frames in a common cap, different fibre arcs (round 9; `scratch/round9_fivepoint.md`).** For five frames of T-count t
+whose states lie in one ε-cap and whose core parameters span an arc of length λ, Lemma E1 gives |det|_{σ₁} ≤ Cλ³ε²R'^4,
+|det|_{σ₂} ≤ CR'^4, so the K-determinant vanishes iff λ < c'ε: only within one fibre ε-arc. Across arcs the two-embedding product
+is ≍ X³ for frames X arcs apart; the Bloch 4-point determinant, the 2×2 minors ut'−tu' and the complex 3-point Δ all need
+ε ≤ 2^{−3t/4} or the Liouville scale 2^{−t}. Hence Σ_c N_c⁵ (⇒ 13/5) is governed by cross-arc 5-tuples, on which the determinant
+method is silent; same-arc tuples contribute ≤ 2^{6t/5+o} ≪ 2^{9t/5}. Dictionary in T-count units: ε = 2^{−2t/5}, vol = 2^{t/5},
+1/ε = vol², B = vol³, √N = vol^{5/2}.
