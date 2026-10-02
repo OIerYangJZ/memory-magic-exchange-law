@@ -1,7 +1,8 @@
 # Attempt at α = 3 (2026-10-01)
 
-**Verdict: α = 3 is not reached. No exponent beyond 5/2 is obtained.** This note records the new reductions and the
-routes tried, and says where each one stops. Nothing here touches main.tex. Earlier work is in
+**Verdict (updated 2026-10-02, through §14): α = 3 is not reached. No exponent beyond 5/2 is obtained.** This note
+records the new reductions and the routes tried, and says where each one stops. Start with `HANDOFF.md` for a
+summary and an index. Status and open targets are at the end of §14. Nothing here touches main.tex. Earlier work is in
 `research/conditional3/` (NOTES, NOTES_a, NOTES_moments) and `research/uniform52/`.
 
 ## 1. What rate α > 5/2 needs (recap)
@@ -546,3 +547,67 @@ form a 4-parameter one. Hence, for r = 2:
 - Bounds per eigenform are fine: latitude circles are curved, so ∫_band|φ|² ≲ ε·l^{1/3}. The obstruction is
   entirely in the cross terms between eigenforms.
 - Bourgain–Gamburd non-concentration near cosets of SO(2) is far too weak (ε^κ against the needed ε^{3/2+δ}).
+
+## 14. Two criteria not stated above, and the remaining dead ends of passes 8–9 (2026-10-02)
+
+**(a) Centred fourth moment (r = 2).**
+- *Statement.* Suppose Σ_caps (N_c − vol)⁴ ≤ 2^{o(τ)}·#caps·(vol + vol²) at every scale, with ε = 2^{−L} and
+  vol = 2^{τ−2L}. Then max |N_c − vol| ≤ (#caps·vol²)^{1/4} = 2^{τ/2 − L/2 + o}. This is ≤ 2^{τ/α} for all
+  τ ≤ αL exactly when α ≤ 3, so the centred fourth moment alone gives **α = 3 for r = 2**. (For vol < 1 the bound
+  2^{τ/4} suffices.)
+- *Why it is hard.* Unlike §13(a), this needs main terms to cancel. It needs the 2-, 3- and 4-point correlations
+  at scale ε with relative errors 1, vol⁻¹ and vol⁻² respectively.
+- *Equivalent forms.* It is L²-equidistribution, with Poisson variance, of the close-pair (midpoint) measure,
+  i.e. the midpoints of Clifford-tube words of T-count 2τ. Spectrally it is ‖F‖₄ ≲ 2^{o}‖F‖₂, i.e.
+  Σ_ψ |Σ_{φ,φ′} a_φ a_φ′ ⟨φφ′ψ⟩|² ≲ 2^{o}‖a‖⁴ with a_φ = k̂(φ)λ_φ(P^τ)φ(z).
+
+**(b) Spectral dictionary of the obstruction.**
+- *The spectral sum.* A cap count equals Σ_f c_f λ_f(P^{2k}). It runs over the Hecke forms of weight ≤ 1/ε on D,
+  i.e. Hilbert forms of weight (d + 2, 2) and level 1 over Q(√2). The family has size F ≈ ε⁻².
+- *Twist length.* At the rate-α scale the twist λ_f(P^{2k}) has length N(P^{2k}) = 4^k = F^{α/2}. So:
+  - α = 2 corresponds to twist length F, the natural reach of Petersson and trace-formula methods;
+  - 5/2 corresponds to F^{5/4};
+  - 3 corresponds to F^{3/2}.
+- *Petersson over K.* The σ₂-weight is 2, so the Bessel factor J₁ at σ₂ does not decay for small argument and the
+  off-diagonal Kloosterman terms are not suppressed. The family varies in the σ₁-weight only.
+- *Satake angles.* S_ℓ = 2^k Σ_f c_f U_{2k}(cos θ_f). Vertical Sato–Tate at the single prime P (Serre) is
+  qualitative only, with discrepancy ≍ 1/log.
+
+**(c) Further dead ends (each checked, none recorded earlier).**
+- *Rarity plus propagation.* L² makes rich caps rare (≤ vol²ε^{−2δ} of them). A rich cap C at level τ gives rich
+  caps gC (g ∈ Λ_s) at level τ + s. But the L² allowance at level τ + s is 4^s·vol², more than the 2^s produced.
+- *Determinant sup plus L².* Interpolation gives the 2k-th moments only for ε ≥ N^{−1/3}, above the critical scale.
+- *Double caps (σ₁-radius ε, σ₂-radius η) with a two-embedding determinant.* Four points are coplanar once
+  εη < 2^{−3k/2}. Pigeonholing σ₂ then costs ε²8^k.
+- *Additive energy of the state set.* The exact energy is minimal (E ≤ 2^{o}|S|²; each circle C_Ŵ carries 2^{o}
+  points). But close quadruples are not additive quadruples: the σ₁-approximate energy at scale ε2^k exceeds the
+  close-quadruple count by ε⁻³.
+- *Circle method for the pair count* (12 integer variables, 4 quadratic equations, thin σ₁ conditions). Far outside
+  Birch's range.
+- *Genus-2 Siegel theta series.*
+  - Orthogonal pairs (Ŵ, D) are representations of diag(4N − d, d) by I₃.
+  - With harmonics, the Maass relations of the Saito–Kurokawa lift turn the pair statistic into half-integral weight
+    coefficients c(4d(4N − d)), summed along a quadratic sequence over a thin window.
+  - Not pursued: it is the same family-cancellation problem as §13(b).
+- *Upper-bound sieves* (large sieve modulo auxiliary primes). They give only the dimension bound for points on a
+  surface and are blind to the global size.
+- *Incidences.* By the determinant method the points of a cell lie on one circle. But each circle carries ≤ 2^{o}
+  states, and different cells give different circles, so there are no rich incidences.
+- *Lift to composite norms* (w ↦ wg₀ with nrd g₀ = m). This gives N_n(C) ≤ N_{nm}(Cg₀). But averaged-norm results
+  control all norms ≍ 2^τm, and {nm} has density 2^{−τ} among them.
+- *Additive perturbation* (w ↦ w + δ, δ small and near the plane). This reproduces the window count R′².
+- *Random target axes.*
+  - Lower bounds for random targets would imply worst-case ones.
+  - But the frame is chosen by the process, so the supremum over frames remains.
+  - For almost every source one still needs 2k-th moments over a 4-parameter family (§9).
+
+**Status after §14.**
+- *Unconditional:* still 5/2.
+- *Any proof of 3 must prove SA* (§12(a)).
+- *Cleanest open targets, in order of apparent tractability. Each would give, for r = 2, at least:*
+  - a 6-point correlation upper bound gives 8/3 (§13(a));
+  - a power-saving in-band pair-count asymptotic gives > 5/2 (§12(b));
+  - θ > 1/3 in mean square for S_ℓ gives > 5/2 (§10(A), §12(b));
+  - a centred fourth moment gives 3 (§14(a)).
+- *Rounds ≥ 3* need the same statements for Hecke-ball sources V|0⟩, uniformly in the height of V.
+- All of these are beyond-square-root statements for a single Hecke orbit. No known technique reaches them.
