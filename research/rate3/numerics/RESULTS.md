@@ -165,8 +165,12 @@ local relative std from neighbour differences (removes the smooth z-trend), L = 
 | 13 | 1081 | 1.59·10⁶ | 1917 | 829 | 0.0190 | 0.832 | 2.34 |
 | 14 | 1883 | 3.65·10⁶ | 4056 | 900 | 0.0119 | 0.756 | 3.15 |
 | 15 | 3276 | 8.39·10⁶ | 8641 | 971 | 0.0082 | 0.761 | 3.16 |
+| 16 | 5706 | 1.93·10⁷ | 18503 | 1041 | 0.0060 | 0.814 | 3.28 |
 
 - rel. std · √L is k-independent (≈ 0.76): the band count is its main term times 1 + O(L^{−1/2}), square-root cancellation in the
   number of norms, with Gaussian-like tails. S₀/L grows linearly in k (divisor-type mean weight).
 - No analytic method proves any power saving for B_W at this scale (NOTES §16(h)); the observed deviation ≍ |W|^{1/2} = N^{3/10}
   is N^{11/30} below the best provable error N^{2/3}.
+- *Independent recheck (2026-10-03, local session).* Recomputed from the stored server files `c12…c16_{A,L}.bin` with numpy: rows
+  k = 12–15 reproduce to all printed digits; second differences give the same local std (0.0253, 0.0194, 0.0120, 0.0083, 0.0061);
+  k = 16 added. rel. std·√L stays in 0.75–0.83 over a 20-fold range of L.
