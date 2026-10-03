@@ -113,7 +113,7 @@ Spectral form of the obstruction (§14(b)):
 - Eleven true properties of the orbit are all absorbed by the spike model; a killer must be single-norm, single-cap, sub-√N (§16(g)).
 - The band count B_W has no provable asymptotic at the critical scale; numerically B_W = main(1 + O(|W|^{−1/2})) (Test E, §16(h)).
 - **Minimal open problem (M₀)** (§16(i)): Σ_{j≤N^{2/5}}|Σ_x Y_{j0}(ẑ·x)|² ≤ N^{8/5−δ} — zonal Weyl sums of one orbit about the Clifford
-  axis; implies the band asymptotic; spectrally it is vertical Sato–Tate at scale 1/log N. Attack this before SA.
+  axis; implies the band asymptotic; spectrally it is vertical Sato–Tate at scale 1/log N. Use it as a test of technique: (M₀) is a diagnostic. It neither implies nor is implied by SA (SA needs only the band upper bound), and proving it would not move the rate (PROGRESS round 13).
 
 ## 6. Corrections inside NOTES (read the corrected versions)
 
