@@ -2,8 +2,9 @@
 
 You are continuing `research/rate3`. Read, in this order: `HANDOFF.md`, `PROGRESS.md` (all rounds, especially 6, 8, 12 and 13),
 `NOTES.md` §16, then `scratch/round6_model.md` and `scratch/round12_minimal.md`. Do NOT read everything else up front; pull in earlier sections only
-when a specific route needs them. Work on the branch you are checked out on and push to it AND to main
-(`git push origin HEAD HEAD:main`); main and prxq-prep are identical at the start of this session.
+when a specific route needs them. Work on prxq-prep only and push only to it
+(`git push origin HEAD:prxq-prep`). Never push to, reset, or fast-forward main: main is the PRX Quantum
+submission branch and does not carry research/rate3, outreach/ or CLAUDE.md.
 
 ## Goal
 Raise the unconditional exchange rate above 5/2 by proving (any piece of) Conjecture SA for r = 2
