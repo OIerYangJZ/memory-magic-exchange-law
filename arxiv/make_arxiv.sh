@@ -7,15 +7,15 @@ TAG=${1:-v1}
 ROOT=$(cd "$(dirname "$0")/.." && pwd)
 DIR="$ROOT/arxiv/$TAG"
 rm -rf "$DIR"; mkdir -p "$DIR/src" "$DIR/build"
-for f in main.tex fig1_tube_counts.png fig2_frontier_twopanel.png; do cp "$ROOT/$f" "$DIR/src/"; done
+for f in main.tex fig0_schematic.pdf fig1_tube_counts.png fig2_frontier_twopanel.png; do cp "$ROOT/$f" "$DIR/src/"; done
 cp "$DIR/src/"* "$DIR/build/"
 cd "$DIR/build"
 for i in 1 2 3; do pdflatex -interaction=nonstopmode -halt-on-error main.tex > /dev/null; done
 if grep -E "^!|undefined|Rerun to get|multiply defined|^No file" main.log; then echo "LaTeX problems, see $DIR/build/main.log"; exit 1; fi
 cp main.pdf "$DIR/main_reference.pdf"
-cd "$DIR/src" && COPYFILE_DISABLE=1 tar --uid 0 --gid 0 --uname arxiv --gname arxiv -czf "$DIR/memory-magic-exchange-law-$TAG.tar.gz" main.tex fig1_tube_counts.png fig2_frontier_twopanel.png
+cd "$DIR/src" && COPYFILE_DISABLE=1 tar --uid 0 --gid 0 --uname arxiv --gname arxiv -czf "$DIR/memory-magic-exchange-law-$TAG.tar.gz" main.tex fig0_schematic.pdf fig1_tube_counts.png fig2_frontier_twopanel.png
 cd "$DIR" && rm -rf build
-if [ "$(tar -tzf "$DIR/memory-magic-exchange-law-$TAG.tar.gz" | sort | tr '\n' ' ')" != "fig1_tube_counts.png fig2_frontier_twopanel.png main.tex " ]; then echo "unexpected files in the tarball"; exit 1; fi
+if [ "$(tar -tzf "$DIR/memory-magic-exchange-law-$TAG.tar.gz" | sort | tr '\n' ' ')" != "fig0_schematic.pdf fig1_tube_counts.png fig2_frontier_twopanel.png main.tex " ]; then echo "unexpected files in the tarball"; exit 1; fi
 if grep -q "Funding and acknowledgments to be supplied" "$DIR/src/main.tex"; then
   echo "WARNING: the acknowledgments placeholder is still in main.tex"
 fi
@@ -27,14 +27,14 @@ cd "$ROOT"
 PAGES=$(pdfinfo "$DIR/main_reference.pdf" 2>/dev/null | awk '/^Pages/{print $2}')
 ABS=$(cat "$ROOT/qip/arxiv_abstract.txt" 2>/dev/null || echo "(qip/arxiv_abstract.txt not found)")
 COMMIT=$(git rev-parse --short HEAD)
-DIRTY=$(git status --porcelain -- main.tex fig1_tube_counts.png fig2_frontier_twopanel.png | wc -l | tr -d ' ')
+DIRTY=$(git status --porcelain -- main.tex fig0_schematic.pdf fig1_tube_counts.png fig2_frontier_twopanel.png | wc -l | tr -d ' ')
 cat > "$DIR/SUBMISSION.md" <<EOT
 # arXiv submission, $TAG
 
 Source: repository commit \`$COMMIT\`$( [ "$DIRTY" != "0" ] && echo " **plus uncommitted changes to the paper sources**" ), built with \`sh arxiv/make_arxiv.sh $TAG\`.
 
 ## Upload
-- \`memory-magic-exchange-law-$TAG.tar.gz\`: only the paper, \`main.tex\` and its 2 PNG figures (the bibliography is inline, no .bbl needed). Code and data are not uploaded; they are in the GitHub repository cited in the paper.
+- \`memory-magic-exchange-law-$TAG.tar.gz\`: only the paper, \`main.tex\` and its 3 figures (one PDF, two PNG) (the bibliography is inline, no .bbl needed). Code and data are not uploaded; they are in the GitHub repository cited in the paper.
 - No 00README: arXiv detects pdfLaTeX and the single top-level file itself and advises against a hand-written one.
 - Compiler: pdfLaTeX. Top-level file: \`main.tex\`.
 - \`main_reference.pdf\` is the local build ($PAGES pages). arXiv's preview should match it; do **not** upload it.
@@ -51,7 +51,7 @@ Jinze Yang, Yangyang Li, Xiu-Hao Deng
 $ABS
 
 **Comments**
-$PAGES pages, 2 figures. Code, data and exact rational certificates: https://github.com/OIerYangJZ/memory-magic-exchange-law
+$PAGES pages, 3 figures. Code, data and exact rational certificates: https://github.com/OIerYangJZ/memory-magic-exchange-law
 
 **Primary category:** quant-ph
 **Cross-list (optional):** math.NT
@@ -59,7 +59,7 @@ $PAGES pages, 2 figures. Code, data and exact rational certificates: https://git
 **License:** CC BY 4.0 (the license of PRX Quantum and Quantum; Quantum requires it for the final arXiv version)
 
 ## Checks
-- [ ] arXiv preview: $PAGES pages, both figures, affiliations and e-mail footnotes on page 1.
+- [ ] arXiv preview: $PAGES pages, all three figures, affiliations and e-mail footnotes on page 1.
 - [ ] Source commit pushed to \`main\` (the paper's data link points there).
 
 ## After the arXiv ID is assigned

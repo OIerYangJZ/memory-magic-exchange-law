@@ -39,11 +39,12 @@ current directory and must be run from inside `data/`.
 
 | Paper | Script | Input / output in `data/` |
 |---|---|---|
-| Table 1, Fig. 1 (coset counts to `t = 22`) | `enum_arith.py`, `arith_analysis.py`, `fig1_fig.py` | `enum_arith.pkl`, `enum_res2.pkl` |
+| Fig. 1 (schematic) | — (drawn by hand, `fig0_schematic.pdf`) | — |
+| Table 1, Fig. 2 (coset counts to `t = 22`) | `enum_arith.py`, `arith_analysis.py`, `fig1_fig.py` | `enum_arith.pkl`, `enum_res2.pkl` |
 | Table 2 (low-cost words per frame) | `lowcost_counts.py` | `lowcost_counts.json` |
 | Table 3 (the bounds at `eps = 1e-10`) | `thm_numbers.py` | — |
-| Fig. 2(a) (exact optima, both error budgets) | `frontier_eps_half.py`, `make_fig2.py` | `taumin_eps_half.json`, `frontier_L{5,6}_eps2.json` |
-| Fig. 2(b) (Ross–Selinger at chemistry scale) | `gridsynth_run.py`, `make_fig2.py` | `gridsynth_tau.json`, `gridsynth_tau_epsover2.json`, `gridsynth_cache.json` |
+| Fig. 3(a) (exact optima, both error budgets) | `frontier_eps_half.py`, `make_fig2.py` | `taumin_eps_half.json`, `frontier_L{5,6}_eps2.json` |
+| Fig. 3(b) (Ross–Selinger at chemistry scale) | `gridsynth_run.py`, `make_fig2.py` | `gridsynth_tau.json`, `gridsynth_tau_epsover2.json`, `gridsynth_cache.json` |
 | Sec. 9, exact `tau_min` for `L <= 6` | `taumin.py` | `taumin.pkl`, `taumin_exact.json` |
 | Sec. 9, axis cosets: first scan (25 frames x 4 accuracies) | `conj1_scan.py` | `conj1_scan_output.txt` |
 | Sec. 9, axis cosets: second scan (272 frames x 5 accuracies, 1360 cells) | `scan2.py`, then `scan2_report.py` | `scan2.jsonl`, `scan2_summary.txt` |
@@ -75,7 +76,7 @@ Cheap (seconds to a couple of minutes, all from cached data):
 .venv/bin/python scripts/scan2_report.py     # every count in the axis-coset paragraph
 .venv/bin/python scripts/astra1.py           # the 232-word step forcing c >= 163.9
 .venv/bin/python scripts/check_lem_cost.py   # Lemma 13 random-instance check
-.venv/bin/python scripts/make_fig2.py        # Fig. 2
+.venv/bin/python scripts/make_fig2.py        # Fig. 3
 ```
 
 Expensive, and only needed to rebuild the cached data:
@@ -95,7 +96,7 @@ Every randomised choice is seeded, so the outputs above are reproducible bit for
 
 - Haar and perturbed frames: `numpy.random.default_rng(914)` in `conj1_scan.py`; `scan2.py`
   inherits the same generator by `exec`.
-- The 20 000 grid angles of Fig. 2(b) and of the mixing measurement:
+- The 20 000 grid angles of Fig. 3(b) and of the mixing measurement:
   `random.Random(20260903).randrange(7853981633)`, stored as `data/u_20000.txt`.
 - `gridsynth_run.py`: `--seed 20260903` by default.
 - `check_lem_cost.py`: `random.seed(916)`.
@@ -112,7 +113,7 @@ tie-breaking.
 - `L := log2(1/eps)`, and the tuned modulus is `Q_eps = floor(pi / (2 arcsin 2 eps))`.
 - The frontier slope is `E_u tau / log2 K` with `u` uniform on all of `Z_Q`, the zero share
   costing nothing — not the mean over nonzero shares, which is larger by `Q/(Q-1)`.
-- Fig. 2(a) reports two error budgets. The certified `r = 2` point of Theorem 9 synthesizes
+- Fig. 3(a) reports two error budgets. The certified `r = 2` point of Theorem 9 synthesizes
   each committed share at `eps/2`; evaluating at `eps` instead is a single-rotation
   calibration and not a point of the family. The two sequences approach 3 from opposite
   sides (2.478, 2.721, 3.113 against 3.333, 3.334, 3.205).
