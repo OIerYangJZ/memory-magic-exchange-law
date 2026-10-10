@@ -1,7 +1,8 @@
 """make_fig2.py -- Fig. 2: the fractional-passthrough tradeoff family against the lower bounds.
 (a) exact optimal synthesis from data/taumin_eps_half.json (L = 5, 6, m = 64, r = 2),
     at both error budgets: eps/2 (the certified r = 2 point of Thm. 9) and eps (a calibration);
-(b) Ross-Selinger (gridsynth) calibration at eps = 1e-10, m = 1e4, r = 2, against Theorems 1, 3, 10.
+(b) Ross-Selinger (gridsynth) calibration at eps = 1e-10, m = 1e4, r = 2, against Theorems 1, 3, 10
+    (Theorem 10 assuming Conjecture 1 with (c0, c1, c) = (8, 2, 256), see thm_numbers.py).
 
 Called from the repository root, like the other scripts:  .venv/bin/python scripts/make_fig2.py
 Supersedes frontier_fig2.py (kept as .bak-rev1), which drew the pre-v6 panel (b)."""
@@ -61,7 +62,7 @@ B = m * bs
 ax2.plot(B, m * np.array([tn.thm1(b) for b in bs]), ':', color='tab:red', label='Thm. 1 (uncond., slope 1)')
 ax2.plot(B, m * np.array([tn.thm3(b) for b in bs]), '--', color='tab:red', label='Thm. 3 (given (R), slope 2)')
 ax2.plot(B, m * np.array([tn.thm9(b) for b in bs]), '-', color='tab:red',
-         label=r'Thm. 10 (Conj. H, slope $\kappa=%.2f$)' % tn.kappa)
+         label=r'Thm. 10 (Conj. H with $c=%d$, slope $\kappa=%.2f$)' % (tn.c, tn.kappa))
 ax2.plot(B, 3 * B, '-', color='0.6', lw=1, label='slope 3 (leading order)')
 Etau = 105.34   # gridsynth mean at eps/2, the certified share accuracy for r = 2 (102.32 at eps)
 q = np.linspace(0, m, 200); S = q * np.log2(Q); Bp = m * k - S; ok = Bp >= 0

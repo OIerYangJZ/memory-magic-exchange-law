@@ -1,6 +1,9 @@
 """thm_numbers.py -- the bounds of Theorems 1, 3 and 10 per coordinate and per pre-final round,
 as functions of the bits shed per coordinate b = log2 K - S/m, at eps = 1e-10, delta = 0, m = 1e4.
-Reproduces Table III (b = log2 K, both c = 48 and c = 256) and the curves of Fig. 2(b)."""
+Reproduces Table III (b = log2 K) and the curves of Fig. 3(b).
+Theorem 10 is evaluated assuming Conjecture 1 with (c0, c1, c) = (8, 2, 256): c = 256 is above the largest
+requirement the enumeration has found (c >= 163.9 at the identity coset, Sec. IX) but is not proven to suffice.
+c = 48, used in earlier versions, is excluded by that requirement and is no longer evaluated."""
 import numpy as np
 
 EPS = 1e-10
@@ -17,7 +20,7 @@ tau_star = int(np.ceil(2 * k))
 Z = sum((C1 * 2 ** t * EPS ** 2 + C2 * (t + 1) * 2 ** (t / 2)) * 2 ** (-t / 2) for t in range(tau_star + 1))
 A2 = 1 + np.log2(Z)
 
-# Theorem 10 constants under H(c0, c1, c) = (8, 2, c); Table III uses c = 48 and c = 256
+# Theorem 10 constants under H(c0, c1, c) = (8, 2, c); Table III and Fig. 3 use c = 256
 c0, c1 = 8, 2
 beta = 2
 def set_c(c_):
@@ -28,7 +31,9 @@ def set_c(c_):
     a0 = 1 + np.log2(N0)
     b_ = beta * L - np.log2(c) - 1
     kappa = 1 + b_ / k
-set_c(48)
+C_ASSUMED = 256
+C_REQUIRED = 163.9   # largest requirement found: 232 words at the identity coset, eps = 0.024532, tau = 11
+set_c(C_ASSUMED)
 
 def fixed_point(f, x0=1.0):
     """largest x >= 0 with x = f(x), f decreasing; bisection on g(x) = x - f(x)"""
@@ -53,7 +58,7 @@ def thm9(b):   # eq. (rate3) with D_t/m = b at delta = 0
     return fixed_point(lambda x: kappa * (b - a0) - 3 * np.log2(1 + x))
 
 if __name__ == '__main__':
-    print(f'eps={EPS:g}  L={L:.3f}  Q_eps={Q}  log2K={k:.3f}')
+    print(f'eps={EPS:g}  L={L:.3f}  Q_eps={Q}  log2K={k:.3f}  (Theorem 10 at c={c})')
     print(f'tau*={tau_star}  A2={A2:.3f}')
     print(f'tau0={tau0}  N0={N0}  log2N0={np.log2(N0):.3f}  a0={a0:.3f}  kappa={kappa:.4f}  fee=2L-{np.log2(c)+1:.2f}')
     for name, f, slope in (('Thm 1', thm1, 1), ('Thm 3', thm3, 2), ('Thm 9', thm9, kappa)):
@@ -74,7 +79,10 @@ if __name__ == '__main__':
     # kappa at 2^-80
     L80 = 80.0; K80 = np.floor(np.pi / (2 * np.arcsin(2 * 2.0 ** -80))) - 1
     print(f'kappa at eps=2^-80: {1 + (2 * L80 - np.log2(c) - 1) / np.log2(K80):.3f}')
-    # the c = 256 end of Table III
-    set_c(256)
+    # sensitivity: Theorem 10 at the largest requirement found, c = 163.9
+    x256 = thm9(k)
+    set_c(C_REQUIRED)
     x = thm9(k)
-    print(f'c=256: tau0={tau0}  a0={a0:.3f}  kappa={kappa:.4f}  Thm 9: T_t/m = {x:.3f}   per bit = {x / k:.3f}')
+    print(f'c={c}: tau0={tau0}  a0={a0:.3f}  kappa={kappa:.4f}  Thm 9: T_t/m = {x:.3f}   per bit = {x / k:.3f}'
+          f'   ({100 * (x / x256 - 1):.1f}% above c={C_ASSUMED})')
+    set_c(C_ASSUMED)
