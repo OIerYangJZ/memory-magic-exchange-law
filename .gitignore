@@ -22,3 +22,6 @@ qip/
 
 .claude/settings.local.json
 research/colab/HOST
+
+# Supplemental Material build output
+supplement.pdf

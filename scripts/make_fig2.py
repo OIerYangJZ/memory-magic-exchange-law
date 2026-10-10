@@ -62,7 +62,7 @@ B = m * bs
 ax2.plot(B, m * np.array([tn.thm1(b) for b in bs]), ':', color='tab:red', label='Thm. 1 (uncond., slope 1)')
 ax2.plot(B, m * np.array([tn.thm3(b) for b in bs]), '--', color='tab:red', label='Thm. 3 (given (R), slope 2)')
 ax2.plot(B, m * np.array([tn.thm9(b) for b in bs]), '-', color='tab:red',
-         label=r'Thm. 10 (Conj. H with $c=%d$, slope $\kappa=%.2f$)' % (tn.c, tn.kappa))
+         label=r'Thm. 8 (Conj. H with $c=%d$, slope $\kappa=%.2f$)' % (tn.c, tn.kappa))
 ax2.plot(B, 3 * B, '-', color='0.6', lw=1, label='slope 3 (leading order)')
 Etau = 105.34   # gridsynth mean at eps/2, the certified share accuracy for r = 2 (102.32 at eps)
 q = np.linspace(0, m, 200); S = q * np.log2(Q); Bp = m * k - S; ok = Bp >= 0
