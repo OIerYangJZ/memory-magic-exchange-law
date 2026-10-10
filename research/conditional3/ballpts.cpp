@@ -1,3 +1,15 @@
+// ballpts: list every single-qubit Clifford+T word of T-count <= tau within projective distance rho
+// of the unit quaternion (q0, q1, q2, q3)  (Remark S2 of the Supplemental Material).
+//   usage: ballpts tau q0 q1 q2 q3 rho        e.g.  ballpts 25 5.828427 1 1 -1 0.0025
+// Build (portable C++17; OpenMP is optional and only parallelises the outer loop):
+//   g++ -std=c++17 -O2 -fopenmp ballpts.cpp -o ballpts                       (Linux / GCC)
+//   clang++ -std=c++17 -O2 -Xpreprocessor -fopenmp -I"$(brew --prefix libomp)/include" \
+//       -L"$(brew --prefix libomp)/lib" -lomp ballpts.cpp -o ballpts         (macOS + Homebrew libomp)
+//   clang++ -std=c++17 -O2 ballpts.cpp -o ballpts                            (any compiler, serial)
+//
+// The comments below were inherited from balls.cpp (max ball occupancy), on which this file is based;
+// the enumeration is the same.
+//
 // Max occupancy of projective-distance balls by single-qubit Clifford+T words of T-count <= tau.
 //
 // Words are enumerated in Matsumoto-Amano normal form (T|e)(HT|SHT)^* C (C one of the 24 Cliffords
@@ -15,9 +27,17 @@
 // Usage: balls tau mu1 [mu2 ...] [--random seed]
 //   --random: replace the words by Haar-random prefixes P (same number, same right-G symmetrization),
 //             as a control with the same statistic and the same symmetry.
-#include <bits/stdc++.h>
-#include <omp.h>
-#include <parallel/algorithm>
+#include <algorithm>
+#include <array>
+#include <cmath>
+#include <complex>
+#include <cstdint>
+#include <cstdio>
+#include <cstdlib>
+#include <functional>
+#include <map>
+#include <string>
+#include <vector>
 using namespace std;
 typedef complex<double> cd;
 struct SU { cd a, b; };  // [[a, b], [-conj b, conj a]]

@@ -1,4 +1,4 @@
-"""Fig. 1: Conjecture H test from the exhaustive enumeration (data/enum_res2.pkl).
+"""Fig. 2 (fig1_tube_counts.png): Conjecture 1 (H) test from the exhaustive enumeration (data/enum_res2.pkl).
 
 (a) raw counts against the Haar prediction 12*2^(t-2L);
 (b) the same counts normalized by that prediction, which is what the conjecture
@@ -67,5 +67,5 @@ ax.set_title(r"(b) normalized, cells with prediction $\geq30$", fontsize=9)
 ax.legend(fontsize=7, ncol=2)
 
 plt.tight_layout()
-plt.savefig(args.out, dpi=150)
+plt.savefig(args.out, dpi=150, metadata={'Software': None})   # no version string: reruns are byte-identical
 print(f"wrote {args.out}  (t <= {tmax})")

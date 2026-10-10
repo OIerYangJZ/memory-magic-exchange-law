@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 """
-mixing_bounds.py -- checks for Sec. 10.1 ("The law under mixing") of M2.
+mixing_bounds.py -- checks for Supplemental Sec. S4 ("The law under mixing").
 
 Part A: randomized checks of the three elementary inequalities used in
-        Lemmas 10-11 (fidelity concentration, window decoding, tube radius).
-Part B: evaluation of the constants of Theorem 8 (rate one and rate two under
+        Lemmas S1-S2 (fidelity concentration, window decoding, tube radius).
+Part B: evaluation of the constants of Theorem S3 (rate one and rate two under
         mixing) at several accuracies, S = 0, delta = 0, and the accuracy at
         which each bound stops being vacuous.
+Part C: Corollary S3 under Conjecture 1 with (c0, c1, c) = (8, 2, 256), the value the paper assumes.
+Part D: Proposition S3.  Part E: Lemma S4.  Part F: the achievable entries of Table S3.
 
 No external data; runs in a few seconds with numpy only.
 """
@@ -57,7 +59,7 @@ def choi(kraus_list, probs):
 # ---------------------------------------------------------------- Part A
 print("=== Part A: randomized checks of the elementary inequalities ===")
 
-# A1. Window inequality (Lemma 11):
+# A1. Window inequality (Lemma S2(i)):
 #     F(C, V R_psi) <= cos^2(psi/2) + sum p s_i + |sin psi| sum p sqrt(s_i),
 #     s_i = sin^2(phi_i/2) = 1 - F(X_i, V).
 worst = -np.inf
@@ -141,12 +143,12 @@ def fixpoint(f, hi=1e6):
     return h
 
 # ---------------------------------------------------------------- Part B
-print("\n=== Part B: constants of Theorem 8 at S = 0, delta = 0 ===")
+print("\n=== Part B: constants of Theorem S3 at S = 0, delta = 0 ===")
 C1, C2 = 72 * 4 * np.sqrt(2), 24 / (1 - 2 ** -0.5) * 2 ** 1.5
 log2 = np.log2
 
-RADIUS_FREE = 36 * np.sqrt(2)     # tube radius factor of the frame-free Theorem 8(b) (Lemma 15)
-RADIUS_SUPP = np.sqrt(2)          # radius factor when prefix/suffix supports are bounded (Remark)
+RADIUS_FREE = 36 * np.sqrt(2)     # tube radius factor of the frame-free Theorem S3(b) (Lemma S6)
+RADIUS_SUPP = np.sqrt(2)          # radius factor when prefix/suffix supports are bounded (Remark S1)
 
 def numbers(eps, gamma=0.25, nf=0.0, det_rate_two=True, radius=RADIUS_FREE):
     L = log2(1 / eps)
@@ -154,7 +156,7 @@ def numbers(eps, gamma=0.25, nf=0.0, det_rate_two=True, radius=RADIUS_FREE):
     K = Q - 1
     k = log2(K)
     eta = np.sqrt(eps / gamma)
-    # rate one: window from Lemma 11
+    # rate one: window from Lemma S2(i)
     w = float(np.floor((Q / np.pi) * np.arcsin(min(1.0, (1 + np.sqrt(3)) * eta))))
     win1 = log2(2 * w + 1)
     bits1 = k - win1
@@ -174,51 +176,52 @@ def numbers(eps, gamma=0.25, nf=0.0, det_rate_two=True, radius=RADIUS_FREE):
             for t in range(tau_star + 1))
     A2p = 1 + log2(Z) if Z > 0 else 0.0
     # one extra bit per coordinate: the decoding window can straddle two cells
-    # of the coarse partition used in Lemma 8 (Appendix F)
+    # of the coarse partition used in the proof of Theorem S3(b) (Supplemental Sec. S4 A)
     thm8b = (1 - gamma) * 2 * (bits2 - 1 - A2p - nf)
     return dict(L=L, Q=Q, k=k, eta=eta, win1=win1, bits1=bits1, thm8a=thm8a,
                 win2=win2, bits2=bits2, A2p=A2p, thm8b=thm8b)
 
-hdr = f"{'eps':>10} {'L':>7} {'log2K':>7} {'coarse bits(a)':>14} {'Thm8a T/m':>10} | {'bits(b) FREE':>12} {'A2p':>6} {'Thm8b FREE':>10} | {'bits(b) SUPP':>12} {'Thm8b SUPP':>10}"
+hdr = f"{'eps':>10} {'L':>7} {'log2K':>7} {'coarse bits(a)':>14} {'ThmS3a T/m':>11} | {'bits(b) FREE':>12} {'A2p':>6} {'ThmS3b FREE':>12} | {'bits(b) SUPP':>12} {'ThmS3b SUPP':>12}"
 print(hdr)
 for eps in [1e-10, 2.0 ** -45, 2.0 ** -60, 2.0 ** -80, 2.0 ** -120, 2.0 ** -200]:
     n = numbers(eps); m = numbers(eps, radius=RADIUS_SUPP)
-    print(f"{eps:10.2e} {n['L']:7.1f} {n['k']:7.2f} {n['bits1']:14.2f} {n['thm8a']:10.2f} | {n['bits2']:12.2f} {n['A2p']:6.2f} {n['thm8b']:10.2f} | {m['bits2']:12.2f} {m['thm8b']:10.2f}")
+    print(f"{eps:10.2e} {n['L']:7.1f} {n['k']:7.2f} {n['bits1']:14.2f} {n['thm8a']:11.2f} | {n['bits2']:12.2f} {n['A2p']:6.2f} {n['thm8b']:12.2f} | {m['bits2']:12.2f} {m['thm8b']:12.2f}")
 
 # onset accuracies
-for name, key, rad in [("rate one (Thm 8a)", "thm8a", RADIUS_FREE), ("rate two (Thm 8b) FREE", "thm8b", RADIUS_FREE), ("rate two (Thm 8b) SUPP", "thm8b", RADIUS_SUPP)]:
+for name, key, rad in [("rate one (Thm S3(a))", "thm8a", RADIUS_FREE), ("rate two (Thm S3(b)) FREE", "thm8b", RADIUS_FREE), ("rate two (Thm S3(b)) SUPP", "thm8b", RADIUS_SUPP)]:
     Ls = np.arange(20, 600)
     vals = [numbers(2.0 ** -float(L), radius=rad)[key] for L in Ls]
     onset = next((L for L, v in zip(Ls, vals) if v > 0), None)
     print(f"{name}: first positive at L = {onset}")
 
-# comparison with deterministic CW bounds at the same accuracies (paper's Thm 1 / Thm 3 numbers)
-print("\nDeterministic CW reference at eps=1e-10 (paper): Thm1 21.75, Thm3 25.72, Thm5 52.9, achievable 105.34 (T per coordinate per round)")
+# comparison with the deterministic CW bounds at the same accuracy (Table I of the paper)
+print("\nDeterministic CW reference at eps=1e-10 (paper): Thm1 21.75, Thm3 25.72, Thm8 51.3 (c=256), achievable 105.34 (T per coordinate per round)")
 n = numbers(1e-10)
-print(f"Mixed model at eps=1e-10, gamma=1/4: coarse bits {n['bits1']:.2f}, Thm8a {n['thm8a']:.2f}, Thm8b {n['thm8b']:.2f} (vacuous)")
+print(f"Mixed model at eps=1e-10, gamma=1/4: coarse bits {n['bits1']:.2f}, ThmS3(a) {n['thm8a']:.2f}, ThmS3(b) {n['thm8b']:.2f} (vacuous)")
 
-# asymptotic ratio check: Thm8b / L -> (1-gamma)
+# asymptotic ratio check: ThmS3(b) / L -> (1-gamma)
 for L in [200, 400, 800]:
     n = numbers(2.0 ** -L)
-    print(f"L={L}: Thm8b/L = {n['thm8b']/L:.3f}  (-> 1-gamma = {1-0.25})")
+    print(f"L={L}: ThmS3(b)/L = {n['thm8b']/L:.3f}  (-> 1-gamma = {1-0.25})")
 
 # gamma optimisation at moderate L
-print("\nBest gamma for Thm 8b at L=120:")
+print("\nBest gamma for Thm S3(b) at L=120:")
 for g in [0.05, 0.1, 0.25, 0.5]:
     n = numbers(2.0 ** -120, gamma=g)
     print(f"  gamma={g}: coarse bits {n['bits2']:.2f}, A2'={n['A2p']:.2f}, bound {n['thm8b']:.2f}")
 
 # ---------------------------------------------------------------- Part C
-print("\n=== Part C: Corollary 6 (rate three and quantization under mixing, given Conjecture 1) ===")
-c0, c1, c = 8.0, 2.0, 48.0          # constants of Conjecture 1 as used in Theorem 5
-c0p, c1p, cp = 9 * c0, 9 * c1, 36 * c   # after the nine-grid cover of Lemma 13
+print("\n=== Part C: Corollary S3 (rate three and quantization under mixing, given Conjecture 1) ===")
+c0, c1, c = 8.0, 2.0, 256.0         # constants of Conjecture 1 as assumed in the paper (Table I, Theorem 8)
+c0p, c1p, cp = 9 * c0, 9 * c1, 36 * c   # after the nine-grid cover of Lemma S4
 
-def cor6(eps, gamma=0.25, nf=0.0, S=0.0):
-    n = numbers(eps, gamma=gamma, nf=nf)
+def cor6(eps, gamma=0.25, nf=0.0, S=0.0, radius=RADIUS_FREE):
+    n = numbers(eps, gamma=gamma, nf=nf, radius=radius)
     L = n['L']; Q = n['Q']; K = n['k']
     eta = np.sqrt(eps / gamma)
-    eps_t = RADIUS_FREE * eta                 # tube radius of the frame-free Corollary 6
-    assert eps_t <= 2 ** -6, "Corollary 6 needs eps' <= 2^-6"
+    eps_t = radius * eta                      # tube radius of Corollary S3 (frame-free unless radius=RADIUS_SUPP)
+    assert eps_t <= 2 ** -6, "Corollary S3 needs eps' <= 2^-6"
+    assert eps_t <= (72 * c) ** -0.5, "Corollary S3 needs eps' <= (72c)^(-1/2)"
     Lp = log2(1 / eps_t)
     tau0 = int(np.floor(2 * Lp - log2(cp)))
     N0 = c0p + c1p * tau0 + 1
@@ -228,26 +231,32 @@ def cor6(eps, gamma=0.25, nf=0.0, S=0.0):
     Kp = np.ceil((2 ** K) / (2 * w2 + 1)); kbar = log2(Kp)
     kappa = 1 + b / kbar
     D = (n['bits2'] - 1) - nf - S            # per coordinate, delta = 0
-    # (13'): T >= (1-gamma)[kappa (D - a0) - 3 log2(1 + T/((1-gamma)))]  (per coordinate)
+    # (S13): T >= (1-gamma)[kappa (D - a0) - 3 log2(1 + T/((1-gamma)))]  (per coordinate)
     T = fixpoint(lambda T: (1 - gamma) * (kappa * (D - a0) - 3 * log2(1 + T / (1 - gamma))))
-    frac = max(0.0, (D - a0) / kbar)          # (14'): fraction of coordinates above tau0
+    frac = max(0.0, (D - a0) / kbar)          # (S14): fraction of coordinates above tau0
     return dict(L=L, Lp=Lp, tau0=tau0, N0=N0, a0=a0, b=b, kbar=kbar, kappa=kappa, D=D, T=T, frac=frac)
 
-print("Theorem 8(b) numbers: FREE = frame-free version (radius 36*sqrt(2)*eta, no support assumption); SUPP = bounded-support version (radius sqrt(2)*eta, n_f=0)")
-print(f"{'L':>6} {'L_tube':>7} {'tau0p':>6} {'a0p':>6} {'kappa':>6} {'D/m':>7} {'(13p) T/m':>10} {'(14p) frac>tau0':>16}")
+print(f"c = {c:g}.  Theorem S3(b) numbers: FREE = frame-free version (radius 36*sqrt(2)*eta, no support assumption); SUPP = bounded-support version (radius sqrt(2)*eta, n_f=0)")
+print(f"{'L':>6} {'L_tube':>7} {'tau0p':>6} {'a0p':>6} {'kappa':>6} {'D/m':>7} {'(S13) T/m':>10} {'(S14) frac>tau0':>16}")
 for L in [33.219, 45, 60, 80, 120, 200]:
     r = cor6(2.0 ** -L)
     print(f"{r['L']:6.1f} {r['Lp']:7.2f} {r['tau0']:6d} {r['a0']:6.2f} {r['kappa']:6.2f} {r['D']:7.2f} {r['T']:10.2f} {r['frac']:16.3f}")
 Ls = np.arange(30, 400)
 onset = next((L for L in Ls if cor6(2.0 ** -float(L))['T'] > 0), None)
-print(f"(13') first positive at L = {onset}; at eps=1e-10: tau0' = {cor6(1e-10)['tau0']}, "
+print(f"(S13) first positive at L = {onset}; at eps=1e-10: tau0' = {cor6(1e-10)['tau0']}, "
       f"fraction of coordinates that must commit a representative of cost > tau0' >= {cor6(1e-10)['frac']:.3f}")
+onset14 = next((L for L in Ls if cor6(2.0 ** -float(L))['frac'] > 0), None)
+r14 = cor6(2.0 ** -float(onset14))
+print(f"(S14) first positive at L = {onset14}: fraction > tau0' = {r14['tau0']} is {r14['frac']:.3f}")
+rs = cor6(1e-10, radius=RADIUS_SUPP)
+print(f"bounded supports (radius sqrt(2)*eta) at eps=1e-10: L_tube = {rs['Lp']:.2f}, tau0' = {rs['tau0']}, "
+      f"(S13) T/m = {rs['T']:.2f}, (S14) fraction > tau0' = {rs['frac']:.3f}")
 for L in [400, 800, 1000]:
     r = cor6(2.0 ** -L)
-    print(f"L={L}: kappa'={r['kappa']:.3f}, (13')/L = {r['T']/L:.3f}  (-> 1.5(1-gamma) = {1.5*(1-0.25)})")
+    print(f"L={L}: kappa'={r['kappa']:.3f}, (S13)/L = {r['T']/L:.3f}  (-> 1.5(1-gamma) = {1.5*(1-0.25)})")
 
 # ---------------------------------------------------------------- Part D
-print("\n=== Part D: Proposition 4 (measurement-adaptive protocols on n qubits, rate 1/(2n+2)) ===")
+print("\n=== Part D: Proposition S3 (measurement-adaptive protocols on n qubits, rate 1/(2n+2)) ===")
 Cn = {1: 24.0, 2: 11520.0}   # |C_n| modulo phase
 def prop4(eps, n=2, gamma=0.25):
     nn = numbers(eps, gamma=gamma)
@@ -261,7 +270,7 @@ onset = next((L for L in np.arange(20, 400) if prop4(2.0 ** -float(L)) > 0), Non
 print(f"n=2: first positive at L = {onset}; asymptotic slope (1-gamma)/(2n+2)/2 = {(0.75/6/2):.4f} per L (floor L/16 per share at gamma=1/4)")
 
 # ---------------------------------------------------------------- Part E
-print("\n=== Part E: Lemma 13 (nine shifted grids of modulus Q_{2 eps} cover the tube of radius eps) ===")
+print("\n=== Part E: Lemma S4 (nine shifted grids of modulus Q_{2 eps} cover the tube of radius eps) ===")
 worst = 0.0
 for trial in range(20000):
     eps = rng.choice([1 / 16, 1 / 32, 1 / 100, 1e-3, 1e-5])
@@ -273,23 +282,23 @@ for trial in range(20000):
 print(f"max dproj(nearest shifted-grid rotation)/eps = {worst:.4f}  (must be <= 1, so tube radius eps -> grid radius 2 eps)")
 
 # ---------------------------------------------------------------- Part F
-print("\n=== Part F: achievable numbers used in Table 4 (from [18] as quoted in [21, Eqs. (9),(13)]) ===")
-print("Proposition 3 with Campbell Thm 2 (full diamond <= 10 eta^2): word accuracy eta = sqrt(eps/(5 r)):")
+print("\n=== Part F: achievable numbers used in Table S3 (Kliuchnikov et al., Quantum 7, 1208, as quoted in Bothe et al., Eqs. (9),(13)) ===")
+print("Proposition S2 with Campbell Thm 2 (full diamond <= 10 eta^2): word accuracy eta = sqrt(eps/(5 r)):")
 for eps_, r_ in [(1e-10, 2), (1e-10, 4)]:
     eta_ = np.sqrt(eps_ / (5 * r_)); print(f"  eps={eps_:.0e}, r={r_}: eta = {eta_:.3e}, RS estimate 3 log2(1/eta) + 2.7 = {3*log2(1/eta_)+2.7:.2f} T per share  (1.5 L + 1.5 log2(5r) = {1.5*log2(1/eps_)+1.5*log2(5*r_):.2f})")
 for delta in [1e-10, 5e-11]:
     print(f"delta={delta:.0e}: mixed-diagonal 1.52 log2(1/delta) - 0.01 = {1.52*log2(1/delta)-0.01:6.2f};  "
           f"mixed-fallback 0.53 log2(1/delta) + 4.86 = {0.53*log2(1/delta)+4.86:6.2f};  "
           f"two-word RS mixing estimate 3 log2(1/sqrt(delta/2)) + 2.7 = {3*log2(1/np.sqrt(delta/2))+2.7:6.2f}")
-# Corollary 5 boundary from [21, Eq. (10)] with their convention R_Z(theta) = e^{i theta Z} (theta = half our angle)
+# Corollary S2 boundary from Bothe et al., Eq. (10), with their convention R_Z(theta) = e^{i theta Z} (theta = half our angle)
 def T_small(theta, delta):
     Kc = (2 * np.sqrt(2 * np.e ** 3) / 3) ** (2 / 3)
     al = delta / (2 * theta) + theta
     ph = max(al - al / np.log(Kc / al), theta)
     return 3 * theta / (al + 2 * ph) * log2(12 / ((al - ph) ** 2 * (al + 2 * ph)))
 eps = 1e-10; delta = eps
-print("Corollary 5(i): expected T of [21, Eq.(10)] for a share whose low ell bits are shed (angle 8 eps 2^ell, delta = eps):")
+print("Corollary S2(i): expected T of Bothe et al., Eq. (10), for a share whose low ell bits are shed (angle 8 eps 2^ell, delta = eps):")
 for ell in [10, 12, 13, 14, 15, 16]:
     ang = 8 * eps * 2 ** ell            # our rotation angle
-    th = ang / 2                        # [21] convention
+    th = ang / 2                        # Bothe et al. convention
     print(f"   ell={ell:2d}: angle={ang:.2e}, T_small-angle = {T_small(th, delta):6.2f}   (L/2 = {log2(1/eps)/2:.1f})")

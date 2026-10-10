@@ -1,5 +1,6 @@
+enumerated shells t<=TMAX=15: sizes [24, 72, 144, 288, 576, 1152, 2304, 4608, 9216, 18432, 36864, 73728, 147456, 294912, 589824, 1179648]  (0.3s)
 MA normal form unique for t<=6; max unitarity error 4.77e-15
-distinct rotation axes of words with t<=3: 219
+distinct rotation axes of words with t<=3: 213
 
 [editor's instance] HT-axis frame, eps=1/32, Q=25: grid hits by exact T-count 0..15: [1, 0, 0, 2, 0, 0, 2, 4, 8, 16, 32, 72, 84, 118, 274, 438]
   cumulative at tau=11: 137   (editor: 137; allowance 8+2*11+48*2^11/1024 = 126)
@@ -16,31 +17,31 @@ Haar 1                                           23.1@13     22.9@15     23.1@15
 Haar 2                                           22.9@15     23.2@14     22.7@15     19.9@15    |    71.9   72.6   72.8   66.5
 axis HT (exact)                                  24.9@13     21.7@15     53.5@11     19.4@15    |    74.8   66.6  147.5   61.9
 axis SHT (exact)                                 23.7@13     21.1@15     31.8@12     20.9@15    |    77.3   68.0  105.5   97.0
-axis of t=1 word [0.281 0.679 0.679]             24.9@13     21.7@15     53.5@11     19.4@15    |    74.8   66.6  147.5   61.9
-axis of t=2 word [ 0.157  0.912 -0.378]          24.4@10     21.5@15     26.5@11     20.4@15    |    72.4   76.5   81.5   71.4
-axis of t=1 word [-0.357  0.863 -0.357]          23.7@13     21.1@15     31.8@12     20.9@15    |    77.3   68.0  105.5   97.0
-axis of t=3 word [-0.271  0.924 -0.271]          24.2@10     20.6@14     26.5@11     22.0@14    |    75.1   71.9   87.0   65.5
-axis of t=3 word [ 0.653 -0.653  0.383]          23.8@10     21.6@13     26.9@13     20.0@14    |    73.8   72.1   80.0   67.5
-axis of t=2 word [ 0.378  0.912 -0.157]          24.4@10     21.5@15     26.5@11     20.4@15    |    72.4   76.5   81.5   71.4
-axis of t=3 word [ 0.96  -0.281  0.   ]          26.4@10     22.2@14     43.5@11     20.9@15    |    74.9   68.5  119.5   68.2
-axis of t=2 word [-0.157  0.912 -0.378]          24.4@10     21.5@15     26.5@11     20.4@15    |    72.4   76.5   81.5   71.4
-axis of t=3 word [ 0.924 -0.271 -0.271]          24.2@10     20.6@14     26.5@11     22.0@14    |    75.1   71.9   87.0   65.5
-axis of t=1 word [0.383 0.    0.924]             23.1@15     20.7@15     26.9@13     29.0@13    |    74.1   72.1   87.0   73.5
-axis of t=3 word [0.861 0.195 0.471]             23.3@15     22.8@13     36.8@12     11.9@15    |    71.7   84.5   69.7   66.4
-axis of t=3 word [0.924 0.271 0.271]             24.2@10     20.6@14     26.5@11     22.0@14    |    75.1   71.9   87.0   65.5
+axis of t=3 word [ 0.195 -0.471 -0.861]          23.3@15     22.8@13     36.8@12     11.9@15    |    71.7   84.5   69.7   66.4
+axis of t=1 word [ 0.281  0.679 -0.679]          24.9@13     21.7@15     53.5@11     19.4@15    |    74.8   66.6  147.5   61.9
+axis of t=1 word [0.    0.383 0.924]             23.1@15     20.7@15     26.9@13     29.0@13    |    74.1   72.1   87.0   73.5
+axis of t=2 word [ 0.707 -0.707  0.   ]          27.9@10     22.8@13     21.7@14     11.5@14    |    76.8   66.6   73.0   57.0
+axis of t=3 word [0.96  0.281 0.   ]             26.4@10     22.2@14     43.5@11     20.9@15    |    74.9   68.5  119.5   68.2
+axis of t=3 word [ 0.281  0.    -0.96 ]          26.4@10     22.2@14     43.5@11     20.9@15    |    74.9   68.5  119.5   68.2
+axis of t=2 word [0.5   0.5   0.707]             25.9@10     22.6@13     22.1@13     14.0@15    |    72.6   69.6   65.2   58.5
+axis of t=1 word [ 0.357 -0.357  0.863]          23.7@13     21.1@15     31.8@12     20.9@15    |    77.3   68.0  105.5   97.0
+axis of t=2 word [ 0.912 -0.378 -0.157]          24.4@10     21.5@15     26.5@11     20.4@15    |    72.4   76.5   81.5   71.4
+axis of t=2 word [ 0.157 -0.378  0.912]          24.4@10     21.5@15     26.5@11     20.4@15    |    72.4   76.5   81.5   71.4
+axis of t=3 word [ 0.746  0.471 -0.471]          24.6@10     23.4@13     37.2@12     14.6@15    |    71.7   86.0   71.0   67.6
+axis of t=3 word [ 0.521  0.826 -0.216]          24.2@10     21.2@15     25.9@15     15.6@15    |    73.8   70.2   78.2   67.4
 axis HT perturbed 0.01 rad                       25.3@13     21.8@15     46.5@11     21.4@15    |    78.8   68.3  139.5   77.1
 axis HT perturbed 0.03 rad                       24.8@13     21.4@15     40.5@11     23.1@15    |    77.0   69.5  105.5  103.0
 axis HT perturbed 0.1 rad                        24.3@13     22.6@14     23.7@15     16.9@15    |    72.4   72.4   73.7   65.1
 axis HT (G1=D^dag,G2=D)                          24.9@13     21.7@15     53.5@11     19.4@15    |    74.8   66.6  147.5   61.9
 
-max required c over the scan: 53.5 at ('axis HT (exact)', 5, 11)  (paper uses c=48; Haar grid value 24; Haar tube value 72)
+max required c over the scan: 53.5 at ('axis HT (exact)', 5, 11)  (the paper assumes c=256; Haar grid value 24; Haar tube value 72)
 
 [offsets] HT-axis frame, grid shifted by a fraction of a step (equivalent to G1 -> G1 Rz(offset)):
   eps=2^-4, Q=12: off=0.0:   21.7  off=0.25:   23.1  off=0.5:   24.1  off=0.75:   23.1
   eps=2^-5, Q=25: off=0.0:   53.5  off=0.25:   42.0  off=0.5:   36.5  off=0.75:   42.0
   eps=2^-6, Q=50: off=0.0:   19.4  off=0.25:   22.6  off=0.5:   25.2  off=0.75:   22.6
 
-total time 256s
+total time 72s
 
 [orbit check] HT-axis frame, eps=1/32: fraction of tube words of shell t that equal HT*W (mod phase) for a tube word W of shell t-1
   t= 7: tube shell    6, of which HT*(shell t-1 tube) =    1, new =    5, Haar shell 36*2^t*eps^2 = 4
@@ -53,7 +54,7 @@ total time 256s
   t=14: tube shell  756, of which HT*(shell t-1 tube) =  275, new =  481, Haar shell 36*2^t*eps^2 = 576
   t=15: tube shell 1374, of which HT*(shell t-1 tube) =  481, new =  893, Haar shell 36*2^t*eps^2 = 1152
 
-[Theorem 5 parametric] eps=1e-10, S=delta=0, (c0,c1)=(8,2):
+[Theorem 8 parametric] eps=1e-10, S=delta=0, (c0,c1)=(8,2):
      c  tau0    N0     a0       b  kappa  Thm5 T/coord  A>/m (14)
   24.0    61   131   8.03   60.85  2.851         53.51      0.756
   48.0    60   129   8.01   59.85  2.821         52.87      0.756

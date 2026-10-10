@@ -1,3 +1,9 @@
+> **Historical working notes (2026-09-28).** Theorem numbers below refer to the `main.tex` of
+> that date. The summary's statement that the unconditional rate in the full CW model stays
+> at 2 is superseded: the paper now proves every rate below 5/2 (Theorem 4), and results A,
+> A1, B, D became Theorem 6, Corollary 2, Theorem 7 and Proposition S1. See `README.md` in
+> this directory.
+
 # Research notes: beyond the square-root barrier, and the ancilla model
 
 Status: working notes, 2026-09-28. `main.tex` is **not** modified. All numbered

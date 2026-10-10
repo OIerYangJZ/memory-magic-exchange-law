@@ -1,4 +1,4 @@
-"""Sec. 9 numbers for the arithmetic cosets: reads data/enum_arith.pkl.
+"""Numbers for the arithmetic cosets (Sec. IV; paragraph "Arithmetic cosets" of Supplemental Sec. S1): reads data/enum_arith.pkl.
 
     python3 arith_analysis.py
 

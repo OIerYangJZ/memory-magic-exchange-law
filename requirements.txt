@@ -11,3 +11,6 @@ matplotlib>=3.7
 # Only for gridsynth_run.py and for run_mixed_achievable.py --backend pygridsynth (Ross-Selinger synthesis).
 # The Haskell `gridsynth` binary on PATH works too, via --backend cli.
 pygridsynth==2.0.0   # T-counts are cached per (angle, accuracy); pinned so reruns match
+
+# Only for research/uniform52/verify_z3.py, the exact SMT check behind Theorem 4 (stored output: z3 5.1.0).
+z3-solver>=4.12

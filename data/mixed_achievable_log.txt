@@ -1,95 +1,15 @@
-20000 angles x 2 accuracies; 40000 to compute, 0 cached
-  500/40000  2s
-  1000/40000  4s
-  1500/40000  5s
-  2000/40000  6s
-  2500/40000  7s
-  3000/40000  9s
-  3500/40000  10s
-  4000/40000  11s
-  4500/40000  13s
-  5000/40000  14s
-  5500/40000  15s
-  6000/40000  16s
-  6500/40000  18s
-  7000/40000  19s
-  7500/40000  20s
-  8000/40000  21s
-  8500/40000  23s
-  9000/40000  24s
-  9500/40000  25s
-  10000/40000  27s
-  10500/40000  28s
-  11000/40000  29s
-  11500/40000  31s
-  12000/40000  32s
-  12500/40000  34s
-  13000/40000  35s
-  13500/40000  37s
-  14000/40000  38s
-  14500/40000  39s
-  15000/40000  41s
-  15500/40000  42s
-  16000/40000  43s
-  16500/40000  44s
-  17000/40000  46s
-  17500/40000  47s
-  18000/40000  49s
-  18500/40000  50s
-  19000/40000  51s
-  19500/40000  53s
-  20000/40000  54s
-  20500/40000  55s
-  21000/40000  57s
-  21500/40000  58s
-  22000/40000  59s
-  22500/40000  61s
-  23000/40000  62s
-  23500/40000  63s
-  24000/40000  65s
-  24500/40000  66s
-  25000/40000  68s
-  25500/40000  69s
-  26000/40000  71s
-  26500/40000  72s
-  27000/40000  73s
-  27500/40000  75s
-  28000/40000  76s
-  28500/40000  77s
-  29000/40000  79s
-  29500/40000  80s
-  30000/40000  81s
-  30500/40000  83s
-  31000/40000  84s
-  31500/40000  86s
-  32000/40000  87s
-  32500/40000  89s
-  33000/40000  90s
-  33500/40000  92s
-  34000/40000  93s
-  34500/40000  95s
-  35000/40000  96s
-  35500/40000  98s
-  36000/40000  100s
-  36500/40000  101s
-  37000/40000  102s
-  37500/40000  104s
-  38000/40000  105s
-  38500/40000  107s
-  39000/40000  108s
-  39500/40000  109s
-  40000/40000  111s
+20000 angles x 2 accuracies; 0 to compute, 40000 cached
 
 eps_word = 7.0711e-06  (log2(1/eps_word) = 17.11; two-word mixture diamond error <= 1.00e-10)
   gridsynth T-count: mean 53.43 +- 0.02 (s.d. 2.20, range 37-65, n=20000)
-  per bit of the share: 1.626   [RS scaling estimate used in v1/v2 draft: 54.03]
-  reference: mixed-diagonal formula of [18] at delta=1.0e-10: 50.48
-  -> Table 4 entry: 'two-word gridsynth mixing: 53.4 T per share at eps=1e-10, r=2' (plus O(1) for the partner word)
+  per bit of the share: 1.626   [Ross-Selinger scaling estimate 3 log2(1/eta) + 2.7: 54.03]
+  reference: mixed-diagonal formula of Kliuchnikov et al. (Quantum 7, 1208) at delta=1.0e-10: 50.48
+  -> Table S3 entry: 'two-word gridsynth mixing: 53.4 T per share at eps=1e-10, r=2' (plus O(1) for the partner word)
 
 eps_word = 5.0000e-06  (log2(1/eps_word) = 17.61; two-word mixture diamond error <= 5.00e-11)
   gridsynth T-count: mean 54.96 +- 0.02 (s.d. 2.21, range 37-66, n=20000)
-  per bit of the share: 1.672   [RS scaling estimate used in v1/v2 draft: 55.53]
-  reference: mixed-diagonal formula of [18] at delta=5.0e-11: 52.00
-  -> Table 4 entry: 'two-word gridsynth mixing: 55.0 T per share at eps=1e-10, r=2' (plus O(1) for the partner word)
+  per bit of the share: 1.672   [Ross-Selinger scaling estimate 3 log2(1/eta) + 2.7: 55.53]
+  reference: mixed-diagonal formula of Kliuchnikov et al. (Quantum 7, 1208) at delta=5.0e-11: 52.00
+  -> Table S3 entry: 'two-word gridsynth mixing: 55.0 T per share at eps=1e-10, r=2' (plus O(1) for the partner word)
 
-written mixed_achievable_results.json
+written data/mixed_achievable_results.json

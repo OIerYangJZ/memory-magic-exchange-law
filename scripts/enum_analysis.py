@@ -1,4 +1,4 @@
-"""Re-derives the Sec. 8 numbers from data/enum_res2.pkl:
+"""Re-derives the numbers of Sec. IV, Fig. 2 and Table S1 (Supplemental Sec. S1) from data/enum_res2.pkl:
 the (t, L) exponent fit, the Haar-normalized ratio ranges, and the table rows.
 
     python3 enum_analysis.py [--tmax 22]

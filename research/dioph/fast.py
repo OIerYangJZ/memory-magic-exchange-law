@@ -1,4 +1,4 @@
-"""Vectorised float optimiser (same model as opt5.py), used to locate good parameters.
+"""Vectorised float optimiser (same model as an earlier optimiser, opt5.py, that was not kept), used to locate good parameters.
 Exponents in units of log R'.  See DIOPH_NOTES.md for the lemmas behind every term."""
 import numpy as np
 

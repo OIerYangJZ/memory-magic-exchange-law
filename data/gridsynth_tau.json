@@ -6,6 +6,7 @@
  "log2K": 32.87077707798325,
  "n": 20000,
  "seed": 20260903,
+ "Q_tuned_to_eps": true,
  "up_to_phase": true,
  "tau_mean": 102.31815,
  "tau_se": 0.01524182221823318,

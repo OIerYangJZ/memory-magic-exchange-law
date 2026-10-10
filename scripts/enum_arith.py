@@ -1,7 +1,7 @@
 """Conjecture H on *arithmetic* cosets: G1 R_z(theta) G2 with G1, G2 in Gamma.
 
 enum2.py tests the identity coset and two Haar-random coset pairs.  The cosets that
-Corollary 2 actually feeds to Theorem 2 are G1 = (U^{<t})^dagger, G2 = (U^{>t})^dagger,
+Corollary 3 actually feeds to Theorem 3 are G1 = (U^{<t})^dagger, G2 = (U^{>t})^dagger,
 both Clifford+T words, so the uniformity of Conjecture H over G1, G2 has to be tested
 on Gamma itself.  This script counts the same two quantities (words within eps of a
 grid rotation on the coset, and words within eps of the whole coset) for coset pairs

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """scan2_report.py -- reads scan2.jsonl (written by scan2.py) and prints every number quoted in
-M2_revision_0914.md Sec. 1.1b, with the totals stated explicitly.  Run: python3 scan2_report.py"""
+the axis-coset paragraph of Supplemental Sec. S1, with the totals stated explicitly.  Run: python3 scan2_report.py"""
 import json, collections, numpy as np
 import os as _os
 _HERE = _os.path.dirname(_os.path.abspath(__file__))

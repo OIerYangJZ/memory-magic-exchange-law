@@ -1,5 +1,5 @@
 """check_lem_cost.py -- random-instance check of the cost-weighted entropy lemma
-(Lemma 13 of the manuscript, eq. (40)), and of the role of its hypothesis tau0 >= 1.
+(Lemma 8 of the manuscript, Appendix E), and of the role of its hypothesis tau0 >= 1.
 
 For an alphabet obeying  #{t(W) <= tau} <= c0 + c1 tau + c 2^tau eps^beta  the lemma bounds
     H(W) <= E[t] - q (beta L - log2 c - 1) + h2(q) + log2 N0 + 3 log2(1 + E t),

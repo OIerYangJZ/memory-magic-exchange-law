@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 conj1_scan.py -- Matsumoto-Amano enumeration of single-qubit Clifford+T words and a
-systematic scan of the constant c of Conjecture 1 (M2, eq. (11)) over frames:
+systematic scan of the constant c of Conjecture 1 (eq. (13) of the paper) over frames:
 identity, Clifford, Haar-random, exact axes of cheap words (HT, SHT, ...),
 perturbed axes, and angular offsets of the grid.
 
@@ -113,16 +113,21 @@ for i in range(3):
 D_HT = eigframe(HT)
 frames['axis HT (exact)'] = (D_HT, D_HT.conj().T)
 frames['axis SHT (exact)'] = (eigframe(SHT), eigframe(SHT).conj().T)
+def axis_key(n):
+    """key of the rotation axis +-n, independent of floating-point noise: rounded, -0.0 -> 0.0, and the
+    lexicographically larger of +n and -n (choosing the sign by argmax|n_i| is noise-dependent when two
+    components have equal modulus)"""
+    r = np.round(n, 6) + 0.0
+    return max(tuple(r.tolist()), tuple((-r + 0.0).tolist()))
+
 # exact axes of all words with t<=3, distinct axes (up to sign), sampled
 axes = {}
 for t in range(1, 4):
     for U in SH[t]:
         n = axis_of(U)
         if n is None: continue
-        if n[np.argmax(np.abs(n))] < 0: n = -n
-        k = tuple(np.round(n, 6))
-        axes.setdefault(k, (t, U))
-ax_list = list(axes.items())
+        axes.setdefault(axis_key(n), (t, U))
+ax_list = sorted(axes.items(), key=lambda kv: kv[0])   # sorted, so the sample does not depend on enumeration order
 print(f"distinct rotation axes of words with t<=3: {len(ax_list)}")
 sel = [ax_list[i] for i in rng.choice(len(ax_list), size=min(12, len(ax_list)), replace=False)]
 for k, (t, U) in sel:
@@ -187,7 +192,7 @@ for name, (G1, G2) in frames.items():
         rows.append((name, k, cg, arg, ct))
         if cg > worst[0]: worst = (cg, (name, k, arg))
     print(line + "   | " + tline)
-print(f"\nmax required c over the scan: {worst[0]:.1f} at {worst[1]}  (paper uses c=48; Haar grid value 24; Haar tube value 72)")
+print(f"\nmax required c over the scan: {worst[0]:.1f} at {worst[1]}  (the paper assumes c=256; Haar grid value 24; Haar tube value 72)")
 
 # ---- 3. angular offsets on the HT-axis frame
 print("\n[offsets] HT-axis frame, grid shifted by a fraction of a step (equivalent to G1 -> G1 Rz(offset)):")
@@ -214,8 +219,8 @@ for t in range(7, TMAX + 1):
     lifted = sum(1 for U in tube_sets[t-1] if proj_key(HT @ U) in keys_t)
     print(f"  t={t:2d}: tube shell {len(tube_sets[t]):4d}, of which HT*(shell t-1 tube) = {lifted:4d}, new = {len(tube_sets[t])-lifted:4d}, Haar shell 36*2^t*eps^2 = {36*2**t*eps**2:.0f}")
 
-# ---- 5. Theorem 5 numbers as a function of c (eps=1e-10, S=delta=0), c0=8, c1=2
-print("\n[Theorem 5 parametric] eps=1e-10, S=delta=0, (c0,c1)=(8,2):")
+# ---- 5. Theorem 8 numbers as a function of c (eps=1e-10, S=delta=0), c0=8, c1=2
+print("\n[Theorem 8 parametric] eps=1e-10, S=delta=0, (c0,c1)=(8,2):")
 L = np.log2(1e10); Q = int(np.floor(np.pi/(2*np.arcsin(2e-10)))); k = np.log2(Q-1)
 def fixpoint(f):
     lo, hi = 0.0, 1e4

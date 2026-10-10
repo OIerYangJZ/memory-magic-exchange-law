@@ -2,8 +2,8 @@
 """
 frontier_eps_half.py -- exact minimal T-count tau_min(d; eta) of a Clifford+T word within
 dproj <= eta of the grid rotation Rz(2 pi d/Q), for eta = eps (single-rotation calibration)
-and eta = eps/2 (the accuracy Theorem 4 needs for a certified two-round process).
-Used to redo Fig. 2(a) in the eps/2 error budget.  Streams the Matsumoto-Amano shells and
+and eta = eps/2 (the accuracy Theorem 5 needs for a certified two-round process).
+Used for Fig. 3(a) in the eps/2 error budget.  Streams the Matsumoto-Amano shells and
 stops when every grid point is resolved or TMAX is reached.
 
 Usage: python3 frontier_eps_half.py L [TMAX] [--json out.json]
@@ -20,7 +20,7 @@ make L=6 feasible on 32 GB:
   * each shell is checked against the *unresolved* grid points only, which after onset is a
     handful, so the late shells cost almost nothing;
   * one enumeration serves all (Qgrid, eta) tasks instead of one enumeration each.
-The shell count is 36*2^t (Lemma 2), reproduced by the --selftest assertion.
+The shell count is 36*2^t (Lemma 4), reproduced by the --selftest assertion.
 """
 import sys, json, time
 import numpy as np

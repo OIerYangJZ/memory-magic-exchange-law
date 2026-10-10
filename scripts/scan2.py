@@ -17,10 +17,9 @@ for t in (4, 5):
     for U in SH[t]:
         n = axis_of(U)
         if n is None: continue
-        if n[np.argmax(np.abs(n))] < 0: n = -n
-        kk = tuple(np.round(n, 6))
+        kk = axis_key(n)                     # canonical key, defined in conj1_scan.py
         if kk not in axes: ax45.setdefault(kk, (t, U))
-ax45l = list(ax45.items()); idx = rng.choice(len(ax45l), size=40, replace=False)
+ax45l = sorted(ax45.items(), key=lambda kv: kv[0]); idx = rng.choice(len(ax45l), size=40, replace=False)
 for i in idx:
     kk, (t, U) = ax45l[i]; D = eigframe(U); allframes[f'axis t={t} {np.round(kk,3)}'] = (D, D.conj().T)
 for ang in (0.003, 0.01, 0.03):

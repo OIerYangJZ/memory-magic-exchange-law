@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
 """
 run_mixed_achievable.py -- measure the achievable committed cost per share
-under two-word mixing (Proposition 3 of M2, Sec. 10.1), to replace the
-"≈54 (to be measured)" entry of Table 4.
+under two-word mixing (Proposition S2, Supplemental Sec. S4); the result is the
+"two-word gridsynth mixing" entry of Table S3.
 
 What it does
-  * takes the SAME angle set as the paper's Fig. 2(b) / Table 3 point
+  * takes the SAME angle set as the paper's Fig. 3(b) / Table I point
     (20 000 grid angles u in Z_Q, Q = Q_eps = 7 853 981 633 at eps = 1e-10;
     angle = 2*pi*u/Q), or any list of angles you give it;
   * runs gridsynth at the word accuracy of two-word mixing,
         d_proj <= sqrt(eps/r)  with r = 2  ->  7.0710678e-06
     (and, optionally, sqrt(eps/4) = 5e-06 as a spare point);
   * reports mean / s.d. / range of the T-count, the per-bit ratio
-    tau / log2(K_eps), and the comparison numbers of Table 4.
+    tau / log2(K_eps), and the comparison numbers of Table S3.
 
 Cost model (Prop. 3): the two-word Campbell/Hastings program uses two words
 of the same accuracy with opposite error vectors; its expected T-count is
@@ -40,7 +40,7 @@ def _d(name): return _os.path.join(_DATA, name)
 from concurrent.futures import ProcessPoolExecutor, as_completed
 
 EPS_PAPER = 1e-10
-Q_EPS = 7853981633            # tuned modulus at eps = 1e-10 (paper, Sec. 9)
+Q_EPS = 7853981633            # tuned modulus at eps = 1e-10 (paper, Sec. IV)
 LOG2K = 32.871                # log2 K_eps (paper)
 
 def gridsynth_cli(angle_str, eps):
@@ -118,11 +118,11 @@ def main():
         delta = 2 * e * e   # diamond budget of the two-word mixture: 2 d_proj^2
         print(f"\neps_word = {e:.4e}  (log2(1/eps_word) = {L_word:.2f}; two-word mixture diamond error <= {delta:.2e})")
         print(f"  gridsynth T-count: mean {mean:.2f} +- {sd/math.sqrt(n):.2f} (s.d. {sd:.2f}, range {min(tcs)}-{max(tcs)}, n={n})")
-        print(f"  per bit of the share: {mean/LOG2K:.3f}   [RS scaling estimate used in v1/v2 draft: {3*L_word+2.7:.2f}]")
-        print(f"  reference: mixed-diagonal formula of [18] at delta={delta:.1e}: {1.52*math.log2(1/delta)-0.01:.2f}")
-        print(f"  -> Table 4 entry: 'two-word gridsynth mixing: {mean:.1f} T per share at eps=1e-10, r=2' (plus O(1) for the partner word)")
+        print(f"  per bit of the share: {mean/LOG2K:.3f}   [Ross-Selinger scaling estimate 3 log2(1/eta) + 2.7: {3*L_word+2.7:.2f}]")
+        print(f"  reference: mixed-diagonal formula of Kliuchnikov et al. (Quantum 7, 1208) at delta={delta:.1e}: {1.52*math.log2(1/delta)-0.01:.2f}")
+        print(f"  -> Table S3 entry: 'two-word gridsynth mixing: {mean:.1f} T per share at eps=1e-10, r=2' (plus O(1) for the partner word)")
     json.dump(results, open(a.out, "w"), indent=2)
-    print(f"\nwritten {a.out}")
+    print(f"\nwritten {os.path.relpath(a.out)}")
 
 if __name__ == "__main__":
     main()

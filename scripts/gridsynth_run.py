@@ -1,18 +1,22 @@
-"""Chemistry-scale version of Fig. 2: Ross-Selinger T-counts at eps=1e-10.
+"""Fig. 3(b) and Table I: Ross-Selinger T-counts at eps=1e-10 (chemistry scale).
 
 Under canonical sharing the share u is uniform on Z_Q, and the frontier only uses
 E_u tau(u), so we estimate that expectation from N random grid angles 2*pi*u/Q
 rather than synthesizing all Q_eps ~ 7.9e9 of them.
 
-  python3 gridsynth_run.py            # writes data/gridsynth_tau.json
-  python3 gridsynth_run.py --n 5000   # more samples
+The paper uses N = 20000 (the default; the seed is fixed, so the angles are those of
+data/u_20000.txt).  From the repository root:
+
+  .venv/bin/python scripts/gridsynth_run.py     # writes data/gridsynth_tau.json (E tau = 102.32)
 
 The certified full-stream point of Thm. (frontier) with r = 2 synthesizes committed
 shares to eps/r while the grid stays the eps-tuned one, so that run needs the modulus
 held fixed rather than rederived from the accuracy:
 
-  python3 gridsynth_run.py --eps 5e-11 --Q 7853981633 --n 20000 \
-      --out gridsynth_tau_epsover2.json
+  .venv/bin/python scripts/gridsynth_run.py --eps 5e-11 --Q 7853981633 \
+      --out gridsynth_tau_epsover2.json         # E tau = 105.34
+
+A smaller --n overwrites the output file with a smaller sample; use --out to write elsewhere.
 
 Results are cached by content (angle numerator, modulus, epsilon) in
 data/gridsynth_cache.json so reruns are free.
@@ -78,7 +82,7 @@ def run(jobs, cache, procs):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--eps", default="1e-10")
-    ap.add_argument("--n", type=int, default=2000)
+    ap.add_argument("--n", type=int, default=20000)
     ap.add_argument("--lmax", type=int, default=8)
     ap.add_argument("--seed", type=int, default=20260903)
     ap.add_argument("--procs", type=int, default=os.cpu_count())

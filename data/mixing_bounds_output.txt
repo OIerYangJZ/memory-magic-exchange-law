@@ -7,45 +7,47 @@ A4 concentration on Campbell-type two-word mixtures:
    eps=1e-06: violations of the Markov mass bound = 0/2000
    eps=1e-08: violations of the Markov mass bound = 0/2000
 
-=== Part B: constants of Theorem 8 at S = 0, delta = 0 ===
-       eps       L   log2K coarse bits(a)  Thm8a T/m | bits(b) FREE    A2p Thm8b FREE | bits(b) SUPP Thm8b SUPP
-  1.00e-10    33.2   32.87          14.81       4.12 |         8.59  16.43     -13.25 |        13.76      -7.29
-  2.84e-14    45.0   44.65          20.70       7.92 |        14.48  17.72      -6.35 |        19.65       0.07
-  8.67e-19    60.0   59.65          28.20      13.04 |        21.98  18.87       3.16 |        27.15       9.98
-  8.27e-25    80.0   79.65          38.20      20.09 |        31.98  19.92      16.59 |        37.15      23.67
-  7.52e-37   120.0  119.65          58.20      34.52 |        51.98  21.30      44.52 |        57.15      51.85
-  6.22e-61   200.0  199.65          98.20      63.87 |        91.98  22.93     102.08 |        97.15     109.59
-rate one (Thm 8a): first positive at L = 20
-rate two (Thm 8b) FREE: first positive at L = 56
-rate two (Thm 8b) SUPP: first positive at L = 45
+=== Part B: constants of Theorem S3 at S = 0, delta = 0 ===
+       eps       L   log2K coarse bits(a)  ThmS3a T/m | bits(b) FREE    A2p  ThmS3b FREE | bits(b) SUPP  ThmS3b SUPP
+  1.00e-10    33.2   32.87          14.81        4.12 |         8.59  16.43       -13.25 |        13.76        -7.29
+  2.84e-14    45.0   44.65          20.70        7.92 |        14.48  17.72        -6.35 |        19.65         0.07
+  8.67e-19    60.0   59.65          28.20       13.04 |        21.98  18.87         3.16 |        27.15         9.98
+  8.27e-25    80.0   79.65          38.20       20.09 |        31.98  19.92        16.59 |        37.15        23.67
+  7.52e-37   120.0  119.65          58.20       34.52 |        51.98  21.30        44.52 |        57.15        51.85
+  6.22e-61   200.0  199.65          98.20       63.87 |        91.98  22.93       102.08 |        97.15       109.59
+rate one (Thm S3(a)): first positive at L = 20
+rate two (Thm S3(b)) FREE: first positive at L = 56
+rate two (Thm S3(b)) SUPP: first positive at L = 45
 
-Deterministic CW reference at eps=1e-10 (paper): Thm1 21.75, Thm3 25.72, Thm5 52.9, achievable 105.34 (T per coordinate per round)
-Mixed model at eps=1e-10, gamma=1/4: coarse bits 14.81, Thm8a 4.12, Thm8b -13.25 (vacuous)
-L=200: Thm8b/L = 0.510  (-> 1-gamma = 0.75)
-L=400: Thm8b/L = 0.622  (-> 1-gamma = 0.75)
-L=800: Thm8b/L = 0.682  (-> 1-gamma = 0.75)
+Deterministic CW reference at eps=1e-10 (paper): Thm1 21.75, Thm3 25.72, Thm8 51.3 (c=256), achievable 105.34 (T per coordinate per round)
+Mixed model at eps=1e-10, gamma=1/4: coarse bits 14.81, ThmS3(a) 4.12, ThmS3(b) -13.25 (vacuous)
+L=200: ThmS3(b)/L = 0.510  (-> 1-gamma = 0.75)
+L=400: ThmS3(b)/L = 0.622  (-> 1-gamma = 0.75)
+L=800: ThmS3(b)/L = 0.682  (-> 1-gamma = 0.75)
 
-Best gamma for Thm 8b at L=120:
+Best gamma for Thm S3(b) at L=120:
   gamma=0.05: coarse bits 50.82, A2'=21.24, bound 54.30
   gamma=0.1: coarse bits 51.32, A2'=21.27, bound 52.29
   gamma=0.25: coarse bits 51.98, A2'=21.30, bound 44.52
   gamma=0.5: coarse bits 52.48, A2'=21.33, bound 30.16
 
-=== Part C: Corollary 6 (rate three and quantization under mixing, given Conjecture 1) ===
-Theorem 8(b) numbers: FREE = frame-free version (radius 36*sqrt(2)*eta, no support assumption); SUPP = bounded-support version (radius sqrt(2)*eta, n_f=0)
-     L  L_tube  tau0p    a0p  kappa     D/m  (13p) T/m  (14p) frac>tau0
-  33.2    9.94      9   8.88   1.85    7.59       0.00            0.000
-  45.0   15.83     20   9.76   2.29   13.48       2.08            0.241
-  60.0   23.33     35  10.46   2.52   20.98      10.96            0.458
-  80.0   33.33     55  11.05   2.66   30.98      27.99            0.604
- 120.0   53.33     95  11.80   2.79   50.98      67.39            0.740
- 200.0   93.33    175  12.65   2.88   90.98     151.99            0.842
-(13') first positive at L = 37; at eps=1e-10: tau0' = 9, fraction of coordinates that must commit a representative of cost > tau0' >= 0.000
-L=400: kappa'=2.943, (13')/L = 0.928  (-> 1.5(1-gamma) = 1.125)
-L=800: kappa'=2.972, (13')/L = 1.020  (-> 1.5(1-gamma) = 1.125)
-L=1000: kappa'=2.978, (13')/L = 1.039  (-> 1.5(1-gamma) = 1.125)
+=== Part C: Corollary S3 (rate three and quantization under mixing, given Conjecture 1) ===
+c = 256.  Theorem S3(b) numbers: FREE = frame-free version (radius 36*sqrt(2)*eta, no support assumption); SUPP = bounded-support version (radius sqrt(2)*eta, n_f=0)
+     L  L_tube  tau0p    a0p  kappa     D/m  (S13) T/m  (S14) frac>tau0
+  33.2    9.94      6   8.50   1.60    7.59       0.00            0.000
+  45.0   15.83     18   9.63   2.13   13.48       1.97            0.249
+  60.0   23.33     33  10.38   2.41   20.98      10.42            0.461
+  80.0   33.33     53  11.00   2.59   30.98      27.10            0.606
+ 120.0   53.33     93  11.77   2.75   50.98      66.17            0.740
+ 200.0   93.33    173  12.64   2.86   90.98     150.53            0.843
+(S13) first positive at L = 36; at eps=1e-10: tau0' = 6, fraction of coordinates that must commit a representative of cost > tau0' >= 0.000
+(S14) first positive at L = 36: fraction > tau0' = 9 is 0.010
+bounded supports (radius sqrt(2)*eta) at eps=1e-10: L_tube = 15.11, tau0' = 17, (S13) T/m = 1.47, (S14) fraction > tau0' = 0.216
+L=400: kappa'=2.930, (S13)/L = 0.924  (-> 1.5(1-gamma) = 1.125)
+L=800: kappa'=2.966, (S13)/L = 1.018  (-> 1.5(1-gamma) = 1.125)
+L=1000: kappa'=2.973, (S13)/L = 1.037  (-> 1.5(1-gamma) = 1.125)
 
-=== Part D: Proposition 4 (measurement-adaptive protocols on n qubits, rate 1/(2n+2)) ===
+=== Part D: Proposition S3 (measurement-adaptive protocols on n qubits, rate 1/(2n+2)) ===
 L=  33.2: n=2 (one ancilla)  (T+M)/m >=    0.00;   n=1 crude count  T/m >=    1.37
 L=  60.0: n=2 (one ancilla)  (T+M)/m >=    1.46;   n=1 crude count  T/m >=    3.68
 L= 120.0: n=2 (one ancilla)  (T+M)/m >=    5.04;   n=1 crude count  T/m >=    9.09
@@ -53,16 +55,16 @@ L= 200.0: n=2 (one ancilla)  (T+M)/m >=    9.93;   n=1 crude count  T/m >=   16.
 L= 400.0: n=2 (one ancilla)  (T+M)/m >=   22.29;   n=1 crude count  T/m >=   34.99
 n=2: first positive at L = 34; asymptotic slope (1-gamma)/(2n+2)/2 = 0.0625 per L (floor L/16 per share at gamma=1/4)
 
-=== Part E: Lemma 13 (nine shifted grids of modulus Q_{2 eps} cover the tube of radius eps) ===
+=== Part E: Lemma S4 (nine shifted grids of modulus Q_{2 eps} cover the tube of radius eps) ===
 max dproj(nearest shifted-grid rotation)/eps = 0.4653  (must be <= 1, so tube radius eps -> grid radius 2 eps)
 
-=== Part F: achievable numbers used in Table 4 (from [18] as quoted in [21, Eqs. (9),(13)]) ===
-Proposition 3 with Campbell Thm 2 (full diamond <= 10 eta^2): word accuracy eta = sqrt(eps/(5 r)):
+=== Part F: achievable numbers used in Table S3 (Kliuchnikov et al., Quantum 7, 1208, as quoted in Bothe et al., Eqs. (9),(13)) ===
+Proposition S2 with Campbell Thm 2 (full diamond <= 10 eta^2): word accuracy eta = sqrt(eps/(5 r)):
   eps=1e-10, r=2: eta = 3.162e-06, RS estimate 3 log2(1/eta) + 2.7 = 57.51 T per share  (1.5 L + 1.5 log2(5r) = 54.81)
   eps=1e-10, r=4: eta = 2.236e-06, RS estimate 3 log2(1/eta) + 2.7 = 59.01 T per share  (1.5 L + 1.5 log2(5r) = 56.31)
 delta=1e-10: mixed-diagonal 1.52 log2(1/delta) - 0.01 =  50.48;  mixed-fallback 0.53 log2(1/delta) + 4.86 =  22.47;  two-word RS mixing estimate 3 log2(1/sqrt(delta/2)) + 2.7 =  54.03
 delta=5e-11: mixed-diagonal 1.52 log2(1/delta) - 0.01 =  52.00;  mixed-fallback 0.53 log2(1/delta) + 4.86 =  23.00;  two-word RS mixing estimate 3 log2(1/sqrt(delta/2)) + 2.7 =  55.53
-Corollary 5(i): expected T of [21, Eq.(10)] for a share whose low ell bits are shed (angle 8 eps 2^ell, delta = eps):
+Corollary S2(i): expected T of Bothe et al., Eq. (10), for a share whose low ell bits are shed (angle 8 eps 2^ell, delta = eps):
    ell=10: angle=8.19e-07, T_small-angle =   0.17   (L/2 = 16.6)
    ell=12: angle=3.28e-06, T_small-angle =   2.92   (L/2 = 16.6)
    ell=13: angle=6.55e-06, T_small-angle =  10.56   (L/2 = 16.6)
